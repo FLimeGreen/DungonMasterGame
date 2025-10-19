@@ -1,6 +1,6 @@
 ﻿public class Program
 {
-    public static void Main(string[] args)
+    public static void MainConsole(string[] args)
     {
         Console.CursorVisible = true;
         int h = Console.WindowHeight;

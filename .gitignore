@@ -38,6 +38,7 @@ Thumbs.db
 
 # Visual Studio Data #
 ######################
-.vs\
-DungonMasterGame\bin\
+.vs/
+DungonMasterGame/bin/
+DungonMasterGame/obj/
 *.vsidx

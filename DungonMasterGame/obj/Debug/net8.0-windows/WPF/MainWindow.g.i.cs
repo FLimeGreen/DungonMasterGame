@@ -53,7 +53,7 @@ namespace DungonMasterGame {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DungonMasterGame;V1.0.0.0;component/wpf/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DungonMasterGame;component/wpf/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\WPF\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
