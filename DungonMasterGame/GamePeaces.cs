@@ -19,4 +19,7 @@
         if (!Board.PlatziereFigur(0, 0, Player))
             Console.WriteLine("Fiegur Platzier Fahler");
     }
+
+    public int GetPlayer_X { get { return Player.X; } }
+    public int GetPlayer_Y { get { return Player.Y; } }
 }

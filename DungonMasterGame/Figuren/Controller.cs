@@ -31,6 +31,9 @@
 
     public char Grafik { get { return grafik; } }
 
+    public int X { get { return x; } }
+    public int Y { get { return y; } }
+
     public virtual void Update(string[]? data = null) { }
 
     protected bool MoveOneField(int Direktion)

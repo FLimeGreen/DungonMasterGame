@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DungonMasterGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7d5b15f5eac10df9bfc6955842cdc04d31c99c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee5dd1d3b66b0a74dcb8566c2e931d06bccf3d28")]
 [assembly: System.Reflection.AssemblyProductAttribute("DungonMasterGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DungonMasterGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
