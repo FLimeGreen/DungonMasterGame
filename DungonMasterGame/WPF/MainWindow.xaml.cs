@@ -76,10 +76,12 @@ namespace DungonMasterGame
                         .First(e => Grid.GetRow(e) == y && Grid.GetColumn(e) == x);
                     
                     int relative_x = x - 3;
-                    int relative_y = y - 3;
+                    // Weil das Grid y 0 -> 7 geht muss die rel y umgedreht werden damit bei 0 die Höchste y Korrdinate stehet.
+                    int relative_y = -y + 3;
 
                     int vector_x = playerx + relative_x;
                     int vector_y = playery + relative_y;
+
                     if (World.IstDa(vector_x, vector_y))
                     {
                         temp.Text =  "" + World.Grafik(vector_x, vector_y);
@@ -91,6 +93,34 @@ namespace DungonMasterGame
                 }
             }
 
+        }
+
+        // Manages Tastatur Eingabe
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Movement WASD
+            if (e.Key == Key.W) 
+            {
+                WorldPeaces.PlayerMoveUp();
+            }
+
+            if (e.Key == Key.A)
+            {
+                WorldPeaces.PlayerMoveLeft();
+            }
+
+            if (e.Key == Key.S)
+            {
+                WorldPeaces.PlayerMoveDown();
+            }
+
+            if (e.Key == Key.D)
+            {
+                WorldPeaces.PlayerMoveRight();
+            }
+
+
+            UpdateGrafik();
         }
     }
 }

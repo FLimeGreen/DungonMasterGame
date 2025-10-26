@@ -9,10 +9,26 @@ public class FreeSpace : Terrain
     public FreeSpace(int x, int y) : base(x, y)
     {
         // Nichts auf dem Feld
-        hitbox = 0;
+        hitbox = Hitbox.FreeSpace;
         grafik = '_';
     }
-    public override int Hitbox => base.Hitbox;
+    public override Hitbox GetHitbox 
+    {
+        get {
+            
+            if (Figur == null)
+            {
+                return Hitbox.FreeSpace;
+            } // Figur ist Spieler
+            else if (Figur as PlayerController != null)
+            {
+                return Hitbox.FreeSpace_with_Player;
+            }
+            
+            
+            return Hitbox.None;
+        }
+    }
 
     public override char Grafik 
     {
@@ -36,10 +52,6 @@ public class FreeSpace : Terrain
     public Controller? SpielFigur 
     { 
         get { return Figur; }
-        set
-        {
-            if (value != null)
-                Figur = value;
-        }
+        set { Figur = value; }
     }
 }

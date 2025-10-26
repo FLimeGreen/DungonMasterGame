@@ -10,7 +10,6 @@
 
   <ItemGroup>
 	<Folder Include="WPF\" />
-	<Folder Include="Figuren\" />
     <Folder Include="Tiles\Gebäude_Teile\" />
   </ItemGroup>
 

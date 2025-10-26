@@ -27,9 +27,9 @@
     public int WorldSize { get { return WorldMap.Count; } }
     
     // Gibt Hitbox zurück
-    public int Hitbox(int x, int y)
+    public Hitbox GetHitbox(int x, int y)
     {
-        return WorldMap[(x, y)].Hitbox;
+        return WorldMap[(x, y)].GetHitbox;
     }
 
     // Gibt Grafik zurück
@@ -52,7 +52,7 @@
             return false;
 
         // Check ob Hitbox = 0
-        if (Hitbox(x, y) != 0)
+        if (GetHitbox(x, y) != Hitbox.FreeSpace)
             return false;
 
         FreeSpace? Ort = WorldMap[(x, y)] as FreeSpace;
@@ -63,5 +63,34 @@
         Ort.SpielFigur = Figur;
         
         return true;
+    }
+
+    // Entferne Figur vom Feld
+    public bool EntferneFigur(int x, int y, Controller Figur)
+    {
+        // Check ob Da
+        if (!IstDa(x, y))
+            return false;
+
+        // Versuche den Ort als FreeSpace zu interpretiern.
+        FreeSpace? Ort = WorldMap[(x, y)] as FreeSpace;
+
+        if (Ort == null)
+            return false;
+
+        // Schaue ob Ort keine Figur hat?
+        if (!Ort.IstDaEineSpielFigur)
+            return false;
+
+        // Ort hat eine Figur, als nächstes schauen ob diese Identisch sind.
+        if (Ort.SpielFigur == Figur)
+        {
+            Ort.SpielFigur = null;
+            return true;
+        }
+        else
+        {   // Denn die Angegbene Figur ist nicht an dem Ort und deswegen wird die dortige nicht entfernt.
+            return false;
+        }
     }
 }

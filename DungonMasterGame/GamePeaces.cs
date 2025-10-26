@@ -22,4 +22,24 @@
 
     public int GetPlayer_X { get { return Player.X; } }
     public int GetPlayer_Y { get { return Player.Y; } }
+
+    public void PlayerMoveUp()
+    {
+        Player.Move(1, Board);
+    }
+
+    public void PlayerMoveDown()
+    {
+        Player.Move(3, Board);
+    }
+
+    public void PlayerMoveLeft()
+    {
+        Player.Move(4, Board);
+    }
+
+    public void PlayerMoveRight()
+    {
+        Player.Move(2, Board);
+    }
 }

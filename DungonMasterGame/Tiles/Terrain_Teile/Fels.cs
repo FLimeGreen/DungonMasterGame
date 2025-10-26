@@ -2,7 +2,7 @@
 {
     public Fels(int x, int y) : base(x, y)
     {
-        hitbox = 1;
+        hitbox = Hitbox.Wall;
         grafik = '#';
     }
 }

@@ -2,8 +2,8 @@
 {
     protected int x;
     protected int y;
-    protected int heading;
-    // 1 = Norden | 2 = Osten | 3 = Süden | 4 = Westen
+    protected Heading heading;
+    // 1 = Norden = W | 2 = Osten = D | 3 = Süden = S | 4 = Westen = A
     protected char grafik;
 
     // Charakter Eigenschaften:
@@ -22,11 +22,11 @@
     {
         this.x = x;
         this.y = y;
-        heading = 1; // Norden
+        heading = Heading.Norden; // Norden
 
         //Charakter Eigenschaften
         //Tagen, Stunden, Minuten, Sekunden und Millisekunden
-        speed = new TimeSpan(0, 0, 0, 1, 0);
+        speed = new TimeSpan(0, 0, 0, 0, 30);
     }
 
     public char Grafik { get { return grafik; } }
@@ -36,31 +36,112 @@
 
     public virtual void Update(string[]? data = null) { }
 
-    protected bool MoveOneField(int Direktion)
+    protected bool FeldVorDirIstFrei(GameBoard World)
+    {
+        int FigurX = X;
+        int FigurY = Y;
+
+        switch (heading)
+        {
+            case Heading.Norden:
+                FigurY++;
+                break;
+            
+            case Heading.Osten:
+                FigurX++;
+                break;
+            
+            case Heading.Süden: 
+                FigurY--;
+                break;
+                
+            case Heading.Westen:
+                FigurX--;
+                break;
+            
+            default: return false;
+        }
+
+        if (World.GetHitbox(FigurX, FigurY) == Hitbox.FreeSpace)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    protected bool MoveOneField(int Direktion, GameBoard World)
     {
         // Wenn nicht Größer als Speed noch keine Bewegung
         if (!(DateTime.Now - movecooldown > speed))
         {
             return false;
         }
+
         // Fals doch bewege dich:
 
         switch (Direktion)
         {
             case 1:
-                y++; 
+                heading = Heading.Norden;
+
+                // Schaue ob Platz ist?
+                if (FeldVorDirIstFrei(World))
+                {
+                    World.EntferneFigur(X, Y, this);
+                    y++;
+                }
+                else
+                {
+                    return false;
+                }
                 break;
 
             case 2:
-                x++;
+                heading = Heading.Osten;
+
+                // Schaue ob Platz ist?
+                if (FeldVorDirIstFrei(World))
+                {
+                    World.EntferneFigur(X, Y, this);
+                    x++;
+                }
+                else
+                {
+                    return false;
+                }
                 break;
 
             case 3:
-                y--;
+                heading = Heading.Süden;
+
+                // Schaue ob Platz ist?
+                if (FeldVorDirIstFrei(World))
+                {
+                    World.EntferneFigur(X, Y, this);
+                    y--;
+                }
+                else
+                {
+                    return false;
+                }
                 break;
 
             case 4:
-                x--;
+                heading = Heading.Westen;
+
+                // Schaue ob Platz ist?
+                if (FeldVorDirIstFrei(World))
+                {
+                    World.EntferneFigur(X, Y, this);
+                    x--;
+                }
+                else
+                {
+                    return false;
+                }
                 break;
 
             default:
@@ -69,6 +150,8 @@
 
         // Setze neu Cooldown
         movecooldown = DateTime.Now;
+        // Setze Figur neu.
+        World.PlatziereFigur(X, Y, this);
         return true;
     }
 }
