@@ -1,4 +1,6 @@
-﻿public abstract class Controller
+﻿using System.Windows.Documents;
+
+public abstract class Controller
 {
     protected int x;
     protected int y;
@@ -11,9 +13,13 @@
     // ATK
     // DEF
 
+    // Wie lange warten bis nächste Bewegegung
     protected TimeSpan speed;
 
-    // Cooldown:
+    // Wie lange warten bis nächste Attake
+    protected TimeSpan[] actioncooldownLenght = new TimeSpan[10];
+
+    // Cooldown: Wann ist es das letzte mal Passiert
     protected DateTime movecooldown;
 
     protected DateTime[] actioncooldown = new DateTime[10];
@@ -33,6 +39,26 @@
 
     public int X { get { return x; } }
     public int Y { get { return y; } }
+
+    public (int, int) GetLooking(int Distance)
+    {
+        switch (heading)
+        {
+            case Heading.Norden:
+                return (x, y + Distance);
+
+            case Heading.Osten:
+                return (x + Distance, y);
+
+            case Heading.Süden:
+                return (x, y - Distance);
+
+            case Heading.Westen:
+                return (x -Distance, y);
+
+            default: throw new Exception("Some thing faild horrible (Looking Block)x: " + x + " y: " + y + " Head: " + heading);
+        }
+    }
 
     public virtual void Update(string[]? data = null) { }
 
@@ -154,4 +180,32 @@
         World.PlatziereFigur(X, Y, this);
         return true;
     }
+
+    protected bool DoAction(int AktionNumber)
+    {
+        // Von 10 ist das keine Valiede Nummer
+        if (AktionNumber < 0 ||  AktionNumber > 9)
+        {
+            return false;
+        }
+
+        // Wenn Keine Cooldown Length dann auch keine Hinterlegte Aktion
+        if (actioncooldownLenght[AktionNumber] == null)
+        {
+            return false;
+        }
+
+        // Gib an Ob Cooldown abegelaufen ist?
+        if (DateTime.Now - actioncooldown[AktionNumber] > actioncooldownLenght[AktionNumber])
+        {
+            actioncooldown[AktionNumber] = DateTime.Now;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
 }

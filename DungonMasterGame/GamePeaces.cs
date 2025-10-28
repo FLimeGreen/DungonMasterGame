@@ -42,4 +42,37 @@
     {
         Player.Move(2, Board);
     }
+
+    public void PlayerAction1()
+    {
+        Player.ActionSlot1(this);
+    }
+
+    // Angriff auf eine Feld / Figur
+
+    public bool GreifeFeldAn(int x, int y, int Schaden, Schadensarten Art)
+    {
+        // Ob da?
+        if (!Board.IstDa(x, y))
+        {
+            return false;
+        }
+
+        if (Schaden <= 0)
+        {
+            return false;
+        }
+
+        // Check ob da eine Figur ist?
+        if (Board.IstDaFigur(x, y))
+        {
+            // Füge der Figur Schaden zu.
+            throw new NotImplementedException();
+        }
+        else
+        {
+            // Füge dem Gebäude / Terrain Schaden zu
+             return Board.FuegeDemFeldSchadenZu(x, y, Schaden, Art);
+        }
+    }
 }

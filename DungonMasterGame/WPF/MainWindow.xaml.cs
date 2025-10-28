@@ -119,6 +119,11 @@ namespace DungonMasterGame
                 WorldPeaces.PlayerMoveRight();
             }
 
+            if (e.Key == Key.Space)
+            {
+                WorldPeaces.PlayerAction1();
+            }
+
 
             UpdateGrafik();
         }
