@@ -1,7 +1,7 @@
 ﻿public class GamePeaces
 {
     private PlayerController Player;
-    private List<Controller> Helfer;
+    private List<HelferController> Helfer;
     private List<Controller> Gegner;
 
     // Game Board
@@ -10,7 +10,7 @@
     public GamePeaces(GameBoard Board)
     {
         Player = new PlayerController(0, 0);
-        Helfer = new List<Controller>();
+        Helfer = new List<HelferController>();
         Gegner = new List<Controller>();
         this.Board = Board;
 
@@ -22,6 +22,21 @@
 
     public int GetPlayer_X { get { return Player.X; } }
     public int GetPlayer_Y { get { return Player.Y; } }
+
+    public bool AddNewHelper(HelferController NeuHelfer)
+    {
+        if (NeuHelfer == null) { return false; }
+
+        if (this.Helfer.Contains(NeuHelfer)) 
+        { 
+            return false; 
+        }
+        else
+        {
+            Helfer.Add(NeuHelfer);
+            return true;
+        }
+    }
 
     public void PlayerMoveUp()
     {
@@ -48,8 +63,13 @@
         Player.ActionSlot1(this);
     }
 
-    // Angriff auf eine Feld / Figur
+    public void PlayerBauAction()
+    {
+        Player.BaueGebaudeTyp(new Friedhof(Player.GetLooking(1).Item1, Player.GetLooking(1).Item2), this);
+    }
 
+
+    // Angriff auf eine Feld / Figur
     public bool GreifeFeldAn(int x, int y, int Schaden, Schadensarten Art)
     {
         // Ob da?
@@ -74,5 +94,15 @@
             // Füge dem Gebäude / Terrain Schaden zu
              return Board.FuegeDemFeldSchadenZu(x, y, Schaden, Art);
         }
+    }
+
+    public bool BaueGebauede(int x, int y, Gebäude Gebaude)
+    {
+        if (!Board.IstDa(x, y)) { return false; }
+
+        if (Gebaude == null) { return false; }
+
+        // Leite an Gemaboard weiter
+        return Board.BaueGebaeuedeTile(x, y, Gebaude);
     }
 }

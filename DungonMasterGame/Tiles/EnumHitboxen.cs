@@ -11,4 +11,7 @@
 
     // Hitbox für Terrain beginnt mit 2
     Wall = 2,
+
+    // Hitbox für Gebäude beginnt mit 3
+    Friedhof = 30,
 }

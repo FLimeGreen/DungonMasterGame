@@ -151,7 +151,7 @@ public class GameBoard
         }
 
         // Wenn x und y schon Feld dann auch nicht
-        if (!IstDa(x, y))
+        if (IstDa(x, y))
         {
             return false;
         }
@@ -173,5 +173,25 @@ public class GameBoard
         }
 
         return WorldMap[(x, y)].ErhalteSchaden(Schaden, Art, this);
+    }
+
+    public bool BaueGebaeuedeTile(int x, int y, Gebäude Gebaude)
+    {
+        // Kein Gebäude übergeben
+        if (Gebaude == null) { return false; }
+
+        // Ist da ein Feld
+        if (!IstDa(x, y)) { return false; }
+
+        // Versuche den Ort als FreeSpace zu interpretiern.
+        FreeSpace? Ort = WorldMap[(x, y)] as FreeSpace;
+
+        if (Ort == null)
+            return false;
+
+        // Steht da eine Figur?
+        if (IstDaFigur(x, y)) { return false; }
+
+        return ErsetzeFeld(Ort, x, y, Gebaude);
     }
 }

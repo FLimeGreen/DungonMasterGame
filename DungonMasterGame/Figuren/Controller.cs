@@ -1,4 +1,5 @@
-﻿using System.Windows.Documents;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Documents;
 
 public abstract class Controller
 {
@@ -23,6 +24,7 @@ public abstract class Controller
     protected DateTime movecooldown;
 
     protected DateTime[] actioncooldown = new DateTime[10];
+
 
     public Controller(int x, int y)
     {
@@ -206,6 +208,18 @@ public abstract class Controller
             return false;
         }
         
+    }
+
+    public bool BaueGebaudeTyp(Gebäude Gebaude, GamePeaces WorldPeces)
+    {
+        if (Gebaude == null) { return false; }
+        if (WorldPeces == null) { return false; }
+
+        var tem = GetLooking(1);
+        int _x = tem.Item1;
+        int _y = tem.Item2;
+
+        return WorldPeces.BaueGebauede(_x, _y, Gebaude);
     }
 
 }
