@@ -13,10 +13,32 @@
     public override void Update(GameBoard World,GamePeaces WorldPeaces, string[]? data = null)
     {
         // Move
-        if (World.GetHitbox(x, y + 1) == Hitbox.FreeSpace_with_Supporter)
+        (int, int) FieldBefor = GetLooking(1);
+
+        // Wenn vor die ein Supporter oder der Friedhof, dann
+        if (World.GetHitbox(FieldBefor.Item1, FieldBefor.Item2) == Hitbox.FreeSpace_with_Supporter ||
+            World.GetHitbox(FieldBefor.Item1, FieldBefor.Item2) == Hitbox.Friedhof)
         {
-            MoveOneField(Heading.Osten, World);
-        }
+            // Ändere die Richtung im Uhrzeiger Sinn.
+            switch (heading)
+            {
+                case Heading.Norden:
+                    MoveOneField(Heading.Osten, World);
+                    break;
+
+                case Heading.Osten:
+                    MoveOneField(Heading.Süden, World);
+                    break;
+
+                case Heading.Süden:
+                    MoveOneField(Heading.Westen, World);
+                    break;
+
+                case Heading.Westen:
+                    MoveOneField(Heading.Norden, World);
+                    break;
+            }
+        } // BEwege dich weiter.
         else
         {
             MoveOneField(heading, World);

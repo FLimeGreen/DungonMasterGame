@@ -86,6 +86,7 @@ namespace DungonMasterGame
             World.GebaudeUpdaten(World, WorldPeaces);
             WorldPeaces.UpdateHelfer();
             UpdateGrafik();
+            UpdateActionLeiste();
         }
 
         public void UpdateGrafik()
