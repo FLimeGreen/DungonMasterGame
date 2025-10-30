@@ -8,26 +8,45 @@
         Title="MainWindow" Height="450" Width="800"
         KeyDown="Window_KeyDown"
         >
+    <DockPanel>
+        <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" ShowGridLines="True" Margin="100, 10, 100, 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        </Grid>
         
-    <Grid x:Name="GameBoard" VerticalAlignment="Center" HorizontalAlignment="Center" ShowGridLines="True" Width="250" Height="250">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <Grid x:Name="GameBoard" VerticalAlignment="Center" HorizontalAlignment="Center" ShowGridLines="True" Width="250" Height="250">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-    </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

@@ -23,6 +23,13 @@
     public int GetPlayer_X { get { return Player.X; } }
     public int GetPlayer_Y { get { return Player.Y; } }
 
+    public IEnumerable<bool> GetPlayerCooldown
+    {
+        get {
+            return Player.ActiveCoolDowns;
+        }
+    }
+
     public bool AddNewHelper(HelferController NeuHelfer)
     {
         if (NeuHelfer == null) { return false; }

@@ -30,6 +30,23 @@ namespace DungonMasterGame
             UpdateTimer.Interval = new TimeSpan(0, 0, 0, 0, 20);
             UpdateTimer.Tick += GeneralUpadate;
 
+            // Fill Action Leiste Mit 0-9
+            for (int i = 0; i < 10; i++)
+            {
+                var temp = new TextBlock();
+                string zahlen = "1234567890";
+
+                temp.Name = "a" + i;
+                temp.FontSize = 20;
+                temp.FontWeight = FontWeights.Bold;
+                temp.VerticalAlignment = VerticalAlignment.Center;
+                temp.HorizontalAlignment = HorizontalAlignment.Center;
+                temp.Text = "" + zahlen[i];
+                Grid.SetRow(temp, 0);
+                Grid.SetColumn(temp, i);
+
+                ActionsLeiste.Children.Add(temp);
+            }
 
             // Fill Grid with ? to Create
             var Board = GameBoard;
@@ -111,6 +128,31 @@ namespace DungonMasterGame
 
         }
 
+        public void UpdateActionLeiste()
+        {
+            int i = 0;
+            string zahlen = "1234567890";
+
+            foreach (var status in WorldPeaces.GetPlayerCooldown)
+            {
+                TextBlock temp = ActionsLeiste.Children
+                        .Cast<TextBlock>()
+                        .First(e => Grid.GetRow(e) == 0 && Grid.GetColumn(e) == i);
+
+                if (status)
+                {
+                    temp.Text = "" + zahlen[i];
+                }
+                else
+                {
+                    temp.Text = "-";
+                }
+
+                i++;
+            }
+
+        }
+
         // Manages Tastatur Eingabe
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -147,6 +189,7 @@ namespace DungonMasterGame
 
 
             UpdateGrafik();
+            UpdateActionLeiste();
         }
     }
 }
