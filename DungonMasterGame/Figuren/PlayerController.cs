@@ -9,6 +9,21 @@
         actioncooldownLenght[0] = new TimeSpan(0, 0, 0, 2, 0);
     }
 
+    public IEnumerable<bool> ActiveCoolDowns
+    {
+        get
+        {
+            bool[] bools = new bool[actioncooldownLenght.Length];
+
+            for (int i = 0; i < actioncooldownLenght.Length; i++)
+            {
+                bools[i] = DateTime.Now - actioncooldown[i] > actioncooldownLenght[i];
+            }
+
+            return bools;
+        }
+    }
+
 
     // Player Move Funktion
 
