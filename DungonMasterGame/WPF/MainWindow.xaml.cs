@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace DungonMasterGame
 {
@@ -20,9 +21,15 @@ namespace DungonMasterGame
         private GameBoard World;
         private GamePeaces WorldPeaces;
 
+
         public MainWindow()
         {
             InitializeComponent();
+
+            var UpdateTimer = new DispatcherTimer();
+            UpdateTimer.Interval = new TimeSpan(0, 0, 0, 0, 20);
+            UpdateTimer.Tick += GeneralUpadate;
+
 
             // Fill Grid with ? to Create
             var Board = GameBoard;
@@ -52,6 +59,15 @@ namespace DungonMasterGame
             World = new GameBoard();
             WorldPeaces = new GamePeaces(World);
 
+            UpdateGrafik();
+            UpdateTimer.Start();
+        }
+
+        // Update Alle Teilnehmer
+        private void GeneralUpadate(object? sender, EventArgs e)
+        {
+            World.GebaudeUpdaten(World, WorldPeaces);
+            WorldPeaces.UpdateHelfer();
             UpdateGrafik();
         }
 

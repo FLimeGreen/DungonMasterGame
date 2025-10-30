@@ -12,7 +12,7 @@
 
     // Player Move Funktion
 
-    public void Move(int direction, GameBoard World)
+    public void Move(Heading direction, GameBoard World)
     {
         var check = base.MoveOneField(direction, World);
 

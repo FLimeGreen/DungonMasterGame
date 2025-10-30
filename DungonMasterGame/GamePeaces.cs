@@ -38,24 +38,32 @@
         }
     }
 
+    public void UpdateHelfer()
+    {
+        foreach (var item in Helfer)
+        {
+            item.Update(Board, this);
+        }
+    }
+
     public void PlayerMoveUp()
     {
-        Player.Move(1, Board);
+        Player.Move(Heading.Norden, Board);
     }
 
     public void PlayerMoveDown()
     {
-        Player.Move(3, Board);
+        Player.Move(Heading.Süden, Board);
     }
 
     public void PlayerMoveLeft()
     {
-        Player.Move(4, Board);
+        Player.Move(Heading.Westen, Board);
     }
 
     public void PlayerMoveRight()
     {
-        Player.Move(2, Board);
+        Player.Move(Heading.Osten, Board);
     }
 
     public void PlayerAction1()

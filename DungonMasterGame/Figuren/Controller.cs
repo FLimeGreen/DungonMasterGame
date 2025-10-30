@@ -62,7 +62,7 @@ public abstract class Controller
         }
     }
 
-    public virtual void Update(string[]? data = null) { }
+    public virtual void Update(GameBoard World, GamePeaces WorldPeaces, string[]? data = null) { }
 
     protected bool FeldVorDirIstFrei(GameBoard World)
     {
@@ -100,7 +100,7 @@ public abstract class Controller
         }
     }
 
-    protected bool MoveOneField(int Direktion, GameBoard World)
+    protected bool MoveOneField(Heading Direktion, GameBoard World)
     {
         // Wenn nicht Größer als Speed noch keine Bewegung
         if (!(DateTime.Now - movecooldown > speed))
@@ -112,7 +112,7 @@ public abstract class Controller
 
         switch (Direktion)
         {
-            case 1:
+            case Heading.Norden:
                 heading = Heading.Norden;
 
                 // Schaue ob Platz ist?
@@ -127,7 +127,7 @@ public abstract class Controller
                 }
                 break;
 
-            case 2:
+            case Heading.Osten:
                 heading = Heading.Osten;
 
                 // Schaue ob Platz ist?
@@ -142,7 +142,7 @@ public abstract class Controller
                 }
                 break;
 
-            case 3:
+            case Heading.Süden:
                 heading = Heading.Süden;
 
                 // Schaue ob Platz ist?
@@ -157,7 +157,7 @@ public abstract class Controller
                 }
                 break;
 
-            case 4:
+            case Heading.Westen:
                 heading = Heading.Westen;
 
                 // Schaue ob Platz ist?

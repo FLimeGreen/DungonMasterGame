@@ -53,4 +53,9 @@
         return (c_x, c_y);
     }
 
+    public virtual void Update(GameBoard World, GamePeaces WorldOfPeaces)
+    {
+        return;
+    }
+
 }

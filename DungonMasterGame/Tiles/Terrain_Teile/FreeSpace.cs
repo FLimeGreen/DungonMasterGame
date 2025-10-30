@@ -15,7 +15,7 @@ public class FreeSpace : Terrain
     public override Hitbox GetHitbox 
     {
         get {
-            
+
             if (Figur == null)
             {
                 return Hitbox.FreeSpace;
@@ -24,9 +24,13 @@ public class FreeSpace : Terrain
             {
                 return Hitbox.FreeSpace_with_Player;
             }
-            
-            
-            return Hitbox.None;
+            else if (Figur as HelferController != null) 
+            {
+                return Hitbox.FreeSpace_with_Supporter;
+            }
+
+
+                return Hitbox.None;
         }
     }
 

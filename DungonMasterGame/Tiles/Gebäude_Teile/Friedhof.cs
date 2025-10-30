@@ -2,6 +2,11 @@
 
 public class Friedhof : Gebäude
 {
+    DateTime LastSpwan;
+    TimeSpan SpwanCooldown = new TimeSpan(0, 0, 0, 2, 0);
+
+    int SpwanMenge = 0;
+
     public Friedhof(int x, int y) : base(x, y)
     {
         hitbox = Hitbox.Friedhof;
@@ -21,12 +26,29 @@ public class Friedhof : Gebäude
 
         if (structurpunkte <= 0)
         {
+            // Melde Ab
+            World.GebaudeAbmelden(this);
+
             // Ersetze durch FreeSpace
             var newSpace = new FreeSpace(x, y);
             return World.ErsetzeFeld(this, x, y, newSpace);
         }
 
         return false;
+    }
+
+    public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
+    {
+        if (SpwanMenge < 4)
+        {
+            // Gib an Ob Cooldown abegelaufen ist?
+            if (DateTime.Now - LastSpwan > SpwanCooldown)
+            {
+                Spawn(World, WorldOfPeaces);
+                LastSpwan = DateTime.Now;
+                SpwanMenge++;
+            }
+        }
     }
 
     public bool Spawn(GameBoard World, GamePeaces WorldOfPeaces)
@@ -37,7 +59,7 @@ public class Friedhof : Gebäude
         if (Spwanpoint.Item1 == x && Spwanpoint.Item2 == y) { return false; }
 
         //Entität neu
-        var Entitaet = new HelferController(Spwanpoint.Item1, Spwanpoint.Item2);
+        var Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2);
 
         //Entität aufs Spielbrett setzen
         World.PlatziereFigur(Spwanpoint.Item1, Spwanpoint.Item2, Entitaet);

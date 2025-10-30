@@ -4,9 +4,12 @@ public class GameBoard
 {
     private Dictionary<(int, int), Tile> WorldMap;
 
+    private List<Gebäude> UpdateListe;
+
     public GameBoard()
     {
         WorldMap = new Dictionary<(int, int), Tile>();
+        UpdateListe = new List<Gebäude>();
 
         // Mache 3x3 Kasten
 
@@ -49,6 +52,44 @@ public class GameBoard
     public bool IstDa(int x, int y)
     {
         return WorldMap.ContainsKey((x, y));
+    }
+
+    // Anmelden für Gebäude Update:
+    public void GebaudeAnmelden(Gebäude gebäude)
+    {
+        if (gebäude == null) { return; }
+
+        if (UpdateListe.Contains(gebäude)) 
+        { 
+            return;
+        }
+        else
+        {
+            UpdateListe.Add(gebäude);
+        }
+    }
+
+    // Abmelden für Gebäude Update:
+    public void GebaudeAbmelden(Gebäude gebäude)
+    {
+        if (gebäude == null) { return; }
+
+        if (UpdateListe.Contains(gebäude))
+        {
+            UpdateListe.Remove(gebäude);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void GebaudeUpdaten(GameBoard World, GamePeaces WorldOfPeaces)
+    {
+        foreach (var item in UpdateListe)
+        {
+            item.Update(World, WorldOfPeaces);
+        }
     }
 
     // Gibt zurück ob da eine Figur ist?
@@ -191,6 +232,8 @@ public class GameBoard
 
         // Steht da eine Figur?
         if (IstDaFigur(x, y)) { return false; }
+
+        GebaudeAnmelden(Gebaude);
 
         return ErsetzeFeld(Ort, x, y, Gebaude);
     }
