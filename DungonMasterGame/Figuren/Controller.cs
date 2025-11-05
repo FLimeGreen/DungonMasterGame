@@ -25,8 +25,11 @@ public abstract class Controller
 
     protected DateTime[] actioncooldown = new DateTime[10];
 
+    // ActionsListe
+    protected Aktion[] ausgewaelteAktionen = new Aktion[10];
 
-    public Controller(int x, int y)
+
+    public Controller(int x, int y, GamePeaces WorldFiguren)
     {
         this.x = x;
         this.y = y;
@@ -35,6 +38,12 @@ public abstract class Controller
         //Charakter Eigenschaften
         //Tagen, Stunden, Minuten, Sekunden und Millisekunden
         speed = new TimeSpan(0, 0, 0, 0, 30);
+    }
+
+    protected Controller(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
     }
 
     public char Grafik { get { return grafik; } }
@@ -197,11 +206,22 @@ public abstract class Controller
             return false;
         }
 
+        // Wenn Keine Cooldown Length dann auch keine Hinterlegte Aktion
+        if (ausgewaelteAktionen[AktionNumber] == null)
+        {
+            return false;
+        }
+
         // Gib an Ob Cooldown abegelaufen ist?
         if (DateTime.Now - actioncooldown[AktionNumber] > actioncooldownLenght[AktionNumber])
         {
-            actioncooldown[AktionNumber] = DateTime.Now;
-            return true;
+            // Führe Gewollte Aktion aus
+            if (ausgewaelteAktionen[AktionNumber].DoAktion()) { 
+                // Wenn klappt dann setze Cooldown
+                actioncooldown[AktionNumber] = DateTime.Now;
+                return true; 
+            } // Teile Mit das nicht geklappt.
+            else { return false; }
         }
         else
         {

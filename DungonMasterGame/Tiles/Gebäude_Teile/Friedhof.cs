@@ -34,7 +34,7 @@ public class Friedhof : Gebäude
             return World.ErsetzeFeld(this, x, y, newSpace);
         }
 
-        return false;
+        return true;
     }
 
     public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
@@ -59,7 +59,7 @@ public class Friedhof : Gebäude
         if (Spwanpoint.Item1 == x && Spwanpoint.Item2 == y) { return false; }
 
         //Entität neu
-        var Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2);
+        var Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2, WorldOfPeaces);
 
         //Entität aufs Spielbrett setzen
         World.PlatziereFigur(Spwanpoint.Item1, Spwanpoint.Item2, Entitaet);

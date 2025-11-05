@@ -9,7 +9,7 @@
 
     public GamePeaces(GameBoard Board)
     {
-        Player = new PlayerController(0, 0);
+        Player = new PlayerController(0, 0, this);
         Helfer = new List<HelferController>();
         Gegner = new List<Controller>();
         this.Board = Board;

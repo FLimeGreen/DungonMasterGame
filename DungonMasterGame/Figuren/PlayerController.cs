@@ -1,12 +1,13 @@
 ﻿public class PlayerController : Controller
 {
-    public PlayerController(int x, int y) : base(x, y)
+    public PlayerController(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
         grafik = 'X';
 
         // CoolDowns:
         // Tagen, Stunden, Minuten, Sekunden und Millisekunden
         actioncooldownLenght[0] = new TimeSpan(0, 0, 0, 2, 0);
+        ausgewaelteAktionen[0] = new Spitzhacke(WorldFiguren, this);
     }
 
     public IEnumerable<bool> ActiveCoolDowns
@@ -29,6 +30,14 @@
 
     public void Move(Heading direction, GameBoard World)
     {
+        // Erst Blickrichtung ändern bevor da hin gehen.
+        if (direction != this.heading)
+        {
+            this.heading = direction;
+            return;
+        }
+
+        // Bewege in Richtung in die du schaust.
         var check = base.MoveOneField(direction, World);
 
         if (!check)
@@ -40,15 +49,6 @@
     public bool ActionSlot1(GamePeaces WorldPeaces)
     {
         // Spitzhacke
-        if (DoAction(0))
-        {
-            int Schaden = 2;
-            var Art = Schadensarten.physisch;
-            (int, int) Look = GetLooking(1);
-
-             return WorldPeaces.GreifeFeldAn(Look.Item1, Look.Item2, Schaden, Art);
-        }
-
-        return false;
+        return DoAction(0);
     }
 }
