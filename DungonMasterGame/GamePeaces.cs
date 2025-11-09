@@ -9,7 +9,7 @@
 
     public GamePeaces(GameBoard Board)
     {
-        Player = new PlayerController(0, 0, this);
+        Player = new PlayerController(0, 0, Board, this);
         Helfer = new List<HelferController>();
         Gegner = new List<Controller>();
         this.Board = Board;
@@ -75,12 +75,16 @@
 
     public void PlayerAction1()
     {
-        Player.ActionSlot1(this);
+        Player.ActionSlot1();
+    }
+    public void PlayerAction2()
+    {
+        Player.ActionSlot2();
     }
 
     public void PlayerBauAction()
     {
-        Player.BaueGebaudeTyp(new Friedhof(Player.GetLooking(1).Item1, Player.GetLooking(1).Item2), this);
+        Player.BaueGebaudeTyp(new Friedhof(Player.GetLooking(1).Item1, Player.GetLooking(1).Item2, Board, this), this);
     }
 
 

@@ -15,6 +15,9 @@
         grafik = '?';
     }
 
+    public int X {  get { return x; } }
+    public int Y { get { return y; } }
+
     public virtual Hitbox GetHitbox {  get { return hitbox; } }
 
     public virtual char Grafik { get { return grafik; } }

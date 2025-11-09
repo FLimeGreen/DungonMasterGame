@@ -8,9 +8,11 @@
 
         //Character Eigenschaften:
 
+
+        // Fügt Aktion hinzu
+
         // Spitzhacken Angriff
-        actioncooldownLenght[0] = new TimeSpan(0, 0, 0, 2, 0);
-        ausgewaelteAktionen[0] = new Spitzhacke(WorldFiguren, this);
+        aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
     }
 
     public override void Update(GameBoard World,GamePeaces WorldPeaces, string[]? data = null)
@@ -52,7 +54,7 @@
         if (World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.Wall)
         {
             // Spitzhacke
-            DoAction(0);
+            aktions_Manager.DoAction(0);
         }
     }
 }

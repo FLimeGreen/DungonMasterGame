@@ -1,17 +1,17 @@
 ﻿using System.Windows.Media.Media3D;
+using System.Windows.Media.TextFormatting;
 
 public class Friedhof : Gebäude
 {
-    DateTime LastSpwan;
-    TimeSpan SpwanCooldown = new TimeSpan(0, 0, 0, 2, 0);
-
     int SpwanMenge = 0;
 
-    public Friedhof(int x, int y) : base(x, y)
+    public Friedhof(int x, int y, GameBoard world, GamePeaces worldPeaces) : base(x, y)
     {
         hitbox = Hitbox.Friedhof;
         structurpunkte = 20;
         grafik = 'F';
+
+        aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, world, worldPeaces), new TimeSpan(0, 0, 0, 2, 0), 0);
     }
 
     public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)
@@ -42,29 +42,10 @@ public class Friedhof : Gebäude
         if (SpwanMenge < 4)
         {
             // Gib an Ob Cooldown abegelaufen ist?
-            if (DateTime.Now - LastSpwan > SpwanCooldown)
-            {
-                Spawn(World, WorldOfPeaces);
-                LastSpwan = DateTime.Now;
-                SpwanMenge++;
-            }
+            aktions_Manager.DoAction(0);
+
+            SpwanMenge++;
         }
-    }
-
-    public bool Spawn(GameBoard World, GamePeaces WorldOfPeaces)
-    {
-        var Spwanpoint = FreeSpwanPoint(WorldOfPeaces, World);
-
-        // Spawnpoint der Block selber?
-        if (Spwanpoint.Item1 == x && Spwanpoint.Item2 == y) { return false; }
-
-        //Entität neu
-        var Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2, WorldOfPeaces);
-
-        //Entität aufs Spielbrett setzen
-        World.PlatziereFigur(Spwanpoint.Item1, Spwanpoint.Item2, Entitaet);
-
-        return WorldOfPeaces.AddNewHelper(Entitaet);
     }
 
 }

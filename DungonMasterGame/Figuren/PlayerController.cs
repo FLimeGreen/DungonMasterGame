@@ -1,27 +1,23 @@
 ﻿public class PlayerController : Controller
 {
-    public PlayerController(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
+    public PlayerController(int x, int y,GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
         grafik = 'X';
 
         // CoolDowns:
         // Tagen, Stunden, Minuten, Sekunden und Millisekunden
-        actioncooldownLenght[0] = new TimeSpan(0, 0, 0, 2, 0);
-        ausgewaelteAktionen[0] = new Spitzhacke(WorldFiguren, this);
+        // new TimeSpan(0, 0, 0, 2, 0);
+
+        // Fügt Aktion hinzu
+        aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
+        aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 2, 0), 1);
     }
 
     public IEnumerable<bool> ActiveCoolDowns
     {
         get
         {
-            bool[] bools = new bool[actioncooldownLenght.Length];
-
-            for (int i = 0; i < actioncooldownLenght.Length; i++)
-            {
-                bools[i] = DateTime.Now - actioncooldown[i] > actioncooldownLenght[i];
-            }
-
-            return bools;
+            return aktions_Manager.ActiveCoolDowns;
         }
     }
 
@@ -46,9 +42,15 @@
         }
     }
 
-    public bool ActionSlot1(GamePeaces WorldPeaces)
+    public bool ActionSlot1()
     {
         // Spitzhacke
-        return DoAction(0);
+        return aktions_Manager.DoAction(0);
+    }
+
+    public bool ActionSlot2()
+    {
+        // Spitzhacke
+        return aktions_Manager.DoAction(1);
     }
 }

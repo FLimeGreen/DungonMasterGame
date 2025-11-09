@@ -17,17 +17,11 @@ public abstract class Controller
     // Wie lange warten bis nächste Bewegegung
     protected TimeSpan speed;
 
-    // Wie lange warten bis nächste Attake
-    protected TimeSpan[] actioncooldownLenght = new TimeSpan[10];
-
     // Cooldown: Wann ist es das letzte mal Passiert
     protected DateTime movecooldown;
 
-    protected DateTime[] actioncooldown = new DateTime[10];
-
-    // ActionsListe
-    protected Aktion[] ausgewaelteAktionen = new Aktion[10];
-
+    // Aktions Manager
+    protected Action_Manager aktions_Manager = new Action_Manager();
 
     public Controller(int x, int y, GamePeaces WorldFiguren)
     {
@@ -190,44 +184,6 @@ public abstract class Controller
         // Setze Figur neu.
         World.PlatziereFigur(X, Y, this);
         return true;
-    }
-
-    protected bool DoAction(int AktionNumber)
-    {
-        // Von 10 ist das keine Valiede Nummer
-        if (AktionNumber < 0 ||  AktionNumber > 9)
-        {
-            return false;
-        }
-
-        // Wenn Keine Cooldown Length dann auch keine Hinterlegte Aktion
-        if (actioncooldownLenght[AktionNumber] == null)
-        {
-            return false;
-        }
-
-        // Wenn Keine Cooldown Length dann auch keine Hinterlegte Aktion
-        if (ausgewaelteAktionen[AktionNumber] == null)
-        {
-            return false;
-        }
-
-        // Gib an Ob Cooldown abegelaufen ist?
-        if (DateTime.Now - actioncooldown[AktionNumber] > actioncooldownLenght[AktionNumber])
-        {
-            // Führe Gewollte Aktion aus
-            if (ausgewaelteAktionen[AktionNumber].DoAktion()) { 
-                // Wenn klappt dann setze Cooldown
-                actioncooldown[AktionNumber] = DateTime.Now;
-                return true; 
-            } // Teile Mit das nicht geklappt.
-            else { return false; }
-        }
-        else
-        {
-            return false;
-        }
-        
     }
 
     public bool BaueGebaudeTyp(Gebäude Gebaude, GamePeaces WorldPeces)

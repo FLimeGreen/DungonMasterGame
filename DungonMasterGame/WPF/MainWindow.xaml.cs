@@ -183,6 +183,11 @@ namespace DungonMasterGame
                 WorldPeaces.PlayerAction1();
             }
 
+            if (e.Key == Key.D2)
+            {
+                WorldPeaces.PlayerAction2();
+            }
+
             if (e.Key == Key.B)
             {
                 WorldPeaces.PlayerBauAction();
