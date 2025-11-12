@@ -42,9 +42,12 @@ public class Friedhof : Gebäude
         if (SpwanMenge < 4)
         {
             // Gib an Ob Cooldown abegelaufen ist?
-            aktions_Manager.DoAction(0);
-
-            SpwanMenge++;
+            if (aktions_Manager.DoAction(0))
+            {
+                // Nur erhöhen wenn auch gesspwaned.
+                // Entsteht ein Bug wenn nur hochzählen.
+                SpwanMenge++;
+            }
         }
     }
 

@@ -5,6 +5,8 @@
         grafik = 'S';
 
         speed = new TimeSpan(0, 0, 0, 1, 0);
+        // Damit das Skelett sich nicht sofort Bewegt.
+        movecooldown = DateTime.Now;
 
         //Character Eigenschaften:
 
