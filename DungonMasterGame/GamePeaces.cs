@@ -9,14 +9,14 @@
 
     public GamePeaces(GameBoard Board)
     {
-        Player = new PlayerController(0, 0, Board, this);
+        Player = new PlayerController(0, 3, Board, this);
         Helfer = new List<HelferController>();
         Gegner = new List<Controller>();
         this.Board = Board;
 
         // Set up Player
 
-        if (!Board.PlatziereFigur(0, 0, Player))
+        if (!Board.PlatziereFigur(0, 3, Player))
             Console.WriteLine("Fiegur Platzier Fahler");
     }
 

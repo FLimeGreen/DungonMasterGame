@@ -13,5 +13,8 @@
     Wall = 2,
 
     // Hitbox für Gebäude beginnt mit 3
-    Friedhof = 30,
+    Kern = 30,
+    GegnerTor = 31,
+
+    Friedhof = 301,
 }

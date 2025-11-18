@@ -13,19 +13,63 @@ public class GameBoard
 
         // Mache 3x3 Kasten
 
-        for (int x = -2; x <= 2; x++)
+        for (int x = -4; x <= 4; x++)
         {
-            for (int y = -2; y <= 2; y++)
+            for (int y = -4; y <= 4; y++)
             {
-                if (x == -2 || x == 2 || y == -2 || y == 2)
+                if (x == -4 || x == 4 || y == -4 || y == 4)
                 {
-                    WorldMap.Add((x, y), new Fels(x, y));
+                    if ((-2 < x && x < 2) && y == 4)
+                    {
+                        WorldMap.Add((x, y), new FreeSpace(x, y));
+                    }
+                    else
+                        WorldMap.Add((x, y), new Fels(x, y));
                 }
                 else {
                     WorldMap.Add((x, y), new FreeSpace(x, y));
                 } 
             }
         }
+
+        // Gang nach oben
+        for (int y = 5; y < 20; y++) {
+            for (int x = -2; x <= 2; x++)
+            {
+                if (x == -2 || x == 2)
+                {
+                    WorldMap.Add((x, y), new Fels(x, y));
+                }
+                else
+                {
+                    WorldMap.Add((x, y), new FreeSpace(x, y));
+                }
+            }
+        }
+
+        // Spwan Area für Gegner
+        for (int x = -4; x <= 4; x++)
+        {
+            for (int y = 20; y <= 29; y++)
+            {
+                if (x == -4 || x == 4 || y == 20 || y == 29)
+                {
+                    if ((-2 < x && x < 2) && y == 20)
+                    {
+                        WorldMap.Add((x, y), new FreeSpace(x, y));
+                    }
+                    else
+                        WorldMap.Add((x, y), new Fels(x, y));
+                }
+                else
+                {
+                    WorldMap.Add((x, y), new FreeSpace(x, y));
+                }
+            }
+        }
+
+        new Baue_Kern(null, this).DoAktionAsGeneration();
+        new Baue_GegnerTor(null, this).DoAktionAsGeneration();
     }
 
     // Gibt Welt größe an
