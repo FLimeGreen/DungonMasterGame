@@ -34,12 +34,6 @@ public abstract class Controller
         speed = new TimeSpan(0, 0, 0, 0, 30);
     }
 
-    protected Controller(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-
     public char Grafik { get { return grafik; } }
 
     public int X { get { return x; } }

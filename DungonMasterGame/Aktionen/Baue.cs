@@ -1,10 +1,12 @@
 ﻿public abstract class Baue : Aktion
 {
     protected GameBoard world;
+    protected GamePeaces worldofpeaces;
 
-    protected Baue(Controller Controller, GameBoard world) : base(Controller)
+    protected Baue(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller)
     {
         this.world = world;
+        this.worldofpeaces = worldofpeaces;
     }
 
     protected Baue(Tile Controller) : base(Controller)

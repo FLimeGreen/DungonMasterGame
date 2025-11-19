@@ -28,9 +28,13 @@ public class FreeSpace : Terrain
             {
                 return Hitbox.FreeSpace_with_Supporter;
             }
+            else if (Figur as GegnerController != null)
+            {
+                return Hitbox.FreeSpace_with_Gegner;
+            }
 
 
-                return Hitbox.None;
+            return Hitbox.None;
         }
     }
 

@@ -2,7 +2,7 @@
 {
     private PlayerController Player;
     private List<HelferController> Helfer;
-    private List<Controller> Gegner;
+    private List<GegnerController> Gegner;
 
     // Game Board
     private GameBoard Board;
@@ -11,8 +11,9 @@
     {
         Player = new PlayerController(0, 3, Board, this);
         Helfer = new List<HelferController>();
-        Gegner = new List<Controller>();
+        Gegner = new List<GegnerController>();
         this.Board = Board;
+        Board.finish_Generation(this);
 
         // Set up Player
 
@@ -45,9 +46,32 @@
         }
     }
 
+    public bool AddNewGegner(GegnerController NeuHelfer)
+    {
+        if (NeuHelfer == null) { return false; }
+
+        if (this.Gegner.Contains(NeuHelfer))
+        {
+            return false;
+        }
+        else
+        {
+            Gegner.Add(NeuHelfer);
+            return true;
+        }
+    }
+
     public void UpdateHelfer()
     {
         foreach (var item in Helfer)
+        {
+            item.Update(Board, this);
+        }
+    }
+
+    public void UpdateGegner()
+    {
+        foreach (var item in Gegner)
         {
             item.Update(Board, this);
         }

@@ -1,44 +1,63 @@
-﻿public class GegnerTor_Kern : Gebäude
+﻿using System.Windows.Documents;
+
+public class GegnerTor_Kern : Gebäude
 {
     private List<GegnerTor_Hull> gebauedeTeile;
+    private GameBoard world;
+    private GamePeaces worldPeaces;
 
-    public GegnerTor_Kern(int x, int y, GameBoard world) : base(x, y)
+    public GegnerTor_Kern(int x, int y, GameBoard world, GamePeaces worldPeaces) : base(x, y)
     {
         // Stats Hinzufügen und Verhalten. Sowie auch von Kern Hülle.
         hitbox = Hitbox.GegnerTor;
-        structurpunkte = 10;
         grafik = 'G';
+
+        this.world = world;
+        this.worldPeaces = worldPeaces;
     }
 
     public List<GegnerTor_Hull> HuelleErstzen 
     {
-        set { gebauedeTeile = value;}
-    }
+        set { 
+            gebauedeTeile = value;
 
-    public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)
-    {
-        if (Schaden <= 0)
-        {
-            return false;
-        }
-
-        structurpunkte = structurpunkte - Schaden;
-
-        if (structurpunkte <= 0)
-        {
-            // Melde Ab
-            World.GebaudeAbmelden(this);
-
-            // Ersetze durch FreeSpace
-            var newSpace = new FreeSpace(this.x, this.y);
-            World.ErsetzeFeld(this, this.x, this.y, newSpace);
-
+            // Spwan auf Hüllen Teile ausführen.
+            int i = 0;
             foreach (var hull in gebauedeTeile)
             {
-                hull.Destroy(this, World);
+                aktions_Manager.AktionHinzufügen(new Spwan_Novizen_Abenteurer(hull, world, worldPeaces), new TimeSpan(0, 0, 0, 4, 0), i);
+                i++;
             }
         }
-
-        return true;
     }
+
+    public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
+    {
+        var CooldownCheck = aktions_Manager.ActiveCoolDowns;
+        bool check = true;
+
+        // Schau ob ein Cooldown aktiv ist?
+        foreach (var check_part in CooldownCheck)
+        {
+            check = check && check_part;
+        }
+
+        // False Cooldown Aktiv
+        if (check == true)
+        {
+            //Kein Cooldown
+
+            for (int i = 0; i < 10; i++)
+            {
+                bool te = aktions_Manager.DoAction(i);
+                
+                // Wenn einmal erfolgreich ausgeführt höre auf.
+                if (te)
+                {
+                    return;
+                }
+            }
+        }
+    }
+
 }

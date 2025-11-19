@@ -2,7 +2,7 @@
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0,0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
 
-    public Baue_Kern(Controller Controller, GameBoard World) : base(Controller, World)
+    public Baue_Kern(Controller Controller, GameBoard World, GamePeaces WorldofPeaces) : base(Controller, World, WorldofPeaces)
     {
         
     }

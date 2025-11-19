@@ -6,6 +6,8 @@ public class GameBoard
 
     private List<Gebäude> UpdateListe;
 
+    private GamePeaces worldofpeaces;
+
     public GameBoard()
     {
         WorldMap = new Dictionary<(int, int), Tile>();
@@ -68,8 +70,16 @@ public class GameBoard
             }
         }
 
-        new Baue_Kern(null, this).DoAktionAsGeneration();
-        new Baue_GegnerTor(null, this).DoAktionAsGeneration();
+    }
+
+    public bool finish_Generation(GamePeaces worldofPeaces)
+    {
+        worldofpeaces = worldofPeaces;
+
+        new Baue_Kern(null, this, worldofPeaces).DoAktionAsGeneration();
+        new Baue_GegnerTor(null, this, worldofPeaces).DoAktionAsGeneration();
+
+        return true;
     }
 
     // Gibt Welt größe an

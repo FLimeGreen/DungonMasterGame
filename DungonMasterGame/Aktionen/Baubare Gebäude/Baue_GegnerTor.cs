@@ -2,7 +2,7 @@
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0,0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
 
-    public Baue_GegnerTor(Controller Controller, GameBoard World) : base(Controller, World)
+    public Baue_GegnerTor(Controller Controller, GameBoard World, GamePeaces WorldofPeaces) : base(Controller, World, WorldofPeaces)
     {
         
     }
@@ -31,7 +31,7 @@
         {
             if (b == (0, 0))
             {
-                Kern = new GegnerTor_Kern(b.Item1 + bx, b.Item2 + by, world);
+                Kern = new GegnerTor_Kern(b.Item1 + bx, b.Item2 + by, world, worldofpeaces);
                 BaueInWorld(b.Item1 + bx, b.Item2 + by, Kern);
             }
             else
