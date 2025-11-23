@@ -1,4 +1,5 @@
 ﻿using System.Windows.Documents;
+using System.Windows.Input;
 
 public class GameBoard
 {
@@ -212,6 +213,21 @@ public class GameBoard
             return false;
         }
     }
+
+    public bool FuegederFigurSchadenZu(int x, int y, int Schaden, Schadensarten SchaTyp)
+    {
+        if (!IstDaFigur(x, y)) { return false; }
+
+        var te = WorldMap[(x, y)];
+
+        FreeSpace FreTi = te as FreeSpace;
+        if (FreTi == null) { return false; }
+
+        Controller Figur = FreTi.SpielFigur;
+
+        return Figur.ErhalteSchaden(Schaden, SchaTyp, this, worldofpeaces);
+    }
+
 
     public bool ErsetzeFeld(Tile AltesFeld, int x, int y, Tile NewsFeld)
     {

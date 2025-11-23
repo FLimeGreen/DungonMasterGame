@@ -11,6 +11,7 @@ public abstract class Controller
 
     // Charakter Eigenschaften:
     // HP
+    protected int Hp;
     // ATK
     // DEF
 
@@ -30,6 +31,7 @@ public abstract class Controller
         heading = Heading.Norden; // Norden
 
         //Charakter Eigenschaften
+        Hp = 10;
         //Tagen, Stunden, Minuten, Sekunden und Millisekunden
         speed = new TimeSpan(0, 0, 0, 0, 30);
     }
@@ -190,6 +192,35 @@ public abstract class Controller
         int _y = tem.Item2;
 
         return WorldPeces.BaueGebauede(_x, _y, Gebaude);
+    }
+
+    public virtual bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World, GamePeaces gamePeaces)
+    {
+        if (Schaden <= 0) { return false; }
+
+        Hp = Hp - Schaden;
+
+        if (Hp <= 0)
+        {
+            World.EntferneFigur(X, Y, this);
+            
+            if (this as GegnerController is not null)
+            {
+                gamePeaces.RemoveGegner(this as GegnerController);
+            }
+
+            if (this as HelferController is not null)
+            {
+                gamePeaces.RemoveHelper(this as HelferController);
+            }
+
+            if (this as PlayerController is not null)
+            {
+                throw new Exception("You died!");
+            }
+        }
+
+        return true;
     }
 
 }

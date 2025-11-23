@@ -25,6 +25,7 @@
 
         if (Math.Abs(r_x) >= Math.Abs(r_y)) 
         {
+            // x größer
             // ist x negativ ->
             if (r_x > 0)
             {
@@ -39,14 +40,15 @@
         }
         else
         {
+            // y größer
             // ist y negativ ^
-            if (r_x > 0)
+            if (r_y > 0)
             {
                 this.MoveOneField(Heading.Norden, World);
             }
 
             // ist y positiv v
-            if (r_x < 0)
+            if (r_y < 0)
             {
                 this.MoveOneField(Heading.Süden, World);
             }

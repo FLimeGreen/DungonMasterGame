@@ -1,4 +1,6 @@
-﻿public class GamePeaces
+﻿using System.Windows;
+
+public class GamePeaces
 {
     private PlayerController Player;
     private List<HelferController> Helfer;
@@ -46,6 +48,21 @@
         }
     }
 
+    public bool RemoveHelper(HelferController Helfer)
+    {
+        if (Helfer == null) { return false; }
+
+        if (this.Helfer.Contains(Helfer))
+        {
+            this.Helfer.Remove(Helfer);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public bool AddNewGegner(GegnerController NeuHelfer)
     {
         if (NeuHelfer == null) { return false; }
@@ -58,6 +75,21 @@
         {
             Gegner.Add(NeuHelfer);
             return true;
+        }
+    }
+
+    public bool RemoveGegner(GegnerController Gegner)
+    {
+        if (Gegner == null) { return false; }
+
+        if (this.Gegner.Contains(Gegner))
+        {
+            this.Gegner.Remove(Gegner);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -130,7 +162,7 @@
         if (Board.IstDaFigur(x, y))
         {
             // Füge der Figur Schaden zu.
-            throw new NotImplementedException();
+            return Board.FuegederFigurSchadenZu(x, y, Schaden, Art);
         }
         else
         {
