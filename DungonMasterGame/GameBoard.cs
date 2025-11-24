@@ -5,17 +5,22 @@ public class GameBoard
 {
     private Dictionary<(int, int), Tile> WorldMap;
 
+    // Eigene GamePeaces
+    private GamePeaces worldofpeaces;
+
     private List<Gebäude> UpdateListe;
 
-    private GamePeaces worldofpeaces;
 
     public GameBoard()
     {
+        // Deklariere Variablen
         WorldMap = new Dictionary<(int, int), Tile>();
         UpdateListe = new List<Gebäude>();
 
-        // Mache 3x3 Kasten
 
+        // Erstelle Base of World
+
+        // Kern Umgebung
         for (int x = -4; x <= 4; x++)
         {
             for (int y = -4; y <= 4; y++)
@@ -35,6 +40,7 @@ public class GameBoard
             }
         }
 
+        // Tunnel zu Gegner Spwaner
         // Gang nach oben
         for (int y = 5; y < 20; y++) {
             for (int x = -2; x <= 2; x++)
@@ -71,17 +77,17 @@ public class GameBoard
             }
         }
 
+        // Erstelle GamePeaces
+        worldofpeaces = new GamePeaces(this);
+
+        // Baue Gegner Spwaner und Kern.
+        new Baue_Kern(null, this, worldofpeaces).DoAktionAsGeneration();
+        new Baue_GegnerTor(null, this, worldofpeaces).DoAktionAsGeneration();
+
     }
 
-    public bool finish_Generation(GamePeaces worldofPeaces)
-    {
-        worldofpeaces = worldofPeaces;
-
-        new Baue_Kern(null, this, worldofPeaces).DoAktionAsGeneration();
-        new Baue_GegnerTor(null, this, worldofPeaces).DoAktionAsGeneration();
-
-        return true;
-    }
+    // Gibt die WorldofPeaces aus
+    public GamePeaces GetWorldPeaces { get { return worldofpeaces; } }
 
     // Gibt Welt größe an
     public int WorldSize { get { return WorldMap.Count; } }

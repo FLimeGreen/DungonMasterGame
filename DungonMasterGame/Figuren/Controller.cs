@@ -182,18 +182,6 @@ public abstract class Controller
         return true;
     }
 
-    public bool BaueGebaudeTyp(Gebäude Gebaude, GamePeaces WorldPeces)
-    {
-        if (Gebaude == null) { return false; }
-        if (WorldPeces == null) { return false; }
-
-        var tem = GetLooking(1);
-        int _x = tem.Item1;
-        int _y = tem.Item2;
-
-        return WorldPeces.BaueGebauede(_x, _y, Gebaude);
-    }
-
     public virtual bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World, GamePeaces gamePeaces)
     {
         if (Schaden <= 0) { return false; }

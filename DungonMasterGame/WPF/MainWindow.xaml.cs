@@ -1,14 +1,6 @@
-﻿using System.Data.Common;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace DungonMasterGame
@@ -26,6 +18,7 @@ namespace DungonMasterGame
         {
             InitializeComponent();
 
+            // Initialize Upddater
             var UpdateTimer = new DispatcherTimer();
             UpdateTimer.Interval = new TimeSpan(0, 0, 0, 0, 20);
             UpdateTimer.Tick += GeneralUpadate;
@@ -74,7 +67,7 @@ namespace DungonMasterGame
 
             // Initilaze Game Data
             World = new GameBoard();
-            WorldPeaces = new GamePeaces(World);
+            WorldPeaces = World.GetWorldPeaces;
 
             UpdateGrafik();
             UpdateTimer.Start();
@@ -179,20 +172,28 @@ namespace DungonMasterGame
                 WorldPeaces.PlayerMoveRight();
             }
 
-            if (e.Key == Key.Space)
-            {
-                WorldPeaces.PlayerAction1();
-            }
+            // 1234567890 an Aktionen binden.
 
-            if (e.Key == Key.D2)
-            {
-                WorldPeaces.PlayerAction2();
-            }
+            if (e.Key == Key.Space || e.Key == Key.D1) 
+                { WorldPeaces.PlayerAction(0); }
 
-            if (e.Key == Key.B)
-            {
-                WorldPeaces.PlayerBauAction();
-            }
+            if (e.Key == Key.D2) { WorldPeaces.PlayerAction(1); }
+
+            if (e.Key == Key.D3) { WorldPeaces.PlayerAction(2); }
+
+            if (e.Key == Key.D4) { WorldPeaces.PlayerAction(3); }
+
+            if (e.Key == Key.D5) { WorldPeaces.PlayerAction(4); }
+
+            if (e.Key == Key.D6) { WorldPeaces.PlayerAction(5); }
+
+            if (e.Key == Key.D7) { WorldPeaces.PlayerAction(6); }
+
+            if (e.Key == Key.D8) { WorldPeaces.PlayerAction(7); }
+
+            if (e.Key == Key.D9) { WorldPeaces.PlayerAction(8); }
+
+            if (e.Key == Key.D0) { WorldPeaces.PlayerAction(9); }
 
 
             UpdateGrafik();

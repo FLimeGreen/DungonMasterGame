@@ -11,6 +11,7 @@
         // Fügt Aktion hinzu
         aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
         aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 2, 0), 1);
+        aktions_Manager.AktionHinzufügen(new Baue_Friedhof(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 0, 500), 9);
     }
 
     public IEnumerable<bool> ActiveCoolDowns
@@ -42,15 +43,14 @@
         }
     }
 
-    public bool ActionSlot1()
+    public bool ActionSlot(int n)
     {
-        // Spitzhacke
-        return aktions_Manager.DoAction(0);
-    }
-
-    public bool ActionSlot2()
-    {
-        // Spitzhacke
-        return aktions_Manager.DoAction(1);
+        // Check ob Valiede Nummer
+        if (0 <= n && n <= 9)
+        {
+            // Führe diese Aktion aus.
+            return aktions_Manager.DoAction(n);
+        }
+        else { return false; }
     }
 }

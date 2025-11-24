@@ -11,16 +11,16 @@ public class GamePeaces
 
     public GamePeaces(GameBoard Board)
     {
+        // Deklariere Variabelen
         Player = new PlayerController(0, 3, Board, this);
         Helfer = new List<HelferController>();
         Gegner = new List<GegnerController>();
         this.Board = Board;
-        Board.finish_Generation(this);
 
         // Set up Player
 
         if (!Board.PlatziereFigur(0, 3, Player))
-            Console.WriteLine("Fiegur Platzier Fahler");
+            throw new Exception("Platzier Fehler bei dem Spieler.");
     }
 
     public int GetPlayer_X { get { return Player.X; } }
@@ -129,18 +129,10 @@ public class GamePeaces
         Player.Move(Heading.Osten, Board);
     }
 
-    public void PlayerAction1()
+    // Weiterleitung an PlayerController
+    public void PlayerAction(int n)
     {
-        Player.ActionSlot1();
-    }
-    public void PlayerAction2()
-    {
-        Player.ActionSlot2();
-    }
-
-    public void PlayerBauAction()
-    {
-        Player.BaueGebaudeTyp(new Friedhof(Player.GetLooking(1).Item1, Player.GetLooking(1).Item2, Board, this), this);
+        Player.ActionSlot(n);
     }
 
 
@@ -171,13 +163,4 @@ public class GamePeaces
         }
     }
 
-    public bool BaueGebauede(int x, int y, Gebäude Gebaude)
-    {
-        if (!Board.IstDa(x, y)) { return false; }
-
-        if (Gebaude == null) { return false; }
-
-        // Leite an Gemaboard weiter
-        return Board.BaueGebaeuedeTile(x, y, Gebaude);
-    }
 }
