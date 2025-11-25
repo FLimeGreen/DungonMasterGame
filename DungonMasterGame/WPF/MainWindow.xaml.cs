@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using DungonMasterGame.WPF;
 
 namespace DungonMasterGame
 {
@@ -198,6 +199,12 @@ namespace DungonMasterGame
 
             UpdateGrafik();
             UpdateActionLeiste();
+        }
+
+        private void SkillManager(object sender, RoutedEventArgs e)
+        {
+            var win = new SkillManagerWindow(WorldPeaces);
+            win.Show();
         }
     }
 }

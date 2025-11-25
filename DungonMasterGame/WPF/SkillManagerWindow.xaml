@@ -1,13 +1,12 @@
-﻿<Window x:Class="DungonMasterGame.MainWindow"
+﻿<Window x:Class="DungonMasterGame.WPF.SkillManagerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DungonMasterGame"
+        xmlns:local="clr-namespace:DungonMasterGame.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        KeyDown="Window_KeyDown"
-        >
+        Title="SkillManagerWindow" Height="450" Width="800">
+
     <DockPanel>
         <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" ShowGridLines="True" Margin="100, 10, 100, 10">
             <Grid.ColumnDefinitions>
@@ -24,38 +23,30 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>
 
-        <StackPanel x:Name="PlayerStats" DockPanel.Dock="Left" Margin="10, 10, 10, 10">
-            <TextBlock>Level: 1</TextBlock>
-        </StackPanel>
-
-        <StackPanel x:Name="Inventar" DockPanel.Dock="Right" Margin="10, 10, 10, 10">
-            <Button Click="SkillManager">Skill</Button>
-        </StackPanel>
-
-        <Grid x:Name="GameBoard" VerticalAlignment="Center" HorizontalAlignment="Center" ShowGridLines="False" Width="250" Height="250">
+        <Grid x:Name="ListeAllerSkills" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
 
+            <ListBox x:Name="AngriffSkill" Grid.Column="0" ItemsSource="{Binding angriffList}">
+                
+            </ListBox>
+
+            <ListBox x:Name="SpwanSkill" Grid.Column="1" ItemsSource="{Binding spwanList}">
+                
+            </ListBox>
+
+            <ListBox x:Name="BauSkill" Grid.Column="2" ItemsSource="{Binding baueList}">
+                
+            </ListBox>
         </Grid>
         
     </DockPanel>
+    
 </Window>

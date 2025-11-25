@@ -23,8 +23,12 @@ public class GamePeaces
             throw new Exception("Platzier Fehler bei dem Spieler.");
     }
 
+    public GameBoard GetWorld { get  { return Board; } }
+
     public int GetPlayer_X { get { return Player.X; } }
     public int GetPlayer_Y { get { return Player.Y; } }
+
+    public PlayerController GetPlayer { get { return Player; } }
 
     public IEnumerable<bool> GetPlayerCooldown
     {
