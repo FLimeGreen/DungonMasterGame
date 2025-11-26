@@ -35,7 +35,11 @@
             </Grid.ColumnDefinitions>
 
             <ListBox x:Name="AngriffSkill" Grid.Column="0" ItemsSource="{Binding angriffList}">
-                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name, FallbackValue='Fallback'}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
 
             <ListBox x:Name="SpwanSkill" Grid.Column="1" ItemsSource="{Binding spwanList}">

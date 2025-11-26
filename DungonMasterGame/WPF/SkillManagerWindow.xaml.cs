@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using System.Collections;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace DungonMasterGame.WPF
 {
@@ -8,16 +10,20 @@ namespace DungonMasterGame.WPF
     /// </summary>
     public partial class SkillManagerWindow : Window
     {
-        GamePeaces worldofpeaces;
+        private GamePeaces worldofpeaces;
 
-        List<Angriff> angriffList = new List<Angriff>();
-        List<Spwan> spwanList = new List<Spwan>();
-        List<Baue> baueList = new List<Baue>();
+        public ObservableCollection<Angriff> angriffList;
+        public ObservableCollection<Spwan> spwanList;
+        public ObservableCollection<Baue> baueList;
 
         public SkillManagerWindow(GamePeaces peaces)
         {
-            InitializeComponent();
+            angriffList = new ObservableCollection<Angriff>();
+            spwanList = new ObservableCollection<Spwan>();
+            baueList = new ObservableCollection<Baue>();
+
             DataContext = this;
+            InitializeComponent();
 
             worldofpeaces = peaces;
 
@@ -38,15 +44,23 @@ namespace DungonMasterGame.WPF
 
                 ActionsLeiste.Children.Add(temp);
             }
+            
+            angriffList.CollectionChanged += (d, a) => { MessageBox.Show("Changed" + DataContext); };
 
             // Angriff
             angriffList.Add(new Spitzhacke(worldofpeaces, worldofpeaces.GetPlayer));
+            
 
             // Spwan
             spwanList.Add(new Spwan_Skelett(worldofpeaces.GetPlayer, worldofpeaces.GetWorld, worldofpeaces));
 
             // Baue
             baueList.Add(new Baue_Friedhof(worldofpeaces.GetPlayer, worldofpeaces.GetWorld, worldofpeaces));
+
+            MessageBox.Show(AngriffSkill.Items.Count.ToString());
+
+            MessageBox.Show(angriffList[0].Name);
+            //AngriffSkill.Items.Add(new Spitzhacke(worldofpeaces, worldofpeaces.GetPlayer));
         }
     }
 }

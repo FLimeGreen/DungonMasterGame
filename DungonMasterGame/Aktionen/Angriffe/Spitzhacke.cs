@@ -2,7 +2,7 @@
 {
     public Spitzhacke(GamePeaces WorldFiguren, Controller Figur) : base(Figur, WorldFiguren)
     {
-
+        name = "Spitzhacke";
     }
 
     protected override bool DoAktionAsFigur()
