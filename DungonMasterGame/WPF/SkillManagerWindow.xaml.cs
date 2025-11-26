@@ -12,9 +12,9 @@ namespace DungonMasterGame.WPF
     {
         private GamePeaces worldofpeaces;
 
-        public ObservableCollection<Angriff> angriffList;
-        public ObservableCollection<Spwan> spwanList;
-        public ObservableCollection<Baue> baueList;
+        public ObservableCollection<Angriff> angriffList { get; private set; }
+        public ObservableCollection<Spwan> spwanList { get; private set; }
+        public ObservableCollection<Baue> baueList { get; private set; }
 
         public SkillManagerWindow(GamePeaces peaces)
         {
@@ -46,7 +46,7 @@ namespace DungonMasterGame.WPF
             }
             
             angriffList.CollectionChanged += (d, a) => { MessageBox.Show("Changed" + DataContext); };
-
+            
             // Angriff
             angriffList.Add(new Spitzhacke(worldofpeaces, worldofpeaces.GetPlayer));
             
