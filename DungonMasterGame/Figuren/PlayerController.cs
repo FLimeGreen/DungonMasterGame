@@ -22,6 +22,11 @@
         }
     }
 
+    public IEnumerable<Aktion> SkillAuswahl
+    {
+        get { return aktions_Manager.SkillSettings; }
+    }
+
 
     // Player Move Funktion
 

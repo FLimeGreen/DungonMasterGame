@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 using DungonMasterGame.WPF;
 
@@ -40,6 +41,16 @@ namespace DungonMasterGame
                 Grid.SetColumn(temp, i);
 
                 ActionsLeiste.Children.Add(temp);
+                
+                // Fügt Boarder hinzu
+                var temp_b = new Border();
+
+                temp_b.BorderBrush = Brushes.Black;
+                temp_b.BorderThickness = new Thickness(1);
+                Grid.SetRow(temp_b, 0);
+                Grid.SetColumn(temp_b, i);
+
+                ActionsLeiste.Children.Add(temp_b);
             }
 
             // Fill Grid with ? to Create
@@ -131,9 +142,23 @@ namespace DungonMasterGame
 
             foreach (var status in WorldPeaces.GetPlayerCooldown)
             {
-                TextBlock temp = ActionsLeiste.Children
-                        .Cast<TextBlock>()
-                        .First(e => Grid.GetRow(e) == 0 && Grid.GetColumn(e) == i);
+                TextBlock temp = null;
+
+                foreach (var child in ActionsLeiste.Children)
+                {
+                    if (child as TextBlock is null)
+                    {
+                        continue;
+                    }
+                    temp = child as TextBlock;
+
+                    if (Grid.GetRow(temp) == 0 && Grid.GetColumn(temp) == i)
+                    {
+                        break;
+                    }
+                }
+
+                if (temp is null) { throw new Exception("TextBox nicht gefunden."); }
 
                 if (status)
                 {

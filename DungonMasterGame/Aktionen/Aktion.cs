@@ -3,6 +3,8 @@
     protected Controller? figur_controller;
     protected Tile? tile_controller;
 
+    protected string name = "Not Given";
+
     // Ausfürung durch Controller
     public Aktion(Controller Controller)
     {
@@ -15,6 +17,8 @@
         tile_controller = Controller;
         figur_controller = null;
     }
+
+    public string Name { get { return name; } }
 
     public bool DoAktion() 
     {

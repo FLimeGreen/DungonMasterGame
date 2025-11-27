@@ -6,7 +6,7 @@ public class Baue_Friedhof : Baue
 
     public Baue_Friedhof(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller, world, worldofpeaces)
     {
-
+        name = "Baue Friedhof";
     }
 
     protected override bool DoAktionAsFigur()

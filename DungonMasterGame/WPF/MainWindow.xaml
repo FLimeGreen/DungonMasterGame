@@ -9,7 +9,7 @@
         KeyDown="Window_KeyDown"
         >
     <DockPanel>
-        <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" ShowGridLines="True" Margin="100, 10, 100, 10">
+        <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" Margin="100, 10, 100, 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="35"/>
                 <ColumnDefinition MinWidth="35"/>

@@ -8,47 +8,80 @@
         Title="SkillManagerWindow" Height="450" Width="800">
 
     <DockPanel>
-        <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" ShowGridLines="True" Margin="100, 10, 100, 10">
+        <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" Margin="0, 10, 0, 50" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
-                <ColumnDefinition MinWidth="35"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
+                <ColumnDefinition MinWidth="35" Width="Auto"/>
             </Grid.ColumnDefinitions>
+            
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
+
         </Grid>
+
+        <StackPanel x:Name="SkillDiscription" DockPanel.Dock="Left" VerticalAlignment="Center">
+            <TextBlock>Skill Informationen:</TextBlock>
+            <TextBlock x:Name="SkillDescriptonTite" Text="{Binding SelectedAktion.Name, TargetNullValue='Keine Aktion'}"/>
+        </StackPanel>
 
         <Grid x:Name="ListeAllerSkills" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition MinWidth="175"/>
+                <ColumnDefinition MinWidth="175"/>
+                <ColumnDefinition MinWidth="175"/>
             </Grid.ColumnDefinitions>
 
-            <ListBox x:Name="AngriffSkill" Grid.Column="0" ItemsSource="{Binding angriffList}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name, FallbackValue='Fallback'}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <StackPanel x:Name="StackPannelAngriffSkill" Grid.Column="0" MinWidth="175">
+                <TextBlock>
+                    Liste der Angriffs Skills
+                </TextBlock>
 
-            <ListBox x:Name="SpwanSkill" Grid.Column="1" ItemsSource="{Binding spwanList}">
-                
-            </ListBox>
+                <ListBox x:Name="AngriffSkill" ItemsSource="{Binding angriffList}" SelectionChanged="AngriffSkill_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
 
-            <ListBox x:Name="BauSkill" Grid.Column="2" ItemsSource="{Binding baueList}">
+            <StackPanel x:Name="StackPannelSpwanSkill" Grid.Column="1" MinWidth="175">
+                <TextBlock>
+                    Liste der Beschwörungs Skills
+                </TextBlock>
                 
-            </ListBox>
+                <ListBox x:Name="SpwanSkill" ItemsSource="{Binding spwanList}" SelectionChanged="SpwanSkill_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <StackPanel x:Name="StackPannelBauSkill"  Grid.Column="2" MinWidth="175">
+                <TextBlock>
+                    Liste der Baubaren Gebäude
+                </TextBlock>
+                
+                <ListBox x:Name="BauSkill" ItemsSource="{Binding baueList}" SelectionChanged="BauSkill_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </Grid>
         
     </DockPanel>

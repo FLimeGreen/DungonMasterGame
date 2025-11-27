@@ -1,4 +1,6 @@
-﻿public abstract class Baue : Aktion
+﻿using System.Runtime.CompilerServices;
+
+public abstract class Baue : Aktion
 {
     protected GameBoard world;
     protected GamePeaces worldofpeaces;

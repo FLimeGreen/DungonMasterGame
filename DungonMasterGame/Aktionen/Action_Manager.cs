@@ -29,6 +29,11 @@
         }
     }
 
+    public IEnumerable<Aktion> SkillSettings
+    {
+        get { return ausgewaelteAktionen; }
+    }
+
     public bool AktionHinzufügen(Aktion newAction, TimeSpan newCooldown, int possition)
     {
         // Pos nur zwischen 0 und 10 erlaubt
