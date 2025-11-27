@@ -5,13 +5,13 @@ public abstract class Baue : Aktion
     protected GameBoard world;
     protected GamePeaces worldofpeaces;
 
-    protected Baue(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller)
+    protected Baue(Controller Controller, GameBoard world, GamePeaces worldofpeaces, TimeSpan Cooldown) : base(Controller, Cooldown)
     {
         this.world = world;
         this.worldofpeaces = worldofpeaces;
     }
 
-    protected Baue(Tile Controller) : base(Controller)
+    protected Baue(Tile Controller, TimeSpan Cooldown) : base(Controller, Cooldown)
     {
         throw new NotImplementedException("Gebäude sollen erstmal noch nicht bauen können.");
     }

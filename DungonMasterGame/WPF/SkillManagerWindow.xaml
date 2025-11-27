@@ -29,9 +29,10 @@
 
         </Grid>
 
-        <StackPanel x:Name="SkillDiscription" DockPanel.Dock="Left" VerticalAlignment="Center">
-            <TextBlock>Skill Informationen:</TextBlock>
-            <TextBlock x:Name="SkillDescriptonTite" Text="{Binding SelectedAktion.Name, TargetNullValue='Keine Aktion'}"/>
+        <StackPanel x:Name="SkillDiscription" DockPanel.Dock="Left" VerticalAlignment="Center" MaxWidth="175">
+            <TextBlock Margin="10" FontWeight="Bold" >Skill Informationen:</TextBlock>
+            <TextBlock x:Name="SkillDescriptonTite" Margin="10, 2, 0, 5" FontSize="14" TextWrapping="Wrap" Text="{Binding SelectedAktion[0].Name}"/>
+            <TextBlock x:Name="SkillDescriptonBeschreibung" Margin="10, 2, 0, 5" TextWrapping="Wrap" Text="{Binding SelectedAktion[0].Beschreibung}"/>
         </StackPanel>
 
         <Grid x:Name="ListeAllerSkills" HorizontalAlignment="Center" VerticalAlignment="Center">

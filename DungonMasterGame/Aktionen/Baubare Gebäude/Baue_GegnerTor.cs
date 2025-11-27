@@ -2,12 +2,12 @@
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0,0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
 
-    public Baue_GegnerTor(Controller Controller, GameBoard World, GamePeaces WorldofPeaces) : base(Controller, World, WorldofPeaces)
+    public Baue_GegnerTor(Controller Controller, GameBoard World, GamePeaces WorldofPeaces) : base(Controller, World, WorldofPeaces, new TimeSpan(0, 0, 0, 0, 0))
     {
         
     }
 
-    public Baue_GegnerTor(Tile Controller) : base(Controller)
+    public Baue_GegnerTor(Tile Controller) : base(Controller, new TimeSpan(0, 0, 0, 0, 0))
     {
     }
 

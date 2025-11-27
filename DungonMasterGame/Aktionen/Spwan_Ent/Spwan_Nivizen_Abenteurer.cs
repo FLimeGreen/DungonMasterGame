@@ -2,12 +2,12 @@
 
 public class Spwan_Novizen_Abenteurer : Spwan
 {
-    public Spwan_Novizen_Abenteurer(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces)
+    public Spwan_Novizen_Abenteurer(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {
 
     }
 
-    public Spwan_Novizen_Abenteurer(Tile Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces)
+    public Spwan_Novizen_Abenteurer(Tile Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {
 
     }

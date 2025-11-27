@@ -4,7 +4,7 @@ public class Baue_Friedhof : Baue
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0, 0) };
 
-    public Baue_Friedhof(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller, world, worldofpeaces)
+    public Baue_Friedhof(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller, world, worldofpeaces, new TimeSpan(0, 0, 0, 0, 500))
     {
         name = "Baue Friedhof";
     }

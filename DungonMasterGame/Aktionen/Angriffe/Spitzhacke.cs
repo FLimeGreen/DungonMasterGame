@@ -1,8 +1,9 @@
 ﻿public class Spitzhacke : Angriff
 {
-    public Spitzhacke(GamePeaces WorldFiguren, Controller Figur) : base(Figur, WorldFiguren)
+    public Spitzhacke(GamePeaces WorldFiguren, Controller Figur) : base(Figur, WorldFiguren, new TimeSpan(0, 0, 0, 2, 0))
     {
         name = "Spitzhacke";
+        beschreibung = "Ein Angriff mit einer Spitzhacke. Effektiv gegen Wände.";
     }
 
     protected override bool DoAktionAsFigur()

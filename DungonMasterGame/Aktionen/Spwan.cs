@@ -6,14 +6,14 @@
     protected int x = 0;
     protected int y = 0;
 
-    public Spwan(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller)
+    public Spwan(Controller Controller, GameBoard world, GamePeaces worldOfPeaces, TimeSpan Cooldown) : base(Controller, Cooldown)
     {
         this.World = world;
         this.WorldOfPeaces = worldOfPeaces;
 
     }
 
-    public Spwan(Tile Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller)
+    public Spwan(Tile Controller, GameBoard world, GamePeaces worldOfPeaces, TimeSpan Cooldown) : base(Controller, Cooldown)
     {
         this.World = world;
         this.WorldOfPeaces = worldOfPeaces;

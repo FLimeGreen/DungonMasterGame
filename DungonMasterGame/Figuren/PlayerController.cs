@@ -27,6 +27,17 @@
         get { return aktions_Manager.SkillSettings; }
     }
 
+    public bool SkillTausch(Aktion newAktion, int slot)
+    {
+        if (newAktion is null) { return false; }
+
+        // Nicht selectierbarer Bereich
+        if ( !(0 <= slot &&  slot <= 9)) { return false; }
+
+        aktions_Manager.AktionEntfernen(slot);
+        return aktions_Manager.AktionHinzufügen(newAktion, newAktion.CooldwonDuration, slot);
+    }
+
 
     // Player Move Funktion
 

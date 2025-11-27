@@ -2,12 +2,12 @@
 
 public class Spwan_Skelett : Spwan
 {
-    public Spwan_Skelett(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces)
+    public Spwan_Skelett(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {
         name = "Spwane Skelett";
     }
 
-    public Spwan_Skelett(Tile Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces)
+    public Spwan_Skelett(Tile Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {
 
     }

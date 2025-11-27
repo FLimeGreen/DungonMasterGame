@@ -22,34 +22,15 @@ namespace DungonMasterGame.WPF
         public ObservableCollection<Baue> baueList { get; private set; }
 
         // Grade ausgewählter Skill
-        private Aktion selectionaktion; 
-        public Aktion SelectedAktion { 
-            
-            get { return selectionaktion; } 
-            
-            set
-            {
-                selectionaktion = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(selectionaktion));
-            }
+        public ObservableCollection<Aktion> SelectedAktion { get; private set; }
 
-        }
-
-        // INotifyPropertyChanged Event
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // Hilfsmethode zum Auslösen des Events
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public SkillManagerWindow(GamePeaces peaces)
         {
             angriffList = new ObservableCollection<Angriff>();
             spwanList = new ObservableCollection<Spwan>();
             baueList = new ObservableCollection<Baue>();
+            SelectedAktion = new ObservableCollection<Aktion>();
             
 
             InitializeComponent();
@@ -95,6 +76,7 @@ namespace DungonMasterGame.WPF
                 temp.HorizontalAlignment = HorizontalAlignment.Center;
                 temp.Margin = new Thickness(5, 3, 5, 3);
                 temp.Content = "Leer";
+                temp.Click += (s, e) => { Click_Change_SkillSelection(s, e); };
                 Grid.SetRow(temp, 1);
                 Grid.SetColumn(temp, i);
 
@@ -124,6 +106,11 @@ namespace DungonMasterGame.WPF
 
             UpdatePlayerSkillAuswahl();
 
+        }
+
+        private void Temp_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdatePlayerSkillAuswahl()
@@ -172,14 +159,13 @@ namespace DungonMasterGame.WPF
             if (newItem is null) { return; }
 
             // Neues Item also nicht leer
-            SelectedAktion = (Aktion)newItem;
+            SelectedAktion.Clear();
+            SelectedAktion.Add((Aktion)newItem);
 
             // Selection bei anderen Löschen
             SpwanSkill.SelectedItem = null;
             BauSkill.SelectedItem = null;
 
-            MessageBox.Show(SelectedAktion.Name);
-            
         }
 
         private void SpwanSkill_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,13 +176,13 @@ namespace DungonMasterGame.WPF
             if (newItem is null) { return; }
 
             // Neues Item also nicht leer
-            SelectedAktion = (Aktion)newItem;
+            SelectedAktion.Clear();
+            SelectedAktion.Add((Aktion)newItem);
 
             // Selection bei anderen Löschen
             AngriffSkill.SelectedItem = null;
             BauSkill.SelectedItem = null;
 
-            MessageBox.Show(SelectedAktion.Name);
         }
 
         private void BauSkill_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -207,13 +193,30 @@ namespace DungonMasterGame.WPF
             if (newItem is null) { return; }
 
             // Neues Item also nicht leer
-            SelectedAktion = (Aktion)newItem;
+            SelectedAktion.Clear();
+            SelectedAktion.Add((Aktion)newItem);
 
             // Selection bei anderen Löschen
             AngriffSkill.SelectedItem = null;
             SpwanSkill.SelectedItem = null;
 
-            MessageBox.Show(SelectedAktion.Name);
+        }
+
+        private void Click_Change_SkillSelection (object sender, RoutedEventArgs e)
+        {
+            if (SelectedAktion.Count() != 1) { return; }
+
+            Button butt = (Button)sender;
+            var name = butt.Name;
+
+            if (name is null) { return; }
+
+            char preZahl = name.Last();
+            // Magic Conversion (char dif ist der Abstand zwischen z.B. char 2 und char 0. Welcher 2 ist.
+            int slot = preZahl - '0';
+
+            worldofpeaces.GetPlayer.SkillTausch(SelectedAktion[0], slot);
+            UpdatePlayerSkillAuswahl();
         }
     }
 }
