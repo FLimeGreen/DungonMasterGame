@@ -9,6 +9,8 @@ public partial class MainWindowViewModell : ObservableObject
     private GameBoard World;
     private GamePeaces WorldPeaces;
 
+    public GamePeaces Peaces { get { return WorldPeaces; } }
+
     public ObservableCollection<GrafikContainer> GrafikTiles { get; private set; }
     public ObservableCollection<GrafikContainer> GrafikFiguren { get; private set; }
 
