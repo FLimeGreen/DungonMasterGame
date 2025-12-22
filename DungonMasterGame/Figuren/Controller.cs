@@ -182,24 +182,24 @@ public abstract class Controller
         return true;
     }
 
-    protected bool UpdateGrafikRotaion()
+    protected bool UpdateGrafikRotaion(double StartRotaion = 0)
     {
         switch (heading)
         {
             case Heading.Norden:
-                grafik.Rotation = 0;
+                grafik.Rotation = StartRotaion + 0;
                 break;
 
             case Heading.Osten:
-                grafik.Rotation = 90;
+                grafik.Rotation = StartRotaion + 90;
                 break;
 
             case Heading.Süden:
-                grafik.Rotation = 180;
+                grafik.Rotation = StartRotaion + 180;
                 break;
 
             case Heading.Westen:
-                grafik.Rotation = 270;
+                grafik.Rotation = StartRotaion + 270;
                 break;
 
             default :
