@@ -2,7 +2,7 @@
 {
     public Novizen_Abenteurer(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
-        grafik = 'N';
+        grafik = new GrafikContainer(x, y, 'N', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Novice_Abenteuer.png");
 
         speed = new TimeSpan(0, 0, 0, 1, 0);
         // Damit das Skelett sich nicht sofort Bewegt.
@@ -53,5 +53,6 @@
                 this.MoveOneField(Heading.Süden, World);
             }
         }
+        UpdateGrafikRotaion();
     }
 }

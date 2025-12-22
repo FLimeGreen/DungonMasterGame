@@ -104,7 +104,7 @@ public class GameBoard
     }
 
     // Gibt Grafik zurück
-    public char Grafik(int x, int y)
+    public GrafikContainer[] Grafik(int x, int y)
     {
         return WorldMap[(x, y)].Grafik;
     }

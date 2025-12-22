@@ -4,7 +4,7 @@
     protected int y;
     protected int? structurpunkte;
     protected Hitbox hitbox;
-    protected char grafik;
+    protected GrafikContainer[] grafik = new GrafikContainer[2];
     
     public Tile(int x, int y)
     {
@@ -12,7 +12,7 @@
         this.y = y;
         structurpunkte = null;
         hitbox = Hitbox.None;
-        grafik = '?';
+        grafik[0] = new GrafikContainer(x, y, '?', "");
     }
 
     public int X {  get { return x; } }
@@ -20,7 +20,7 @@
 
     public virtual Hitbox GetHitbox {  get { return hitbox; } }
 
-    public virtual char Grafik { get { return grafik; } }
+    public GrafikContainer?[] Grafik { get { return grafik; } }
 
     public virtual int? Struckturpunkte { get { return structurpunkte; } }
 

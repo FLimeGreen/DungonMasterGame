@@ -9,8 +9,64 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WPF\Grafiken\Images\Figuren\Novice_Abenteuer.png" />
+    <None Remove="WPF\Grafiken\Images\Figuren\Skelett_.png" />
+    <None Remove="WPF\Grafiken\Images\Figuren\Spieler.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Free_Space.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Friedhof.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Moor.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Wand.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern0.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern1.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern2.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern3.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern4.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern5.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern6.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern7.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern8.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor0.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor1.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor2.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor3.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor4.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor5.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor6.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor7.png" />
+    <None Remove="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor8.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WPF\Grafiken\Images\Figuren\Novice_Abenteuer.png" />
+    <Resource Include="WPF\Grafiken\Images\Figuren\Skelett_.png" />
+    <Resource Include="WPF\Grafiken\Images\Figuren\Spieler.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Free_Space.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Friedhof.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Moor.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\EinzelFelder\Wand.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern0.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern1.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern2.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern3.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern4.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern5.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern6.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern7.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Kern\Kern8.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor0.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor1.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor2.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor3.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor4.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor5.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor6.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor7.png" />
+    <Resource Include="WPF\Grafiken\Images\Gebäude_Terrain\MehrFelder\Tor\Tor8.png" />
   </ItemGroup>
 
 </Project>

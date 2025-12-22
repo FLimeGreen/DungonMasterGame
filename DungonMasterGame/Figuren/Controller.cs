@@ -7,7 +7,7 @@ public abstract class Controller
     protected int y;
     protected Heading heading;
     // 1 = Norden = W | 2 = Osten = D | 3 = Süden = S | 4 = Westen = A
-    protected char grafik;
+    protected GrafikContainer grafik;
 
     // Charakter Eigenschaften:
     // HP
@@ -36,7 +36,7 @@ public abstract class Controller
         speed = new TimeSpan(0, 0, 0, 0, 30);
     }
 
-    public char Grafik { get { return grafik; } }
+    public GrafikContainer Grafik { get { return grafik; } }
 
     public int X { get { return x; } }
     public int Y { get { return y; } }
@@ -179,6 +179,32 @@ public abstract class Controller
         movecooldown = DateTime.Now;
         // Setze Figur neu.
         World.PlatziereFigur(X, Y, this);
+        return true;
+    }
+
+    protected bool UpdateGrafikRotaion()
+    {
+        switch (heading)
+        {
+            case Heading.Norden:
+                grafik.Rotation = 0;
+                break;
+
+            case Heading.Osten:
+                grafik.Rotation = 90;
+                break;
+
+            case Heading.Süden:
+                grafik.Rotation = 180;
+                break;
+
+            case Heading.Westen:
+                grafik.Rotation = 270;
+                break;
+
+            default :
+                return false;
+        }
         return true;
     }
 

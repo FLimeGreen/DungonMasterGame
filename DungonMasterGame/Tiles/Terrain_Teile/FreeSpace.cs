@@ -10,7 +10,7 @@ public class FreeSpace : Terrain
     {
         // Nichts auf dem Feld
         hitbox = Hitbox.FreeSpace;
-        grafik = '_';
+        grafik[0] = new GrafikContainer(x, y, '_', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/EinzelFelder/Free_Space.png");
     }
     public override Hitbox GetHitbox 
     {
@@ -38,28 +38,24 @@ public class FreeSpace : Terrain
         }
     }
 
-    public override char Grafik 
-    {
-        get 
-        {
-            if (IstDaEineSpielFigur)
-            {
-                if (Figur != null)
-                    return Figur.Grafik;
-                throw new Exception("Spannender Fall der Untersucht werden muss: " + IstDaEineSpielFigur + "  nun das Objekt:" + Figur);
-            }
-            else
-            {
-                return base.Grafik;
-            }
-        } 
-    }
-
     public override bool IstDaEineSpielFigur { get { return Figur != null; } }
 
     public Controller? SpielFigur 
     { 
         get { return Figur; }
-        set { Figur = value; }
+        set 
+        {
+            // Neu setzen oder vielleicht auch löschen.
+            Figur = value;
+
+            if (this.IstDaEineSpielFigur)
+            {
+                grafik[1] = Figur.Grafik;
+            }
+            else
+            {
+                grafik[1] = null;
+            }
+        }
     }
 }

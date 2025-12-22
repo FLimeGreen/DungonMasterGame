@@ -2,7 +2,7 @@
 {
     public PlayerController(int x, int y,GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
-        grafik = 'X';
+        grafik = new GrafikContainer(x, y, 'X', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Spieler.png");
 
         // CoolDowns:
         // Tagen, Stunden, Minuten, Sekunden und Millisekunden
@@ -47,6 +47,7 @@
         if (direction != this.heading)
         {
             this.heading = direction;
+            UpdateGrafikRotaion();
             return;
         }
 

@@ -7,7 +7,7 @@
         // Stats Hinzufügen und Verhalten. Sowie auch von Kern Hülle.
         hitbox = Hitbox.Kern;
         structurpunkte = 10;
-        grafik = 'K';
+        grafik[0] = new GrafikContainer(x, y, 'K', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/MehrFelder/Kern/Kern4.png");
     }
 
     public List<Kern_Hull> HuelleErstzen 

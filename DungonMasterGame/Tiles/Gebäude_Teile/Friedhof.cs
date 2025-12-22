@@ -9,7 +9,7 @@ public class Friedhof : Gebäude
     {
         hitbox = Hitbox.Friedhof;
         structurpunkte = 20;
-        grafik = 'F';
+        grafik[0] = new GrafikContainer(x, y, 'F', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/EinzelFelder/Friedhof.png");
 
         aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, world, worldPeaces), new TimeSpan(0, 0, 0, 2, 0), 0);
     }

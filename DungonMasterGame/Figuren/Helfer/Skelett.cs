@@ -2,7 +2,7 @@
 {
     public Skelett(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
-        grafik = 'S';
+        grafik = new GrafikContainer(x, y, 'S', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Skelett_.png");
 
         speed = new TimeSpan(0, 0, 0, 1, 0);
         // Damit das Skelett sich nicht sofort Bewegt.
@@ -50,6 +50,7 @@
         {
             MoveOneField(heading, World);
         }
+        UpdateGrafikRotaion();
 
         // Greife an.
         var temp = GetLooking(1);

@@ -10,7 +10,7 @@ public class GegnerTor_Kern : Gebäude
     {
         // Stats Hinzufügen und Verhalten. Sowie auch von Kern Hülle.
         hitbox = Hitbox.GegnerTor;
-        grafik = 'G';
+        grafik[0] = new GrafikContainer(x, y, 'G', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/MehrFelder/Tor/Tor4.png");
 
         this.world = world;
         this.worldPeaces = worldPeaces;

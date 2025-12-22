@@ -4,7 +4,7 @@
     {
         hitbox = Hitbox.Wall;
         structurpunkte = 5;
-        grafik = '#';
+        grafik[0] = new GrafikContainer(x, y, '#', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/EinzelFelder/Wand.png");
     }
 
     public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)

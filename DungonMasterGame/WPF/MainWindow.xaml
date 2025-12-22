@@ -69,6 +69,7 @@
 
         <StackPanel x:Name="Inventar" DockPanel.Dock="Right" Margin="10, 10, 10, 10">
             <Button Click="SkillManager">Skill</Button>
+            <Button Command="{Binding ChangeGrafikCommand}">Change Grafik</Button>
         </StackPanel>
 
         <Grid x:Name="GameBoard" VerticalAlignment="Center" HorizontalAlignment="Center" ShowGridLines="False" Width="250" Height="250">
@@ -99,7 +100,53 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Rectangle Width="10" Height="10" Fill="Green" Stroke="Gray" />
+                        <TextBlock Text="{Binding Grafik_Char}" FontSize="20" FontWeight="Bold"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+
+            <!-- Hier noch einmal für Images -->
+            
+            <ItemsControl ItemsSource="{Binding GrafikTiles_Image}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="250" Height="250" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!---<TextBlock Text="{Binding Grafik_Char}" FontSize="20" FontWeight="Bold"/>  -->
+                        <Image Source="{Binding Grafik_Immage}" Width="35.7" Height="35.7" Stretch="Uniform"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding GrafikFiguren_Image}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="250" Height="250" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!---<TextBlock Text="{Binding Grafik_Char}" FontSize="20" FontWeight="Bold"/>  -->
+                        <Image Source="{Binding Grafik_Immage}" Width="35.7" Height="35.7" Stretch="Uniform">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="{Binding Path=Rotation}" CenterX="17.85" CenterY="17.85"/>
+                            </Image.RenderTransform>
+                        </Image>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemContainerStyle>

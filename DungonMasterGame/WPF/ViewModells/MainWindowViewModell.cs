@@ -11,8 +11,15 @@ public partial class MainWindowViewModell : ObservableObject
 
     public GamePeaces Peaces { get { return WorldPeaces; } }
 
+    public bool IsGrafikImmage = true;
+
+    // Darstellung Char
     public ObservableCollection<GrafikContainer> GrafikTiles { get; private set; }
     public ObservableCollection<GrafikContainer> GrafikFiguren { get; private set; }
+
+    // Darstellung Image
+    public ObservableCollection<GrafikContainer> GrafikTiles_Image { get; private set; }
+    public ObservableCollection<GrafikContainer> GrafikFiguren_Image { get; private set; }
 
     public ObservableCollection<char> AktionsLeiste { get; private set; }
 
@@ -20,6 +27,8 @@ public partial class MainWindowViewModell : ObservableObject
     {
         GrafikTiles = new ObservableCollection<GrafikContainer>();
         GrafikFiguren = new ObservableCollection<GrafikContainer>();
+        GrafikTiles_Image = new ObservableCollection<GrafikContainer>();
+        GrafikFiguren_Image = new ObservableCollection<GrafikContainer>();
         AktionsLeiste = new ObservableCollection<char>();
 
         // Initialize Upddater
@@ -63,28 +72,67 @@ public partial class MainWindowViewModell : ObservableObject
         int playery = WorldPeaces.GetPlayer_Y;
 
         GrafikTiles.Clear();
+        GrafikFiguren.Clear();
+
+        GrafikTiles_Image.Clear();
+        GrafikFiguren_Image.Clear();
 
         double CanvasPx_X = 250 / 7;
         double CanvasPx_Y = 250 / 7;
 
-        for (int x = 0; x < 7; x++)
+        if (IsGrafikImmage)
         {
-            for (int y = 0; y < 7; y++)
+            for (int x = 0; x < 7; x++)
             {
-                int relative_x = x - 3;
-                // Weil das Grid y 0 -> 7 geht muss die rel y umgedreht werden damit bei 0 die Höchste y Korrdinate stehet.
-                int relative_y = -y + 3;
-
-                int vector_x = playerx + relative_x;
-                int vector_y = playery + relative_y;
-
-                if (World.IstDa(vector_x, vector_y))
+                for (int y = 0; y < 7; y++)
                 {
-                    GrafikTiles.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), World.Grafik(vector_x, vector_y), ""));
+                    int relative_x = x - 3;
+                    // Weil das Grid y 0 -> 7 geht muss die rel y umgedreht werden damit bei 0 die Höchste y Korrdinate stehet.
+                    int relative_y = -y + 3;
+
+                    int vector_x = playerx + relative_x;
+                    int vector_y = playery + relative_y;
+
+                    if (World.IstDa(vector_x, vector_y))
+                    {
+                        GrafikTiles_Image.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), World.Grafik(vector_x, vector_y)[0].Grafik_Char, World.Grafik(vector_x, vector_y)[0].Grafik_Immage));
+
+                        // Figuren Ebene
+                        if (World.Grafik(vector_x, vector_y)[1] is not null)
+                        {
+                            GrafikFiguren_Image.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), World.Grafik(vector_x, vector_y)[1].Grafik_Char, World.Grafik(vector_x, vector_y)[1].Grafik_Immage, World.Grafik(vector_x, vector_y)[1].Rotation));
+                        }
+                    }
                 }
-                else
+            }
+        }
+        else
+        {
+            for (int x = 0; x < 7; x++)
+            {
+                for (int y = 0; y < 7; y++)
                 {
-                    GrafikTiles.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), '?', ""));
+                    int relative_x = x - 3;
+                    // Weil das Grid y 0 -> 7 geht muss die rel y umgedreht werden damit bei 0 die Höchste y Korrdinate stehet.
+                    int relative_y = -y + 3;
+
+                    int vector_x = playerx + relative_x;
+                    int vector_y = playery + relative_y;
+
+                    if (World.IstDa(vector_x, vector_y))
+                    {
+                        GrafikTiles.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), World.Grafik(vector_x, vector_y)[0].Grafik_Char, World.Grafik(vector_x, vector_y)[0].Grafik_Immage));
+
+                        // Figuren Ebene
+                        if (World.Grafik(vector_x, vector_y)[1] is not null)
+                        {
+                            GrafikFiguren.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), World.Grafik(vector_x, vector_y)[1].Grafik_Char, World.Grafik(vector_x, vector_y)[1].Grafik_Immage));
+                        }
+                    }
+                    else
+                    {
+                        GrafikTiles.Add(new GrafikContainer((int)(CanvasPx_X * x), (int)(CanvasPx_Y * y), '?', ""));
+                    }
                 }
             }
         }
@@ -164,5 +212,11 @@ public partial class MainWindowViewModell : ObservableObject
 
         UpdateGrafik();
         UpdateActionLeiste();
+    }
+
+    [RelayCommand]
+    private void ChangeGrafik()
+    {
+        IsGrafikImmage = !IsGrafikImmage;
     }
 }
