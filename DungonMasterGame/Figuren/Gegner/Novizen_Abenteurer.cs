@@ -19,40 +19,44 @@
 
     public override void Update(GameBoard World, GamePeaces WorldPeaces, string[]? data = null)
     {
-        // Move to 0/0
-        int r_x = 0 - this.x;
-        int r_y = 0 - this.y;
-
-        if (Math.Abs(r_x) >= Math.Abs(r_y)) 
+        // Check was vor der Nase ist.
+        int lockx = GetLooking(1).Item1;
+        int locky = GetLooking(1).Item2;
+        
+        switch (World.GetHitbox(lockx, locky))
         {
-            // x größer
-            // ist x negativ ->
-            if (r_x > 0)
-            {
-                this.MoveOneField(Heading.Osten, World);
-            }
+            case Hitbox.FreeSpace_with_Supporter:
+                // Greif an mit Spitzhacke
+                aktions_Manager.DoAction(0);
+                break;
 
-            // ist x positiv <-
-            if (r_x < 0)
-            {
-                this.MoveOneField(Heading.Westen, World);
-            }
-        }
-        else
-        {
-            // y größer
-            // ist y negativ ^
-            if (r_y > 0)
-            {
-                this.MoveOneField(Heading.Norden, World);
-            }
+            case Hitbox.FreeSpace_with_Player:
+                // Greif an mit Spitzhacke
+                aktions_Manager.DoAction(0);
+                break;
 
-            // ist y positiv v
-            if (r_y < 0)
-            {
-                this.MoveOneField(Heading.Süden, World);
-            }
+            case Hitbox.Kern:
+                // Greif an mit Spitzhacke
+                aktions_Manager.DoAction(0);
+                break;
+
+            default:
+                // Bewege dich richtung Kern
+                var move_case = MoveToZiel(1, World);
+
+                if (move_case.Item1)
+                {
+                    // Hat Richtung
+                    MoveOneField(move_case.Item2.Value, World);
+                }
+                else
+                {
+                    // Reset wo du wart
+                    Woduschonmalwarst.Clear();
+                }
+                break;
         }
+
         UpdateGrafikRotaion();
     }
 }
