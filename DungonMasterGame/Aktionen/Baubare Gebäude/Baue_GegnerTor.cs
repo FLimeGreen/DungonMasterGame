@@ -52,6 +52,7 @@
             h.KernVerweis = Kern;
         }
 
+        world.GegnerTor = Kern;
         return true;
     }
 }

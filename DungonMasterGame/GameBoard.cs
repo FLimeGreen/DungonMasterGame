@@ -10,6 +10,8 @@ public class GameBoard
 
     private List<Gebäude> UpdateListe;
 
+    // Wichtige Gebäude
+    GegnerTor_Kern gegnertor;
 
     public GameBoard()
     {
@@ -113,6 +115,21 @@ public class GameBoard
     public bool IstDa(int x, int y)
     {
         return WorldMap.ContainsKey((x, y));
+    }
+
+    // Merk sich Gegner Tor Kern
+
+    public GegnerTor_Kern GegnerTor
+    {
+        get { return gegnertor; }
+
+        set
+        {
+            if (gegnertor is null)
+            {
+                gegnertor = value;
+            }
+        }
     }
 
     // Anmelden für Gebäude Update:

@@ -144,7 +144,10 @@
         KuerzesteDistanzWesten = null;
 
         // Aktuelle Position zur Liste hinzufügen
-        Woduschonmalwarst.Add((this.x, this.y));
+        if (!Woduschonmalwarst.Contains((this.x, this.y)))
+        {
+            Woduschonmalwarst.Add((this.x, this.y));
+        }
 
         // Update jede Richtung
         UpdateRichtung(Heading.Norden, Radius, World);

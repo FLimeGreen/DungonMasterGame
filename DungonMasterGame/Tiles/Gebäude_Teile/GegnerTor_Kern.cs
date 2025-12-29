@@ -6,6 +6,19 @@ public class GegnerTor_Kern : Gebäude
     private GameBoard world;
     private GamePeaces worldPeaces;
 
+    private int MengeAnSpwan = 0;
+
+    public int MengeSpwanSetzen 
+    {
+        set
+        {
+            if (value > 0)
+            {
+                MengeAnSpwan = MengeAnSpwan + value;
+            }
+        }
+    }
+
     public GegnerTor_Kern(int x, int y, GameBoard world, GamePeaces worldPeaces) : base(x, y)
     {
         // Stats Hinzufügen und Verhalten. Sowie auch von Kern Hülle.
@@ -33,6 +46,18 @@ public class GegnerTor_Kern : Gebäude
 
     public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
     {
+        if (MengeAnSpwan > 0)
+        {
+            if (SpwaneEinenGegner())
+            {
+                MengeAnSpwan--;
+            }
+        }
+        
+    }
+
+    private bool SpwaneEinenGegner()
+    {
         var CooldownCheck = aktions_Manager.ActiveCoolDowns;
         bool check = true;
 
@@ -50,14 +75,15 @@ public class GegnerTor_Kern : Gebäude
             for (int i = 0; i < 10; i++)
             {
                 bool te = aktions_Manager.DoAction(i);
-                
+
                 // Wenn einmal erfolgreich ausgeführt höre auf.
                 if (te)
                 {
-                    return;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 }

@@ -12,6 +12,11 @@ public partial class MainWindowViewModell : ObservableObject
     public GamePeaces Peaces { get { return WorldPeaces; } }
 
     public bool IsGrafikImmage = true;
+    
+    public int Level = 0;
+    
+    [ObservableProperty]
+    public string levelstring = "Level: 0";
 
     // Darstellung Char
     public ObservableCollection<GrafikContainer> GrafikTiles { get; private set; }
@@ -218,5 +223,15 @@ public partial class MainWindowViewModell : ObservableObject
     private void ChangeGrafik()
     {
         IsGrafikImmage = !IsGrafikImmage;
+    }
+
+    [RelayCommand]
+    private void SpwanNewWave()
+    {
+        Level++;
+        Levelstring = "Level: " + Level;
+        
+        int newMengeGegner = new Random().Next(2, 4);
+        World.GegnerTor.MengeSpwanSetzen = newMengeGegner;
     }
 }
