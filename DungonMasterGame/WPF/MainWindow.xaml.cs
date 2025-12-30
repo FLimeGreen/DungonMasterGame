@@ -29,5 +29,11 @@ namespace DungonMasterGame
             var win = new SkillManagerWindow(MainWindow_VieModell.Peaces);
             win.Show();
         }
+
+        private void SkillTree(object sender, RoutedEventArgs e)
+        {
+            var win = new SkillTreeWindow();
+            win.Show();
+        }
     }
 }
