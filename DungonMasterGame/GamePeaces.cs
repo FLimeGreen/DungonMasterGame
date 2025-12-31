@@ -6,6 +6,7 @@ public class GamePeaces
     private PlayerController Player;
     private List<HelferController> Helfer;
     private List<GegnerController> Gegner;
+    private int MengeAnGestorbenenGegnern = 0;
 
     // Game Board
     private GameBoard Board;
@@ -96,6 +97,15 @@ public class GamePeaces
 
         if (this.Gegner.Contains(Gegner))
         {
+            // Gegner werden nur Removed wenn sie Gestorben sind.
+            if (MengeAnGestorbenenGegnern % 10 == 0) 
+            {
+                //Alle Zehn Gegner ein Skillpunkt
+                skillTreeManager.FreieSkillPunkte = 1;
+                
+            }
+            MengeAnGestorbenenGegnern++;
+
             this.Gegner.Remove(Gegner);
             return true;
         }
