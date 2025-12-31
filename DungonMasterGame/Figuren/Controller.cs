@@ -230,7 +230,7 @@ public abstract class Controller
 
             if (this as PlayerController is not null)
             {
-                throw new Exception("You died!");
+                World.DuBistGestorben = true;
             }
         }
 

@@ -26,6 +26,8 @@
 
         if (structurpunkte <= 0)
         {
+            World.DuBistGestorben = true;
+
             // Melde Ab
             World.GebaudeAbmelden(this);
 

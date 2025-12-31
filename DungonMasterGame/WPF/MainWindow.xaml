@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DungonMasterGame"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="KeyDown">
             <behaviors:InvokeCommandAction Command="{Binding Window_KeyDownCommand}" PassEventArgsToCommand="True"/>
@@ -16,6 +21,8 @@
     
     
     <DockPanel>
+        <TextBlock x:Name="Gestorben" DockPanel.Dock="Top" Margin="20" FontSize="40" FontWeight="Bold" Foreground="Red" Text="{Binding Todesnachricht}" Visibility="{Binding Isvisible, Converter={StaticResource BoolToVis}, ConverterParameter=true}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
         <Grid x:Name="ActionsLeiste" DockPanel.Dock="Bottom" Margin="100, 10, 100, 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="35"/>

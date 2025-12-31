@@ -13,12 +13,20 @@ public class GameBoard
     // Wichtige Gebäude
     GegnerTor_Kern gegnertor;
 
+    // Du bist gestorben
+    private bool dubistgestorben = false;
+    public bool DuBistGestorben { get { return dubistgestorben; }
+        set 
+        {
+            dubistgestorben = true;
+        } 
+    }
+
     public GameBoard()
     {
         // Deklariere Variablen
         WorldMap = new Dictionary<(int, int), Tile>();
         UpdateListe = new List<Gebäude>();
-
 
         // Erstelle Base of World
 

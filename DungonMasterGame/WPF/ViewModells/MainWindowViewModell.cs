@@ -9,6 +9,7 @@ public partial class MainWindowViewModell : ObservableObject
     private GameBoard World;
     private GamePeaces WorldPeaces;
 
+
     public GamePeaces Peaces { get { return WorldPeaces; } }
 
     public bool IsGrafikImmage = true;
@@ -19,6 +20,10 @@ public partial class MainWindowViewModell : ObservableObject
     public string levelstring = "Level: 0";
     [ObservableProperty]
     public string lpstring = "LP: 0";
+    [ObservableProperty]
+    public string todesnachricht = "";
+    [ObservableProperty]
+    public bool isvisible = false;
 
     // Darstellung Char
     public ObservableCollection<GrafikContainer> GrafikTiles { get; private set; }
@@ -62,12 +67,20 @@ public partial class MainWindowViewModell : ObservableObject
     // Update Alle Teilnehmer
     private void GeneralUpadate(object? sender, EventArgs e)
     {
-        World.GebaudeUpdaten(World, WorldPeaces);
-        WorldPeaces.UpdateHelfer();
-        WorldPeaces.UpdateGegner();
-        UpdateGrafik();
-        UpdateActionLeiste();
-        UpdateLeben();
+        if (!World.DuBistGestorben)
+        {
+            World.GebaudeUpdaten(World, WorldPeaces);
+            WorldPeaces.UpdateHelfer();
+            WorldPeaces.UpdateGegner();
+            UpdateGrafik();
+            UpdateActionLeiste();
+            UpdateLeben();
+        }
+        else
+        {
+            Isvisible = true;
+            Todesnachricht = "Du bist Gestorben!";
+        }
     }
 
     public void UpdateGrafik()
@@ -178,6 +191,9 @@ public partial class MainWindowViewModell : ObservableObject
     [RelayCommand]
     private void Window_KeyDown(KeyEventArgs e)
     {
+        // Wenn Gestorben Ignorieren
+        if (World.DuBistGestorben) { return; }
+
         // Movement WASD
         if (e.Key == Key.W)
         {
@@ -236,6 +252,9 @@ public partial class MainWindowViewModell : ObservableObject
     [RelayCommand]
     private void SpwanNewWave()
     {
+        // Wenn Gestorben Ignorieren
+        if (World.DuBistGestorben) { return; }
+        
         Level++;
         Levelstring = "Level: " + Level;
         
