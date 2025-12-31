@@ -7,6 +7,7 @@ public class Baue_Friedhof : Baue
     public Baue_Friedhof(Controller Controller, GameBoard world, GamePeaces worldofpeaces) : base(Controller, world, worldofpeaces, new TimeSpan(0, 0, 0, 0, 500))
     {
         name = "Baue Friedhof";
+        beschreibung = "Baue einen Friedhof vor dir, der 4 Skellete Spwant.";
     }
 
     protected override bool DoAktionAsFigur()

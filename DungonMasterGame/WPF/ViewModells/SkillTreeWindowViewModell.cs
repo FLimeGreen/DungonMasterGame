@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using DungonMasterGame.Fertigkeiten.SkillTree;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -27,10 +29,19 @@ public partial class SkillTreeWindowViewModell : ObservableObject
     [ObservableProperty]
     public string verfuegbareSkillpunkte;
 
-    public SkillTreeWindowViewModell()
+    [ObservableProperty]
+    public bool skillkaufenmoeglich = false;
+
+    public SkillTreeWindowViewModell(GamePeaces peaces)
     {
-        skilltree = new SkillTreeManager();
-        verfuegbareSkillpunkte = "Skillpunkte: " + Skilltree.FreieSkillPunkte;
+        skilltree = peaces.GetSkillTreeManager;
+        UpdateSkillkaufenMoeglich();
+    }
+
+    private void UpdateSkillkaufenMoeglich()
+    {
+        VerfuegbareSkillpunkte = "Skillpunkte: " + Skilltree.FreieSkillPunkte;
+        Skillkaufenmoeglich = SelectedSkill is not null && Skilltree.FreieSkillPunkte > 0 && !SelectedSkill.Gekauft;
     }
 
     [RelayCommand]
@@ -50,7 +61,19 @@ public partial class SkillTreeWindowViewModell : ObservableObject
             Skillgekauft = "Nicht Gekauft";
         }
 
-        VerfuegbareSkillpunkte = "Skillpunkte: " + Skilltree.FreieSkillPunkte;
+        UpdateSkillkaufenMoeglich();
 
+    }
+
+    
+
+    [RelayCommand]
+    //[Required(SelectedSkill is not null)]
+    //[Required(Skilltree.FreieSkillPunkte > 0)]
+    public void Skillkaufen()
+    {
+        if (SelectedSkill is null ) { return; }
+        Skilltree.KaufeSkill(SelectedSkill);
+        UpdateSkillkaufenMoeglich();
     }
 }

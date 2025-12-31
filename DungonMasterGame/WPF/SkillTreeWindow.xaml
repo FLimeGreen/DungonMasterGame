@@ -18,11 +18,11 @@
             <TreeView.Resources>
 
                 <HierarchicalDataTemplate DataType="{x:Type local:SkillForge}" ItemsSource="{Binding Weiterleiten}">
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}" Margin="0, 0, 10, 0"/>
                 </HierarchicalDataTemplate>
 
                 <DataTemplate DataType="{x:Type local:SkillBlatt}">
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}" Margin="0, 0, 10, 0"/>
                 </DataTemplate>
 
             </TreeView.Resources>
@@ -37,7 +37,7 @@
             
             <StackPanel Margin="10, 10, 10, 10">
                 <TextBlock Text="{Binding VerfuegbareSkillpunkte}"/>
-                <Button>Skill kaufen</Button>
+                <Button Command="{Binding SkillkaufenCommand}" IsEnabled="{Binding Skillkaufenmoeglich}">Skill kaufen</Button>
             </StackPanel>
         </StackPanel>
     </DockPanel>

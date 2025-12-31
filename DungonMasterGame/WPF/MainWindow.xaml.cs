@@ -32,7 +32,7 @@ namespace DungonMasterGame
 
         private void SkillTree(object sender, RoutedEventArgs e)
         {
-            var win = new SkillTreeWindow();
+            var win = new SkillTreeWindow(MainWindow_VieModell.Peaces);
             win.Show();
         }
     }

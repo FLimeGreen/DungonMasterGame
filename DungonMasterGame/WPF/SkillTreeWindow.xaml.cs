@@ -19,11 +19,11 @@ namespace DungonMasterGame.WPF
     /// </summary>
     public partial class SkillTreeWindow : Window
     {
-        public SkillTreeWindow()
+        public SkillTreeWindow(GamePeaces peaces)
         {
             InitializeComponent();
 
-            DataContext = new SkillTreeWindowViewModell();
+            DataContext = new SkillTreeWindowViewModell(peaces);
         }
     }
 }

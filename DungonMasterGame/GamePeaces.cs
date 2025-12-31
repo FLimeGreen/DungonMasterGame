@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using DungonMasterGame.Fertigkeiten.SkillTree;
+using System.Windows;
 
 public class GamePeaces
 {
@@ -9,13 +10,18 @@ public class GamePeaces
     // Game Board
     private GameBoard Board;
 
+    // Player SkillTree
+    private SkillTreeManager skillTreeManager;
+
     public GamePeaces(GameBoard Board)
     {
         // Deklariere Variabelen
         Player = new PlayerController(0, 3, Board, this);
         Helfer = new List<HelferController>();
         Gegner = new List<GegnerController>();
+
         this.Board = Board;
+        skillTreeManager = new SkillTreeManager(this);
 
         // Set up Player
 
@@ -24,6 +30,8 @@ public class GamePeaces
     }
 
     public GameBoard GetWorld { get  { return Board; } }
+
+    public SkillTreeManager GetSkillTreeManager { get { return skillTreeManager; } }
 
     public int GetPlayer_X { get { return Player.X; } }
     public int GetPlayer_Y { get { return Player.Y; } }

@@ -65,6 +65,7 @@
 
         <StackPanel x:Name="PlayerStats" DockPanel.Dock="Left" Margin="10, 10, 10, 10">
             <TextBlock Text="{Binding Levelstring}"/>
+            <TextBlock Text="{Binding Lpstring}"/>
         </StackPanel>
 
         <StackPanel x:Name="Inventar" DockPanel.Dock="Right" Margin="10, 10, 10, 10">

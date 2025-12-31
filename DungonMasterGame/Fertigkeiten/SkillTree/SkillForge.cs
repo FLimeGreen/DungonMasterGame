@@ -10,5 +10,9 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
         {
 
         }
+
+        public SkillForge(Aktion Aktion) : base(Aktion)
+        {
+        }
     }
 }

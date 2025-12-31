@@ -17,6 +17,8 @@ public partial class MainWindowViewModell : ObservableObject
     
     [ObservableProperty]
     public string levelstring = "Level: 0";
+    [ObservableProperty]
+    public string lpstring = "LP: 0";
 
     // Darstellung Char
     public ObservableCollection<GrafikContainer> GrafikTiles { get; private set; }
@@ -65,6 +67,7 @@ public partial class MainWindowViewModell : ObservableObject
         WorldPeaces.UpdateGegner();
         UpdateGrafik();
         UpdateActionLeiste();
+        UpdateLeben();
     }
 
     public void UpdateGrafik()
@@ -164,6 +167,11 @@ public partial class MainWindowViewModell : ObservableObject
             i++;
         }
 
+    }
+
+    public void UpdateLeben()
+    {
+        Lpstring = "LP: " + Peaces.GetPlayer.LP;
     }
 
     // Manages Tastatur Eingabe

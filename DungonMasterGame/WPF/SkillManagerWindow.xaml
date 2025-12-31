@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DungonMasterGame.WPF"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="SkillManagerWindow" Height="450" Width="800">
 
@@ -26,6 +27,128 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            
+            <!--- Zahlen 1 - 0 /-->
+            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="1" />
+
+            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="2" />
+
+            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="3" />
+
+            <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="4" />
+
+            <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="4" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="5" />
+
+            <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="5" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="6" />
+
+            <Border Grid.Row="0" Grid.Column="6" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="6" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="7" />
+
+            <Border Grid.Row="0" Grid.Column="7" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="7" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="8" />
+
+            <Border Grid.Row="0" Grid.Column="8" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="8" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="9" />
+
+            <Border Grid.Row="0" Grid.Column="9" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="9" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" />
+            
+            <!-- Buttons -->
+            <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton0" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[0]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton1" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[1]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton2" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[2]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton3" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[3]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton4" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[4]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton5" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[5]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="6" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton6" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[6]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="7" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton7" Grid.Row="1" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[7]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="8" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton8" Grid.Row="1" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[8]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
+
+            <Border Grid.Row="1" Grid.Column="9" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="SkillButton9" Grid.Row="1" Grid.Column="9" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 3, 5, 3" Content="{Binding ButtonLabels[9]}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:InvokeCommandAction Command="{Binding Click_Change_SkillSelectionCommand}" PassEventArgsToCommand="True"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </Button>
 
         </Grid>
 
@@ -47,7 +170,13 @@
                     Liste der Angriffs Skills
                 </TextBlock>
 
-                <ListBox x:Name="AngriffSkill" ItemsSource="{Binding angriffList}" SelectionChanged="AngriffSkill_SelectionChanged">
+                <ListBox x:Name="AngriffSkill" ItemsSource="{Binding angriffList}" SelectedItem="{Binding AngriffSkillSelectedItem}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="SelectionChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding AngriffSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -60,8 +189,14 @@
                 <TextBlock>
                     Liste der Beschwörungs Skills
                 </TextBlock>
-                
-                <ListBox x:Name="SpwanSkill" ItemsSource="{Binding spwanList}" SelectionChanged="SpwanSkill_SelectionChanged">
+
+                <ListBox x:Name="SpwanSkill" ItemsSource="{Binding spwanList}" SelectedItem="{Binding SpwanSkillSelectedItem}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="SelectionChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding SpwanSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -74,8 +209,14 @@
                 <TextBlock>
                     Liste der Baubaren Gebäude
                 </TextBlock>
-                
-                <ListBox x:Name="BauSkill" ItemsSource="{Binding baueList}" SelectionChanged="BauSkill_SelectionChanged">
+
+                <ListBox x:Name="BauSkill" ItemsSource="{Binding baueList}" SelectedItem="{Binding BauSkillSelectedItem}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="SelectionChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding BauSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>

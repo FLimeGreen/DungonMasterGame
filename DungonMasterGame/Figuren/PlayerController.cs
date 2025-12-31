@@ -1,5 +1,17 @@
 ﻿public class PlayerController : Controller
 {
+    public int LP
+    {
+        get {  return  Hp; }
+        set
+        {
+            if (value > 0)
+            {
+                Hp = Hp + value;
+            }
+        }
+    } 
+
     public PlayerController(int x, int y,GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
         grafik = new GrafikContainer(x, y, 'X', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Spieler.png", 270);
@@ -10,8 +22,6 @@
 
         // Fügt Aktion hinzu
         aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
-        aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 2, 0), 1);
-        aktions_Manager.AktionHinzufügen(new Baue_Friedhof(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 0, 500), 9);
     }
 
     public IEnumerable<bool> ActiveCoolDowns
