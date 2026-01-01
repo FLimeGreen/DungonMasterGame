@@ -22,7 +22,7 @@
         // Check was vor der Nase ist.
         int lockx = GetLooking(1).Item1;
         int locky = GetLooking(1).Item2;
-        
+
         switch (World.GetHitbox(lockx, locky))
         {
             case Hitbox.FreeSpace_with_Supporter:

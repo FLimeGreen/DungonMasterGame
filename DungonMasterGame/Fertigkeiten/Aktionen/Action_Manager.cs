@@ -9,9 +9,9 @@
     // ActionsListe Welche gibt es
     protected Aktion[] ausgewaelteAktionen = new Aktion[10];
 
-    public Action_Manager() 
+    public Action_Manager()
     {
-        
+
     }
 
     public IEnumerable<bool> ActiveCoolDowns
@@ -42,7 +42,7 @@
         if (newAction == null) { return false; }
         if (newCooldown == null) { return false; }
 
-        if (ausgewaelteAktionen[possition]  != null) { return false; }
+        if (ausgewaelteAktionen[possition] != null) { return false; }
 
         ausgewaelteAktionen[possition] = newAction;
         actioncooldownLenght[possition] = newCooldown;

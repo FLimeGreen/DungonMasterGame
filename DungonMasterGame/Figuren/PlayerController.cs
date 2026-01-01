@@ -4,7 +4,7 @@ public class PlayerController : Controller
 {
     public int LP
     {
-        get {  return  Hp; }
+        get { return Hp; }
         set
         {
             if (value > 0)
@@ -16,10 +16,10 @@ public class PlayerController : Controller
 
     public Select Selctet { get; private set; }
 
-    public PlayerController(int x, int y,GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
+    public PlayerController(int x, int y, GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
         grafik = new GrafikContainer(x, y, 'X', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Spieler.png", 270);
-        Selctet = new Select(this, World); 
+        Selctet = new Select(this, World);
 
         // CoolDowns:
         // Tagen, Stunden, Minuten, Sekunden und Millisekunden
@@ -47,7 +47,7 @@ public class PlayerController : Controller
         if (newAktion is null) { return false; }
 
         // Nicht selectierbarer Bereich
-        if ( !(0 <= slot &&  slot <= 9)) { return false; }
+        if (!(0 <= slot && slot <= 9)) { return false; }
 
         aktions_Manager.AktionEntfernen(slot);
         return aktions_Manager.AktionHinzufügen(newAktion, newAktion.CooldwonDuration, slot);

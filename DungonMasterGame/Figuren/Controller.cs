@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows.Documents;
-
-public abstract class Controller
+﻿public abstract class Controller
 {
     protected int x;
     protected int y;
@@ -55,7 +52,7 @@ public abstract class Controller
                 return (x, y - Distance);
 
             case Heading.Westen:
-                return (x -Distance, y);
+                return (x - Distance, y);
 
             default: throw new Exception("Some thing faild horrible (Looking Block)x: " + x + " y: " + y + " Head: " + heading);
         }
@@ -73,19 +70,19 @@ public abstract class Controller
             case Heading.Norden:
                 FigurY++;
                 break;
-            
+
             case Heading.Osten:
                 FigurX++;
                 break;
-            
-            case Heading.Süden: 
+
+            case Heading.Süden:
                 FigurY--;
                 break;
-                
+
             case Heading.Westen:
                 FigurX--;
                 break;
-            
+
             default: return false;
         }
 
@@ -202,7 +199,7 @@ public abstract class Controller
                 grafik.Rotation = StartRotaion + 270;
                 break;
 
-            default :
+            default:
                 return false;
         }
         return true;
@@ -217,7 +214,7 @@ public abstract class Controller
         if (Hp <= 0)
         {
             World.EntferneFigur(X, Y, this);
-            
+
             if (this as GegnerController is not null)
             {
                 gamePeaces.RemoveGegner(this as GegnerController);

@@ -1,6 +1,4 @@
-﻿using System.Windows.Documents;
-
-public class Kern_Hull : Gebäude
+﻿public class Kern_Hull : Gebäude
 {
     private Kern_Kern kernVerweis;
     public Kern_Hull(int x, int y) : base(x, y)
@@ -13,7 +11,8 @@ public class Kern_Hull : Gebäude
     {
         get { return kernVerweis; }
 
-        set {
+        set
+        {
             if (value is null) { throw new Exception("Kern Kern Verweis darf nicht null sein."); }
 
             kernVerweis = value;
@@ -67,7 +66,7 @@ public class Kern_Hull : Gebäude
     public bool Destroy(Kern_Kern verify, GameBoard World)
     {
         if (verify != kernVerweis) { return false; }
-        
+
         // Melde Ab
         World.GebaudeAbmelden(this);
 

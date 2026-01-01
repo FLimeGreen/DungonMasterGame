@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-public abstract class Baue : Aktion
+﻿public abstract class Baue : Aktion
 {
     protected GameBoard world;
     protected GamePeaces worldofpeaces;
@@ -18,7 +16,7 @@ public abstract class Baue : Aktion
 
     protected bool IstBauBerreichFrei(List<(int, int)> Bauorte, int x, int y)
     {
-        foreach (var pos in Bauorte) 
+        foreach (var pos in Bauorte)
         {
             // Get relative Baukoordinaten
             int r_x = pos.Item1 + x;

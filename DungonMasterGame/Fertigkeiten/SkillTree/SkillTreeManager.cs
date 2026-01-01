@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Documents;
 
 namespace DungonMasterGame.Fertigkeiten.SkillTree
 {
@@ -20,7 +19,7 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
         private int freieSkillPunkte = 1;
         public int FreieSkillPunkte
         {
-            get {  return freieSkillPunkte; }
+            get { return freieSkillPunkte; }
 
             set
             {
@@ -76,7 +75,7 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
         {
             //aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 2, 0), 1);
             //aktions_Manager.AktionHinzufügen(new Baue_Friedhof(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 0, 500), 9);
-            
+
             switch (Skill.Name)
             {
                 case "Baue Friedhof":

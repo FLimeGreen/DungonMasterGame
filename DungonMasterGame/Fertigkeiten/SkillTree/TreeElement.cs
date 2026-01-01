@@ -8,13 +8,14 @@
         private SkillID skillid;
 
         public string Name { get { return name; } }
-        public string Beschreibung { get {  return beschreibung; } }
-        public bool Gekauft { 
+        public string Beschreibung { get { return beschreibung; } }
+        public bool Gekauft
+        {
             get { return gekauft; }
             set { gekauft = true; }
         }
 
-        public SkillID SkillId { get{ return skillid; } }
+        public SkillID SkillId { get { return skillid; } }
 
         public TreeElement(string name, string beschreibung)
         {

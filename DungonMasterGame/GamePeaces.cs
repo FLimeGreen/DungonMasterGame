@@ -1,5 +1,4 @@
 ﻿using DungonMasterGame.Fertigkeiten.SkillTree;
-using System.Windows;
 
 public class GamePeaces
 {
@@ -30,7 +29,7 @@ public class GamePeaces
             throw new Exception("Platzier Fehler bei dem Spieler.");
     }
 
-    public GameBoard GetWorld { get  { return Board; } }
+    public GameBoard GetWorld { get { return Board; } }
 
     public SkillTreeManager GetSkillTreeManager { get { return skillTreeManager; } }
 
@@ -41,7 +40,8 @@ public class GamePeaces
 
     public IEnumerable<bool> GetPlayerCooldown
     {
-        get {
+        get
+        {
             return Player.ActiveCoolDowns;
         }
     }
@@ -50,9 +50,9 @@ public class GamePeaces
     {
         if (NeuHelfer == null) { return false; }
 
-        if (this.Helfer.Contains(NeuHelfer)) 
-        { 
-            return false; 
+        if (this.Helfer.Contains(NeuHelfer))
+        {
+            return false;
         }
         else
         {
@@ -98,11 +98,11 @@ public class GamePeaces
         if (this.Gegner.Contains(Gegner))
         {
             // Gegner werden nur Removed wenn sie Gestorben sind.
-            if (MengeAnGestorbenenGegnern % 10 == 0) 
+            if (MengeAnGestorbenenGegnern % 10 == 0)
             {
                 //Alle Zehn Gegner ein Skillpunkt
                 skillTreeManager.FreieSkillPunkte = 1;
-                
+
             }
             MengeAnGestorbenenGegnern++;
 
@@ -181,7 +181,7 @@ public class GamePeaces
         else
         {
             // Füge dem Gebäude / Terrain Schaden zu
-             return Board.FuegeDemFeldSchadenZu(x, y, Schaden, Art);
+            return Board.FuegeDemFeldSchadenZu(x, y, Schaden, Art);
         }
     }
 

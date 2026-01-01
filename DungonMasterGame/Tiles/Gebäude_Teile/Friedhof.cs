@@ -1,7 +1,4 @@
-﻿using System.Windows.Media.Media3D;
-using System.Windows.Media.TextFormatting;
-
-public class Friedhof : Gebäude
+﻿public class Friedhof : Gebäude
 {
     int SpwanMenge = 0;
 
@@ -45,7 +42,7 @@ public class Friedhof : Gebäude
     {
         // Beschreibung Aktuallisieren
         WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + SpwanMenge };
-        
+
 
         if (SpwanMenge < 4)
         {

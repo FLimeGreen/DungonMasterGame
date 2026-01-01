@@ -1,7 +1,4 @@
-﻿using System.Windows.Documents;
-using System.Windows.Input;
-
-public class GameBoard
+﻿public class GameBoard
 {
     private Dictionary<(int, int), Tile> WorldMap;
 
@@ -15,11 +12,13 @@ public class GameBoard
 
     // Du bist gestorben
     private bool dubistgestorben = false;
-    public bool DuBistGestorben { get { return dubistgestorben; }
-        set 
+    public bool DuBistGestorben
+    {
+        get { return dubistgestorben; }
+        set
         {
             dubistgestorben = true;
-        } 
+        }
     }
 
     public GameBoard()
@@ -44,15 +43,17 @@ public class GameBoard
                     else
                         WorldMap.Add((x, y), new Fels(x, y));
                 }
-                else {
+                else
+                {
                     WorldMap.Add((x, y), new FreeSpace(x, y));
-                } 
+                }
             }
         }
 
         // Tunnel zu Gegner Spwaner
         // Gang nach oben
-        for (int y = 5; y < 20; y++) {
+        for (int y = 5; y < 20; y++)
+        {
             for (int x = -2; x <= 2; x++)
             {
                 if (x == -2 || x == 2)
@@ -101,7 +102,7 @@ public class GameBoard
 
     // Gibt Welt größe an
     public int WorldSize { get { return WorldMap.Count; } }
-    
+
     // Gibt Hitbox zurück
     public Hitbox GetHitbox(int x, int y)
     {
@@ -132,7 +133,7 @@ public class GameBoard
                         // Ist Hull
                         return hull.KernVerweis;
                     }
-                break;
+                    break;
 
                 case Hitbox.GegnerTor:
                     var hull1 = WorldMap[(x, y)] as GegnerTor_Hull;
@@ -190,8 +191,8 @@ public class GameBoard
     {
         if (gebäude == null) { return; }
 
-        if (UpdateListe.Contains(gebäude)) 
-        { 
+        if (UpdateListe.Contains(gebäude))
+        {
             return;
         }
         else
@@ -257,7 +258,7 @@ public class GameBoard
             return false;
 
         Ort.SpielFigur = Figur;
-        
+
         return true;
     }
 
@@ -333,8 +334,8 @@ public class GameBoard
     {
         // Keine Leeren Felder
         if (NewsFeld == null)
-        { 
-            return false; 
+        {
+            return false;
         }
 
         // Wenn x und y schon Feld dann auch nicht

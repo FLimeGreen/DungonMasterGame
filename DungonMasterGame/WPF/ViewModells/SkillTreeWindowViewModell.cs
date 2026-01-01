@@ -1,12 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DungonMasterGame.Fertigkeiten.SkillTree;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Threading;
 
 public partial class SkillTreeWindowViewModell : ObservableObject
 {
@@ -51,7 +46,7 @@ public partial class SkillTreeWindowViewModell : ObservableObject
 
         Skillname = SelectedSkill.Name;
         Skillbeschreibung = SelectedSkill.Beschreibung;
-        
+
         if (SelectedSkill.Gekauft)
         {
             Skillgekauft = "Gekauft";
@@ -65,14 +60,14 @@ public partial class SkillTreeWindowViewModell : ObservableObject
 
     }
 
-    
+
 
     [RelayCommand]
     //[Required(SelectedSkill is not null)]
     //[Required(Skilltree.FreieSkillPunkte > 0)]
     public void Skillkaufen()
     {
-        if (SelectedSkill is null ) { return; }
+        if (SelectedSkill is null) { return; }
         Skilltree.KaufeSkill(SelectedSkill);
         UpdateSkillkaufenMoeglich();
     }

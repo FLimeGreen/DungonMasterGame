@@ -8,7 +8,7 @@
     protected List<(int, int)> Woduschonmalwarst;
 
     protected double? KuerzesteDistanzNorden = null;
-    protected double? KuerzesteDistanzOsten  = null;
+    protected double? KuerzesteDistanzOsten = null;
     protected double? KuerzesteDistanzSueden = null;
     protected double? KuerzesteDistanzWesten = null;
 
@@ -33,26 +33,26 @@
                 case Heading.Norden:
                     // Norden
                     t_y++;
-                break;
-                
+                    break;
+
                 case Heading.Osten:
                     // Osten
                     t_x++;
-                break;
-            
+                    break;
+
                 case Heading.Süden:
                     // Süeden
                     t_y--;
-                break;
-        
+                    break;
+
                 case Heading.Westen:
                     // Westen
                     t_x--;
-                break;
-                
+                    break;
+
                 default: return false;
             }
-            
+
 
             // Check ob Wand dann fertig
             if (World.GetHitbox(t_x, t_y) is not Hitbox.FreeSpace)

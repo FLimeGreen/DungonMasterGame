@@ -16,9 +16,9 @@ public partial class MainWindowViewModell : ObservableObject
     public Select Selectet { get; private set; }
 
     public bool IsGrafikImmage = true;
-    
+
     public int Level = 0;
-    
+
     [ObservableProperty]
     public string levelstring = "Level: 0";
     [ObservableProperty]
@@ -262,10 +262,10 @@ public partial class MainWindowViewModell : ObservableObject
     {
         // Wenn Gestorben Ignorieren
         if (World.DuBistGestorben) { return; }
-        
+
         Level++;
         Levelstring = "Level: " + Level;
-        
+
         int newMengeGegner = new Random().Next(2, 4);
         World.GegnerTor.MengeSpwanSetzen = newMengeGegner;
     }

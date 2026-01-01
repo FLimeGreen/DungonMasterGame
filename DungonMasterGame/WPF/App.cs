@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using DungonMasterGame;
+﻿using DungonMasterGame;
+using System.Windows;
 
 public class App : Application
 {
@@ -10,7 +10,7 @@ public class App : Application
         app.Run();
     }
 
-    protected override void OnStartup(StartupEventArgs e) 
+    protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
         var window = new MainWindow();

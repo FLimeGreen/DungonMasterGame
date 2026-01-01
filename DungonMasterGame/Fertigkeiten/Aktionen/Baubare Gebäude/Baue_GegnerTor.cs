@@ -1,10 +1,10 @@
 ﻿public class Baue_GegnerTor : Baue
 {
-    private List<(int, int)> Baupunkte = new List<(int, int)> { (0,0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
+    private List<(int, int)> Baupunkte = new List<(int, int)> { (0, 0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
 
     public Baue_GegnerTor(Controller Controller, GameBoard World, GamePeaces WorldofPeaces) : base(Controller, World, WorldofPeaces, new TimeSpan(0, 0, 0, 0, 0))
     {
-        
+
     }
 
     public Baue_GegnerTor(Tile Controller) : base(Controller, new TimeSpan(0, 0, 0, 0, 0))
@@ -17,7 +17,7 @@
         int bx = 0;
         int by = 25;
 
-        
+
         if (!IstBauBerreichFrei(Baupunkte, bx, by))
         {
             return false;

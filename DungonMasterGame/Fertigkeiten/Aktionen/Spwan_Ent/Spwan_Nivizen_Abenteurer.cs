@@ -1,6 +1,4 @@
-﻿using System.Windows.Documents;
-
-public class Spwan_Novizen_Abenteurer : Spwan
+﻿public class Spwan_Novizen_Abenteurer : Spwan
 {
     public Spwan_Novizen_Abenteurer(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {

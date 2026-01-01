@@ -17,7 +17,7 @@
         aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
     }
 
-    public override void Update(GameBoard World,GamePeaces WorldPeaces, string[]? data = null)
+    public override void Update(GameBoard World, GamePeaces WorldPeaces, string[]? data = null)
     {
         // Move
         (int, int) FieldBefor = GetLooking(1);

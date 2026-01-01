@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-public class FreeSpace : Terrain
+﻿public class FreeSpace : Terrain
 {
     // Spielfigur Speicher:
 
@@ -12,9 +10,10 @@ public class FreeSpace : Terrain
         hitbox = Hitbox.FreeSpace;
         grafik[0] = new GrafikContainer(x, y, '_', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/EinzelFelder/Free_Space.png");
     }
-    public override Hitbox GetHitbox 
+    public override Hitbox GetHitbox
     {
-        get {
+        get
+        {
 
             if (Figur == null)
             {
@@ -24,7 +23,7 @@ public class FreeSpace : Terrain
             {
                 return Hitbox.FreeSpace_with_Player;
             }
-            else if (Figur as HelferController != null) 
+            else if (Figur as HelferController != null)
             {
                 return Hitbox.FreeSpace_with_Supporter;
             }
@@ -40,10 +39,10 @@ public class FreeSpace : Terrain
 
     public override bool IstDaEineSpielFigur { get { return Figur != null; } }
 
-    public Controller? SpielFigur 
-    { 
+    public Controller? SpielFigur
+    {
         get { return Figur; }
-        set 
+        set
         {
             // Neu setzen oder vielleicht auch löschen.
             Figur = value;

@@ -1,6 +1,4 @@
-﻿using System.Windows.Documents;
-
-public class GegnerTor_Hull : Gebäude
+﻿public class GegnerTor_Hull : Gebäude
 {
     private GegnerTor_Kern kernVerweis;
     public GegnerTor_Hull(int x, int y) : base(x, y)
@@ -13,7 +11,7 @@ public class GegnerTor_Hull : Gebäude
     {
         get { return kernVerweis; }
 
-        set 
+        set
         {
             if (value is null) { throw new Exception("GegnerTor Kern Verweis darf nicht null sein."); }
 
@@ -68,7 +66,7 @@ public class GegnerTor_Hull : Gebäude
     public bool Destroy(GegnerTor_Kern verify, GameBoard World)
     {
         if (verify != kernVerweis) { return false; }
-        
+
         // Melde Ab
         World.GebaudeAbmelden(this);
 

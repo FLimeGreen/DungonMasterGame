@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-public class Baue_Friedhof : Baue
+﻿public class Baue_Friedhof : Baue
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0, 0) };
 

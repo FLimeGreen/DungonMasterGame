@@ -14,9 +14,9 @@
         Beschreibung = "Wird dieser Kern zerstört verlierst du.";
     }
 
-    public List<Kern_Hull> HuelleErstzen 
+    public List<Kern_Hull> HuelleErstzen
     {
-        set { gebauedeTeile = value;}
+        set { gebauedeTeile = value; }
     }
 
     public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)

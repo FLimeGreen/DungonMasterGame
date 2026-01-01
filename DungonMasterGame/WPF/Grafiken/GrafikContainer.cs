@@ -1,6 +1,6 @@
 ﻿public class GrafikContainer
-{   
-    public int X {  get; set; }
+{
+    public int X { get; set; }
     public int Y { get; set; }
     public char Grafik_Char { get; set; }
     public string Grafik_Immage { get; set; }

@@ -22,7 +22,7 @@
 
         structurpunkte = structurpunkte - Schaden;
 
-        if (structurpunkte <= 0) 
+        if (structurpunkte <= 0)
         {
             // Ersetze durch FreeSpace
             var newSpace = new FreeSpace(x, y);
@@ -31,7 +31,7 @@
 
             // Platziere Wände
             // Check alle vier Richtungen ob da schon ein Feld ist?
-            
+
             // Damit die Orginal Position nicht verändert wird.
             int c_x = x;
             int c_y = y;

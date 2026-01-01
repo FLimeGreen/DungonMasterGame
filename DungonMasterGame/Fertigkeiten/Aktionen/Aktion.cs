@@ -16,21 +16,21 @@
         Cooldown_Duration = Cooldown;
     }
 
-    public Aktion(Tile Controller,TimeSpan Cooldown)
+    public Aktion(Tile Controller, TimeSpan Cooldown)
     {
         tile_controller = Controller;
         figur_controller = null;
         Cooldown_Duration = Cooldown;
     }
 
-    public TimeSpan CooldwonDuration { get { return Cooldown_Duration;} }
+    public TimeSpan CooldwonDuration { get { return Cooldown_Duration; } }
 
     public string Name { get { return name; } }
-    public string Beschreibung {  get { return beschreibung; } }
+    public string Beschreibung { get { return beschreibung; } }
 
-    public bool DoAktion() 
+    public bool DoAktion()
     {
-        if (figur_controller != null) 
+        if (figur_controller != null)
         {
             return DoAktionAsFigur();
         }

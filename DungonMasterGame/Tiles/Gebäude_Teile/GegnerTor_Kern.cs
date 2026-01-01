@@ -1,6 +1,4 @@
-﻿using System.Windows.Documents;
-
-public class GegnerTor_Kern : Gebäude
+﻿public class GegnerTor_Kern : Gebäude
 {
     private List<GegnerTor_Hull> gebauedeTeile;
     private GameBoard world;
@@ -8,7 +6,7 @@ public class GegnerTor_Kern : Gebäude
 
     private int MengeAnSpwan = 0;
 
-    public int MengeSpwanSetzen 
+    public int MengeSpwanSetzen
     {
         set
         {
@@ -33,9 +31,10 @@ public class GegnerTor_Kern : Gebäude
         this.worldPeaces = worldPeaces;
     }
 
-    public List<GegnerTor_Hull> HuelleErstzen 
+    public List<GegnerTor_Hull> HuelleErstzen
     {
-        set { 
+        set
+        {
             gebauedeTeile = value;
 
             // Spwan auf Hüllen Teile ausführen.
@@ -57,7 +56,7 @@ public class GegnerTor_Kern : Gebäude
                 MengeAnSpwan--;
             }
         }
-        
+
     }
 
     private bool SpwaneEinenGegner()

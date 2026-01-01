@@ -1,10 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DungonMasterGame.Fertigkeiten.Select
 {
@@ -27,7 +21,7 @@ namespace DungonMasterGame.Fertigkeiten.Select
         [ObservableProperty]
         public List<string> andereEigenschaften;
 
-        public Select(PlayerController Player, GameBoard World) 
+        public Select(PlayerController Player, GameBoard World)
         {
             this.player = Player;
             this.world = World;
