@@ -8,6 +8,10 @@
         hitbox = Hitbox.Kern;
         structurpunkte = 10;
         grafik[0] = new GrafikContainer(x, y, 'K', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/MehrFelder/Kern/Kern4.png");
+
+        // Beschreibung für Selcet
+        Name = "Dungon Kern";
+        Beschreibung = "Wird dieser Kern zerstört verlierst du.";
     }
 
     public List<Kern_Hull> HuelleErstzen 

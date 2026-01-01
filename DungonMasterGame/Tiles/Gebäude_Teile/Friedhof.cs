@@ -11,6 +11,10 @@ public class Friedhof : Gebäude
         structurpunkte = 20;
         grafik[0] = new GrafikContainer(x, y, 'F', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/EinzelFelder/Friedhof.png");
 
+        // Beschreibung für Selcet
+        Name = "Friedhof";
+        Beschreibung = "Erschaft 4 Untote";
+
         aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, world, worldPeaces), new TimeSpan(0, 0, 0, 2, 0), 0);
     }
 
@@ -39,6 +43,10 @@ public class Friedhof : Gebäude
 
     public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
     {
+        // Beschreibung Aktuallisieren
+        WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + SpwanMenge };
+        
+
         if (SpwanMenge < 4)
         {
             // Gib an Ob Cooldown abegelaufen ist?

@@ -70,9 +70,24 @@
             <TextBlock Grid.Row="0" Grid.Column="9" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding AktionsLeiste[9]}" />
         </Grid>
 
-        <StackPanel x:Name="PlayerStats" DockPanel.Dock="Left" Margin="10, 10, 10, 10">
+        <StackPanel x:Name="PlayerStats" DockPanel.Dock="Left" Margin="10, 10, 10, 10" Width="150">
             <TextBlock Text="{Binding Levelstring}"/>
             <TextBlock Text="{Binding Lpstring}"/>
+            
+            <!-- Selected Gebäude anzeigen -->
+            <StackPanel MaxWidth="150" Margin="0, 40, 0, 0"  Visibility="{Binding Selectet.IsGebaudeSelceted, Converter={StaticResource BoolToVis}, ConverterParameter=true}">
+                <TextBlock Text="{Binding Selectet.Name}"/>
+                <TextBlock Text="{Binding Selectet.GebaudeLP}"/>
+                <TextBlock Text="{Binding Selectet.Beschreibung}" TextWrapping="Wrap"/>
+                <ItemsControl ItemsSource="{Binding Selectet.AndereEigenschaften}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            
         </StackPanel>
 
         <StackPanel x:Name="Inventar" DockPanel.Dock="Right" Margin="10, 10, 10, 10">

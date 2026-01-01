@@ -11,6 +11,8 @@ public class Kern_Hull : Gebäude
 
     public Kern_Kern KernVerweis
     {
+        get { return kernVerweis; }
+
         set {
             if (value is null) { throw new Exception("Kern Kern Verweis darf nicht null sein."); }
 

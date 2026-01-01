@@ -113,6 +113,51 @@ public class GameBoard
         return WorldMap[(x, y)].GetHitbox;
     }
 
+    public Gebäude? GetGebäude(int x, int y)
+    {
+        if (IstDa(x, y))
+        {
+            //Check If MehrblockGebaude
+            switch (GetHitbox(x, y))
+            {
+                case Hitbox.Kern:
+                    var hull = WorldMap[(x, y)] as Kern_Hull;
+                    if (hull is null)
+                    {
+                        // Ist Kern
+                        return WorldMap[(x, y)] as Gebäude;
+                    }
+                    else
+                    {
+                        // Ist Hull
+                        return hull.KernVerweis;
+                    }
+                break;
+
+                case Hitbox.GegnerTor:
+                    var hull1 = WorldMap[(x, y)] as GegnerTor_Hull;
+                    if (hull1 is null)
+                    {
+                        // Ist Kern
+                        return WorldMap[(x, y)] as Gebäude;
+                    }
+                    else
+                    {
+                        // Ist Hull
+                        return hull1.KernVerweis;
+                    }
+                    break;
+
+                default:
+                    return WorldMap[(x, y)] as Gebäude;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     // Gibt Grafik zurück
     public GrafikContainer[] Grafik(int x, int y)
     {

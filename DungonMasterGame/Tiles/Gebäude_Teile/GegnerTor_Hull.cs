@@ -11,6 +11,8 @@ public class GegnerTor_Hull : Gebäude
 
     public GegnerTor_Kern KernVerweis
     {
+        get { return kernVerweis; }
+
         set 
         {
             if (value is null) { throw new Exception("GegnerTor Kern Verweis darf nicht null sein."); }

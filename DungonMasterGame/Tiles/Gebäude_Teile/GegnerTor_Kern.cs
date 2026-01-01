@@ -25,6 +25,10 @@ public class GegnerTor_Kern : Gebäude
         hitbox = Hitbox.GegnerTor;
         grafik[0] = new GrafikContainer(x, y, 'G', "pack://application:,,,/WPF/Grafiken/Images/Gebäude_Terrain/MehrFelder/Tor/Tor4.png");
 
+        // Beschreibung für Selcet
+        Name = "Gegner Tor";
+        Beschreibung = "Durch diese Tor kommen die Gegner.";
+
         this.world = world;
         this.worldPeaces = worldPeaces;
     }

@@ -1,4 +1,6 @@
-﻿public class PlayerController : Controller
+﻿using DungonMasterGame.Fertigkeiten.Select;
+
+public class PlayerController : Controller
 {
     public int LP
     {
@@ -10,11 +12,14 @@
                 Hp = Hp + value;
             }
         }
-    } 
+    }
+
+    public Select Selctet { get; private set; }
 
     public PlayerController(int x, int y,GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {
         grafik = new GrafikContainer(x, y, 'X', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Spieler.png", 270);
+        Selctet = new Select(this, World); 
 
         // CoolDowns:
         // Tagen, Stunden, Minuten, Sekunden und Millisekunden

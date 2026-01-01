@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DungonMasterGame.Fertigkeiten.Select;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -11,6 +12,8 @@ public partial class MainWindowViewModell : ObservableObject
 
 
     public GamePeaces Peaces { get { return WorldPeaces; } }
+
+    public Select Selectet { get; private set; }
 
     public bool IsGrafikImmage = true;
     
@@ -59,6 +62,8 @@ public partial class MainWindowViewModell : ObservableObject
         World = new GameBoard();
         WorldPeaces = World.GetWorldPeaces;
 
+        Selectet = WorldPeaces.GetPlayer.Selctet;
+
         UpdateGrafik();
         UpdateTimer.Start();
 
@@ -75,6 +80,7 @@ public partial class MainWindowViewModell : ObservableObject
             UpdateGrafik();
             UpdateActionLeiste();
             UpdateLeben();
+            Selectet.Update();
         }
         else
         {
@@ -237,6 +243,8 @@ public partial class MainWindowViewModell : ObservableObject
         if (e.Key == Key.D9) { WorldPeaces.PlayerAction(8); }
 
         if (e.Key == Key.D0) { WorldPeaces.PlayerAction(9); }
+
+        if (e.Key == Key.N) { Selectet.NewSelect(); }
 
 
         UpdateGrafik();
