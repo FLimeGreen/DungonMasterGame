@@ -131,7 +131,7 @@ namespace DungonMasterGame.WPF.ViewModells
         private void Click_Change_SkillSelection(RoutedEventArgs e)
         {
             var sender = e.Source;
-            if (SelectedAktion.Count() != 1) { return; }
+            if (SelectedAktion.Count != 1) { return; }
 
             Button butt = (Button)sender;
             var name = butt.Name;

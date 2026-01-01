@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using DungonMasterGame;
+
+public class Program
 {
     public static void MainConsole(string[] args)
     {
