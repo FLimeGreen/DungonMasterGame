@@ -1,4 +1,6 @@
-﻿public class GegnerTor_Hull : Gebäude
+﻿using DungonMasterGame;
+
+public class GegnerTor_Hull : Gebäude
 {
     private GegnerTor_Kern kernVerweis;
     public GegnerTor_Hull(int x, int y) : base(x, y)

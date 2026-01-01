@@ -1,4 +1,6 @@
-﻿public class Kern_Hull : Gebäude
+﻿using DungonMasterGame;
+
+public class Kern_Hull : Gebäude
 {
     private Kern_Kern kernVerweis;
     public Kern_Hull(int x, int y) : base(x, y)

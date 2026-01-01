@@ -1,4 +1,6 @@
-﻿public abstract class Angriff : Aktion
+﻿using DungonMasterGame.Figuren;
+
+public abstract class Angriff : Aktion
 {
     protected GamePeaces WorldPeaces;
 

@@ -1,4 +1,7 @@
-﻿public class FreeSpace : Terrain
+﻿using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public class FreeSpace : Terrain
 {
     // Spielfigur Speicher:
 

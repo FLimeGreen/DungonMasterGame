@@ -1,4 +1,7 @@
-﻿public abstract class Aktion
+﻿using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public abstract class Aktion
 {
     protected Controller? figur_controller;
     protected Tile? tile_controller;

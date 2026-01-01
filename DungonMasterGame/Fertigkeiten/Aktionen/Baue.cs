@@ -1,4 +1,8 @@
-﻿public abstract class Baue : Aktion
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public abstract class Baue : Aktion
 {
     protected GameBoard world;
     protected GamePeaces worldofpeaces;

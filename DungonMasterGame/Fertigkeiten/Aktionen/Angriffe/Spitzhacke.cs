@@ -1,4 +1,6 @@
-﻿public class Spitzhacke : Angriff
+﻿using DungonMasterGame.Figuren;
+
+public class Spitzhacke : Angriff
 {
     public Spitzhacke(GamePeaces WorldFiguren, Controller Figur) : base(Figur, WorldFiguren, new TimeSpan(0, 0, 0, 2, 0))
     {

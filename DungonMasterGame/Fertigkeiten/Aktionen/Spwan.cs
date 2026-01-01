@@ -1,4 +1,8 @@
-﻿public abstract class Spwan : Aktion
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public abstract class Spwan : Aktion
 {
     protected GameBoard World;
     protected GamePeaces WorldOfPeaces;

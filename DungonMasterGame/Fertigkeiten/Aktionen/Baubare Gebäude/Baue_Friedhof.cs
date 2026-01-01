@@ -1,4 +1,7 @@
-﻿public class Baue_Friedhof : Baue
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+
+public class Baue_Friedhof : Baue
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0, 0) };
 

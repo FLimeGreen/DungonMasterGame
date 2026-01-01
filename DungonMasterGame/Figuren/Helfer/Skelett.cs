@@ -1,4 +1,6 @@
-﻿public class Skelett : HelferController
+﻿using DungonMasterGame;
+
+public class Skelett : HelferController
 {
     public Skelett(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {

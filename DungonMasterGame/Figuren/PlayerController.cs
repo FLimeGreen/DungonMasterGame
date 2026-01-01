@@ -1,4 +1,6 @@
-﻿using DungonMasterGame.Fertigkeiten.Select;
+﻿using DungonMasterGame;
+using DungonMasterGame.Fertigkeiten.Select;
+using DungonMasterGame.Figuren;
 
 public class PlayerController : Controller
 {
@@ -16,7 +18,7 @@ public class PlayerController : Controller
 
     public Select Selctet { get; private set; }
 
-    public PlayerController(int x, int y, GameBoard World, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
+    public PlayerController(int x, int y, GameBoard World, GamePeaces WorldFiguren) : base(x, y)
     {
         grafik = new GrafikContainer(x, y, 'X', "pack://application:,,,/WPF/Grafiken/Images/Figuren/Spieler.png", 270);
         Selctet = new Select(this, World);

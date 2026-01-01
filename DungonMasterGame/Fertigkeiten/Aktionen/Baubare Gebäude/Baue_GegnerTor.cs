@@ -1,4 +1,8 @@
-﻿public class Baue_GegnerTor : Baue
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public class Baue_GegnerTor : Baue
 {
     private List<(int, int)> Baupunkte = new List<(int, int)> { (0, 0), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1) };
 

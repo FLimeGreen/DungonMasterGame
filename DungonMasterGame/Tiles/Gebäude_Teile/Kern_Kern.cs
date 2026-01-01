@@ -1,4 +1,6 @@
-﻿public class Kern_Kern : Gebäude
+﻿using DungonMasterGame;
+
+public class Kern_Kern : Gebäude
 {
     private List<Kern_Hull> gebauedeTeile;
 

@@ -1,4 +1,6 @@
-﻿public class Friedhof : Gebäude
+﻿using DungonMasterGame;
+
+public class Friedhof : Gebäude
 {
     int SpwanMenge = 0;
 

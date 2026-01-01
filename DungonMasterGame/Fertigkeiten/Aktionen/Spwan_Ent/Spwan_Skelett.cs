@@ -1,4 +1,8 @@
-﻿public class Spwan_Skelett : Spwan
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+using DungonMasterGame.Tiles;
+
+public class Spwan_Skelett : Spwan
 {
     public Spwan_Skelett(Controller Controller, GameBoard world, GamePeaces worldOfPeaces) : base(Controller, world, worldOfPeaces, new TimeSpan(0, 0, 0, 2, 0))
     {

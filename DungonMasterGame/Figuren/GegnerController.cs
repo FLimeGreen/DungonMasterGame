@@ -1,6 +1,9 @@
-﻿public abstract class GegnerController : Controller
+﻿using DungonMasterGame;
+using DungonMasterGame.Figuren;
+
+public abstract class GegnerController : Controller
 {
-    protected GegnerController(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
+    protected GegnerController(int x, int y, GamePeaces WorldFiguren) : base(x, y)
     {
         Woduschonmalwarst = new List<(int, int)>();
     }

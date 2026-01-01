@@ -1,4 +1,5 @@
-﻿using DungonMasterGame.Fertigkeiten.SkillTree;
+﻿using DungonMasterGame;
+using DungonMasterGame.Fertigkeiten.SkillTree;
 
 public class GamePeaces
 {

@@ -11,9 +11,9 @@ namespace DungonMasterGame.WPF.ViewModells
         private GamePeaces worldofpeaces;
 
         // Liste aller Möglichen Skills
-        public ObservableCollection<Angriff> angriffList { get; private set; }
-        public ObservableCollection<Spwan> spwanList { get; private set; }
-        public ObservableCollection<Baue> baueList { get; private set; }
+        public ObservableCollection<Angriff> AngriffList { get; private set; }
+        public ObservableCollection<Spwan> SpwanList { get; private set; }
+        public ObservableCollection<Baue> BaueList { get; private set; }
 
         // Grade ausgewählter Skill
         public ObservableCollection<Aktion> SelectedAktion { get; private set; }
@@ -34,9 +34,9 @@ namespace DungonMasterGame.WPF.ViewModells
 
         public SkillManagerWindowViewModell(GamePeaces peaces)
         {
-            angriffList = peaces.GetSkillTreeManager.angriffList;
-            spwanList = peaces.GetSkillTreeManager.spwanList;
-            baueList = peaces.GetSkillTreeManager.baueList;
+            AngriffList = peaces.GetSkillTreeManager.angriffList;
+            SpwanList = peaces.GetSkillTreeManager.spwanList;
+            BaueList = peaces.GetSkillTreeManager.baueList;
             SelectedAktion = new ObservableCollection<Aktion>();
 
             // Bindings Set

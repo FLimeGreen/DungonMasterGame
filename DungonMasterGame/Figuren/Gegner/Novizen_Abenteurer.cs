@@ -1,4 +1,6 @@
-﻿public class Novizen_Abenteurer : GegnerController
+﻿using DungonMasterGame;
+
+public class Novizen_Abenteurer : GegnerController
 {
     public Novizen_Abenteurer(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
     {

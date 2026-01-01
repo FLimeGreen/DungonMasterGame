@@ -1,45 +1,48 @@
-﻿public abstract class Tile
+﻿namespace DungonMasterGame.Tiles
 {
-    protected int x;
-    protected int y;
-    protected int? structurpunkte;
-    protected Hitbox hitbox;
-    protected GrafikContainer[] grafik = new GrafikContainer[2];
-
-    public Tile(int x, int y)
+    public abstract class Tile
     {
-        this.x = x;
-        this.y = y;
-        structurpunkte = null;
-        hitbox = Hitbox.None;
-        grafik[0] = new GrafikContainer(x, y, '?', "");
-    }
+        protected int x;
+        protected int y;
+        protected int? structurpunkte;
+        protected Hitbox hitbox;
+        protected GrafikContainer[] grafik = new GrafikContainer[2];
 
-    public int X { get { return x; } }
-    public int Y { get { return y; } }
-
-    public virtual Hitbox GetHitbox { get { return hitbox; } }
-
-    public GrafikContainer?[] Grafik { get { return grafik; } }
-
-    public virtual int? Struckturpunkte { get { return structurpunkte; } }
-
-    public virtual bool IstDaEineSpielFigur { get { return false; } }
-
-    public virtual bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)
-    {
-        // Negativer Schaden Erxistiert nicht.
-        if (Schaden <= 0)
+        public Tile(int x, int y)
         {
-            return false;
+            this.x = x;
+            this.y = y;
+            structurpunkte = null;
+            hitbox = Hitbox.None;
+            grafik[0] = new GrafikContainer(x, y, '?', "");
         }
 
-        // Wenn Structurpunkte null Objekt unzerstörbar.
-        if (structurpunkte == null)
-        {
-            return false;
-        }
+        public int X { get { return x; } }
+        public int Y { get { return y; } }
 
-        throw new NotImplementedException("Override for Objekt that shoud take damage!");
+        public virtual Hitbox GetHitbox { get { return hitbox; } }
+
+        public GrafikContainer?[] Grafik { get { return grafik; } }
+
+        public virtual int? Struckturpunkte { get { return structurpunkte; } }
+
+        public virtual bool IstDaEineSpielFigur { get { return false; } }
+
+        public virtual bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)
+        {
+            // Negativer Schaden Erxistiert nicht.
+            if (Schaden <= 0)
+            {
+                return false;
+            }
+
+            // Wenn Structurpunkte null Objekt unzerstörbar.
+            if (structurpunkte == null)
+            {
+                return false;
+            }
+
+            throw new NotImplementedException("Override for Objekt that shoud take damage!");
+        }
     }
 }

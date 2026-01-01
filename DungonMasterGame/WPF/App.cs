@@ -1,19 +1,21 @@
-﻿using DungonMasterGame;
-using System.Windows;
+﻿using System.Windows;
 
-public class App : Application
+namespace DungonMasterGame.WPF
 {
-    [STAThread]
-    public static void Main()
+    public class App : Application
     {
-        var app = new App();
-        app.Run();
-    }
+        [STAThread]
+        public static void Main()
+        {
+            var app = new App();
+            app.Run();
+        }
 
-    protected override void OnStartup(StartupEventArgs e)
-    {
-        base.OnStartup(e);
-        var window = new MainWindow();
-        window.Show();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var window = new MainWindow();
+            window.Show();
+        }
     }
 }

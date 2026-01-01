@@ -1,4 +1,6 @@
-﻿public class GegnerTor_Kern : Gebäude
+﻿using DungonMasterGame;
+
+public class GegnerTor_Kern : Gebäude
 {
     private List<GegnerTor_Hull> gebauedeTeile;
     private GameBoard world;

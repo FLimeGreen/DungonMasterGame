@@ -1,4 +1,7 @@
-﻿public abstract class Gebäude : Tile
+﻿using DungonMasterGame;
+using DungonMasterGame.Tiles;
+
+public abstract class Gebäude : Tile
 {
     protected Action_Manager aktions_Manager = new Action_Manager();
 
