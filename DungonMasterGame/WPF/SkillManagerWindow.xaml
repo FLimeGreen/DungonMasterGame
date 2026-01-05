@@ -170,7 +170,7 @@
                     Liste der Angriffs Skills
                 </TextBlock>
 
-                <ListBox x:Name="AngriffSkill" ItemsSource="{Binding angriffList}" SelectedItem="{Binding AngriffSkillSelectedItem}">
+                <ListBox x:Name="AngriffSkill" ItemsSource="{Binding AngriffList}" SelectedItem="{Binding AngriffSkillSelectedItem}">
                     <behaviors:Interaction.Triggers>
                         <behaviors:EventTrigger EventName="SelectionChanged">
                             <behaviors:InvokeCommandAction Command="{Binding AngriffSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
@@ -190,7 +190,7 @@
                     Liste der Beschwörungs Skills
                 </TextBlock>
 
-                <ListBox x:Name="SpwanSkill" ItemsSource="{Binding spwanList}" SelectedItem="{Binding SpwanSkillSelectedItem}">
+                <ListBox x:Name="SpwanSkill" ItemsSource="{Binding SpwanList}" SelectedItem="{Binding SpwanSkillSelectedItem}">
                     <behaviors:Interaction.Triggers>
                         <behaviors:EventTrigger EventName="SelectionChanged">
                             <behaviors:InvokeCommandAction Command="{Binding SpwanSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
@@ -210,7 +210,7 @@
                     Liste der Baubaren Gebäude
                 </TextBlock>
 
-                <ListBox x:Name="BauSkill" ItemsSource="{Binding baueList}" SelectedItem="{Binding BauSkillSelectedItem}">
+                <ListBox x:Name="BauSkill" ItemsSource="{Binding BaueList}" SelectedItem="{Binding BauSkillSelectedItem}">
                     <behaviors:Interaction.Triggers>
                         <behaviors:EventTrigger EventName="SelectionChanged">
                             <behaviors:InvokeCommandAction Command="{Binding BauSkill_SelectionChangedCommand}" PassEventArgsToCommand="True"/>
