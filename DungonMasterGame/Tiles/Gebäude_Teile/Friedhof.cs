@@ -1,8 +1,28 @@
 ﻿using DungonMasterGame;
+using DungonMasterGame.Figuren.Pathfinding.Helfer;
 
 public class Friedhof : Gebäude
 {
-    int SpwanMenge = 0;
+    private List<Skelett> skelette = new List<Skelett>();
+
+    public (int, int)? Wachpunkt;
+
+    public void Skelett_Anmelden(Skelett neuSkelett)
+    {
+        if (skelette.Count < 4)
+        {
+            skelette.Add(neuSkelett);
+        }
+    }
+
+    public void Skelett_Abnmelden(Skelett neuSkelett)
+    {
+        if (skelette.Contains(neuSkelett))
+        {
+            skelette.Remove(neuSkelett);
+        }
+    }
+
 
     public Friedhof(int x, int y, GameBoard world, GamePeaces worldPeaces) : base(x, y)
     {
@@ -15,6 +35,7 @@ public class Friedhof : Gebäude
         Beschreibung = "Erschaft 4 Untote";
 
         aktions_Manager.AktionHinzufügen(new Spwan_Skelett(this, world, worldPeaces), new TimeSpan(0, 0, 0, 2, 0), 0);
+
     }
 
     public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World)
@@ -43,19 +64,24 @@ public class Friedhof : Gebäude
     public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
     {
         // Beschreibung Aktuallisieren
-        WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + SpwanMenge };
+        WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + skelette.Count, "Wachpunkt: " + Wachpunkt};
 
 
-        if (SpwanMenge < 4)
+        if (skelette.Count < 4)
         {
             // Gib an Ob Cooldown abegelaufen ist?
             if (aktions_Manager.DoAction(0))
             {
                 // Nur erhöhen wenn auch gesspwaned.
                 // Entsteht ein Bug wenn nur hochzählen.
-                SpwanMenge++;
+                //SpwanMenge++;
             }
         }
+    }
+
+    public override void M_Key_Trigger(GamePeaces Peaces)
+    {
+        Wachpunkt = (Peaces.GetPlayer_X, Peaces.GetPlayer_Y);
     }
 
 }

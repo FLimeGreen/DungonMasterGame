@@ -1,4 +1,6 @@
-﻿namespace DungonMasterGame.Figuren
+﻿using DungonMasterGame.Figuren.Pathfinding;
+
+namespace DungonMasterGame.Figuren
 {
     public abstract class Controller
     {
