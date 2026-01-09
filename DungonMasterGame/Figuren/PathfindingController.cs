@@ -237,7 +237,7 @@ namespace DungonMasterGame.Figuren
                 // Check ob Wand dann fertig
                 if (World.GetHitbox(t_x, t_y) is not Hitbox.FreeSpace)
                 {
-                    return true;
+                    return Hitbox.Wall;
                 }
 
 
