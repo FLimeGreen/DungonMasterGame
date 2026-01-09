@@ -36,4 +36,9 @@ public abstract class Gebäude : Tile
         return;
     }
 
+
+    public virtual void M_Key_Trigger(GamePeaces Peaces)
+    {
+
+    }
 }

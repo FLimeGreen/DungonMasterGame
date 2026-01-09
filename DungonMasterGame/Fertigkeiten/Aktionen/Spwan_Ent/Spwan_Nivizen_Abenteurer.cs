@@ -1,5 +1,6 @@
 ﻿using DungonMasterGame;
 using DungonMasterGame.Figuren;
+using DungonMasterGame.Figuren.Pathfinding.Gegner;
 using DungonMasterGame.Tiles;
 
 public class Spwan_Novizen_Abenteurer : Spwan

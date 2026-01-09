@@ -49,6 +49,14 @@ namespace DungonMasterGame.Fertigkeiten.Select
             return true;
         }
 
+        public void M_Key()
+        {
+            if (ausgewaeltesGebaude is not null)
+            {
+                ausgewaeltesGebaude.M_Key_Trigger(world.GetWorldPeaces);
+            }
+        }
+
         public void Update()
         {
             if (IsGebaudeSelceted)

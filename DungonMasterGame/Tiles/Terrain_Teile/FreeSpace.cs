@@ -1,4 +1,5 @@
 ﻿using DungonMasterGame.Figuren;
+using DungonMasterGame.Figuren.Pathfinding;
 using DungonMasterGame.Tiles;
 
 public class FreeSpace : Terrain

@@ -1,5 +1,6 @@
 ﻿using DungonMasterGame;
 using DungonMasterGame.Figuren;
+using DungonMasterGame.Figuren.Pathfinding.Helfer;
 using DungonMasterGame.Tiles;
 
 public class Spwan_Skelett : Spwan
@@ -22,8 +23,20 @@ public class Spwan_Skelett : Spwan
         // Spawnpoint der Block selber?
         if (Spwanpoint.Item1 == x && Spwanpoint.Item2 == y) { return false; }
 
-        //Entität neu
-        var Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2, WorldOfPeaces);
+        Skelett Entitaet;
+
+        // Anmelden Bei Friedhof
+        var fried = tile_controller as Friedhof;
+        if (fried is not null)
+        {
+            Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2, fried, WorldOfPeaces);
+            fried.Skelett_Anmelden(Entitaet);
+        }
+        else
+        {
+            //Entität neu
+            Entitaet = new Skelett(Spwanpoint.Item1, Spwanpoint.Item2, WorldOfPeaces);
+        }
 
         //Entität aufs Spielbrett setzen
         World.PlatziereFigur(Spwanpoint.Item1, Spwanpoint.Item2, Entitaet);

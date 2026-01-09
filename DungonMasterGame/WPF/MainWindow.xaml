@@ -73,6 +73,7 @@
         <StackPanel x:Name="PlayerStats" DockPanel.Dock="Left" Margin="10, 10, 10, 10" Width="150">
             <TextBlock Text="{Binding Levelstring}"/>
             <TextBlock Text="{Binding Lpstring}"/>
+            <TextBlock Text="{Binding Kordinaten}"/>
             
             <!-- Selected Gebäude anzeigen -->
             <StackPanel MaxWidth="150" Margin="0, 40, 0, 0"  Visibility="{Binding Selectet.IsGebaudeSelceted, Converter={StaticResource BoolToVis}, ConverterParameter=true}">

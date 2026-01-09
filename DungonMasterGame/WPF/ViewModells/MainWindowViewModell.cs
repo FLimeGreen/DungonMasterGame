@@ -25,6 +25,8 @@ public partial class MainWindowViewModell : ObservableObject
     [ObservableProperty]
     public string lpstring = "LP: 0";
     [ObservableProperty]
+    public string kordinaten = "";
+    [ObservableProperty]
     public string todesnachricht = "";
     [ObservableProperty]
     public bool isvisible = false;
@@ -81,6 +83,7 @@ public partial class MainWindowViewModell : ObservableObject
             UpdateGrafik();
             UpdateActionLeiste();
             UpdateLeben();
+            UpdateKoordinaten();
             Selectet.Update();
         }
         else
@@ -194,6 +197,11 @@ public partial class MainWindowViewModell : ObservableObject
         Lpstring = "LP: " + Peaces.GetPlayer.LP;
     }
 
+    public void UpdateKoordinaten()
+    {
+        Kordinaten = "x: " + WorldPeaces.GetPlayer.X + "  y: " + WorldPeaces.GetPlayer.Y;
+    }
+
     // Manages Tastatur Eingabe
     [RelayCommand]
     private void Window_KeyDown(KeyEventArgs e)
@@ -246,6 +254,8 @@ public partial class MainWindowViewModell : ObservableObject
         if (e.Key == Key.D0) { WorldPeaces.PlayerAction(9); }
 
         if (e.Key == Key.N) { Selectet.NewSelect(); }
+
+        if (e.Key == Key.M) { Selectet.M_Key(); }
 
 
         UpdateGrafik();

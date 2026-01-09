@@ -1,5 +1,6 @@
 ﻿using DungonMasterGame;
 using DungonMasterGame.Fertigkeiten.SkillTree;
+using DungonMasterGame.Figuren.Pathfinding;
 
 public class GamePeaces
 {
