@@ -63,31 +63,34 @@ public class GegnerTor_Kern : Gebäude
 
     private bool SpwaneEinenGegner()
     {
-        var CooldownCheck = aktions_Manager.ActiveCoolDowns;
-        bool check = true;
+        //var CooldownCheck = aktions_Manager.ActiveCoolDowns;
+        //bool check = true;
 
-        // Schau ob ein Cooldown aktiv ist?
-        foreach (var check_part in CooldownCheck)
+        //// Schau ob ein Cooldown aktiv ist?
+        //foreach (var check_part in CooldownCheck)
+        //{
+        //    check = check && check_part;
+        //}
+
+        //// False Cooldown Aktiv
+        //if (check == true)
+        //{
+        //    //Kein Cooldown
+
+        // Gegner Sollen möglichst auf einmal Spwanen.
+        // Sonst ist das keine Welle
+        for (int i = 0; i < 10; i++)
         {
-            check = check && check_part;
-        }
+            bool te = aktions_Manager.DoAction(i);
 
-        // False Cooldown Aktiv
-        if (check == true)
-        {
-            //Kein Cooldown
-
-            for (int i = 0; i < 10; i++)
+            // Wenn einmal erfolgreich ausgeführt höre auf.
+            if (te)
             {
-                bool te = aktions_Manager.DoAction(i);
-
-                // Wenn einmal erfolgreich ausgeführt höre auf.
-                if (te)
-                {
-                    return true;
-                }
+                return true;
             }
         }
+        
+        //}
         return false;
     }
 
