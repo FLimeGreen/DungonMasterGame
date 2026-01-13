@@ -9,6 +9,9 @@ namespace DungonMasterGame.Fertigkeiten.Aktionen.Angriffe
 {
     public class Felsspalter : Angriff
     {
+        public bool SchadensUpgrade = false;
+        public bool SchadensUpgrade2 = false;
+
         public Felsspalter(GamePeaces WorldFiguren, Controller Controller) : base(Controller, WorldFiguren, new TimeSpan(0, 0, 0, 3, 5))
         {
             name = "Felsspalter";
@@ -24,6 +27,17 @@ namespace DungonMasterGame.Fertigkeiten.Aktionen.Angriffe
             }
 
             int Schaden = 6;
+
+            if (SchadensUpgrade)
+            {
+                Schaden = Schaden + 2;
+            }
+
+            if (SchadensUpgrade2)
+            {
+                Schaden = Schaden + 2;
+            }
+
             var Art = Schadensarten.physisch;
 
             // Angriff 1
