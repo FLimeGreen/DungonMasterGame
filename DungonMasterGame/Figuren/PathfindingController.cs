@@ -201,7 +201,7 @@ namespace DungonMasterGame.Figuren
 
         }
 
-        protected Hitbox RayCast(Heading Richtung, int Radius, GameBoard World)
+        protected (int, Hitbox) RayCast(Heading Richtung, int Radius, GameBoard World)
         {
             int t_x = this.x;
             int t_y = this.y;
@@ -230,28 +230,63 @@ namespace DungonMasterGame.Figuren
                         t_x--;
                         break;
 
-                    default: return Hitbox.None;
+                    default: return (-1, Hitbox.None);
                 }
 
-
-                // Check ob Wand dann fertig
-                if (World.GetHitbox(t_x, t_y) is not Hitbox.FreeSpace)
+                // Wenn Free Space dann langweilig
+                if (World.GetHitbox(t_x, t_y) is Hitbox.FreeSpace)
                 {
-                    return Hitbox.Wall;
+                    continue;
+                }
+                else
+                {
+                    // Spannende Hitbox
+                    Hitbox Spannend = World.GetHitbox(t_x, t_y);
+
+                    // Distanz
+                    int dist = Math.Abs(t_x - x + t_y - y);
+                    return (dist, Spannend);
                 }
 
-
-                // Spannende Hitbox
             }
-            return Hitbox.None;
+            return (-1, Hitbox.None);
         }
 
-        protected void RayCastUmgebung(int Radius, GameBoard World)
+        protected List<(int, Hitbox, Heading)> RayCastUmgebung(int Radius, GameBoard World)
         {
-            Hitbox NordenHitbox;
-            Hitbox OstenHitbox;
-            Hitbox SüdenHitbox;
-            Hitbox WestenHitbox;
+            (int, Hitbox) NordenHitbox = RayCast(Heading.Norden, Radius, World);
+            (int, Hitbox) OstenHitbox = RayCast(Heading.Osten, Radius, World);
+            (int, Hitbox) SüdenHitbox = RayCast(Heading.Süden, Radius, World);
+            (int, Hitbox) WestenHitbox = RayCast(Heading.Westen, Radius, World);
+
+
+            // Sortieren nach kleinster Distanz
+
+            var Werte = new List<(int, Hitbox, Heading)>();
+
+            if (NordenHitbox.Item2 is not Hitbox.None)
+            {
+                Werte.Add((NordenHitbox.Item1, NordenHitbox.Item2, Heading.Norden));
+            }
+
+            if (OstenHitbox.Item2 is not Hitbox.None)
+            {
+                Werte.Add((OstenHitbox.Item1, OstenHitbox.Item2, Heading.Osten));
+            }
+
+            if (SüdenHitbox.Item2 is not Hitbox.None)
+            {
+                Werte.Add((SüdenHitbox.Item1, SüdenHitbox.Item2, Heading.Süden));
+            }
+
+            if (WestenHitbox.Item2 is not Hitbox.None)
+            {
+                Werte.Add((WestenHitbox.Item1, WestenHitbox.Item2, Heading.Westen));
+            }
+
+            Werte.Sort();
+
+            return Werte;
         }
     }
 }

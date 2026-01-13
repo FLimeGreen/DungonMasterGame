@@ -41,6 +41,7 @@ namespace DungonMasterGame.Figuren
 
         public int X { get { return x; } }
         public int Y { get { return y; } }
+        public Heading Heading { get { return heading; } }
 
         public (int, int) GetLooking(int Distance)
         {

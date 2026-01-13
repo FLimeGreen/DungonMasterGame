@@ -1,5 +1,6 @@
 ﻿using DungonMasterGame;
 using DungonMasterGame.Figuren.Pathfinding;
+using System.Windows.Documents;
 
 namespace DungonMasterGame.Figuren.Pathfinding.Helfer
 {
@@ -27,6 +28,8 @@ namespace DungonMasterGame.Figuren.Pathfinding.Helfer
         public Skelett(int x, int y, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
         {
             INIT(WorldFiguren);
+
+            this.heading = WorldFiguren.GetPlayer.Heading;
         }
 
         public Skelett(int x, int y, Friedhof ParentFriedhof, GamePeaces WorldFiguren) : base(x, y, WorldFiguren)
@@ -42,21 +45,7 @@ namespace DungonMasterGame.Figuren.Pathfinding.Helfer
 
             if (parentFriedhof is not null)
             {
-                if (parentFriedhof.Wachpunkt is null) return;
-
-                // Bewege dich richtung Wachpunkt
-                var move_case = Pathfinding(1, parentFriedhof.Wachpunkt.Value.Item1, parentFriedhof.Wachpunkt.Value.Item2, World);
-
-                if (move_case.Item1)
-                {
-                    // Hat Richtung
-                    MoveOneField(move_case.Item2.Value, World);
-                }
-                else
-                {
-                    // Reset wo du wart
-                    Woduschonmalwarst.Clear();
-                }
+                Advanced_AI(World);
             }
             else
             {
@@ -86,23 +75,72 @@ namespace DungonMasterGame.Figuren.Pathfinding.Helfer
                             MoveOneField(Heading.Norden, World);
                             break;
                     }
-                } // BEwege dich weiter.
+                } // Bewege dich weiter.
                 else
                 {
                     MoveOneField(heading, World);
                 }
+
+                // Greife an.
+                // Wall und Gegner
+                var temp = GetLooking(1);
+                if (World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.Wall || World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.FreeSpace_with_Gegner)
+                {
+                    // Spitzhacke
+                    aktions_Manager.DoAction(0);
+                }
             }
 
-            // Greife an.
-            // Wall und Gegner
+            // Allgemeine Updates
+            UpdateGrafikRotaion();
+        }
+
+        private void Advanced_AI(GameBoard World)
+        {
+            // Return Wachpunkt
+            if (Woduschonmalwarst.Count > 20) // Der Wert ist geraten
+            {
+                Woduschonmalwarst.Clear();
+            }
+
+
+            // Wenn Gegner vor dir Angreifen
+
             var temp = GetLooking(1);
-            if (World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.Wall || World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.FreeSpace_with_Gegner)
+            if (World.GetHitbox(temp.Item1, temp.Item2) == Hitbox.FreeSpace_with_Gegner)
             {
                 // Spitzhacke
                 aktions_Manager.DoAction(0);
+
+                return; // Gehandelt
             }
 
-            UpdateGrafikRotaion();
+            // Umgebungs Check nach Gegner
+            foreach (var interesse in RayCastUmgebung(3, World))
+            {
+                if (interesse.Item2 == Hitbox.FreeSpace_with_Gegner)
+                {
+                    MoveOneField(interesse.Item3, World);
+
+                    return; // Wichtiger als zum Wachpunkt
+                }
+            }
+
+            if (parentFriedhof.Wachpunkt is null) return;
+
+            // Bewege dich richtung Wachpunkt
+            var move_case = Pathfinding(1, parentFriedhof.Wachpunkt.Value.Item1, parentFriedhof.Wachpunkt.Value.Item2, World);
+
+            if (move_case.Item1)
+            {
+                // Hat Richtung
+                MoveOneField(move_case.Item2.Value, World);
+            }
+            else
+            {
+                // Reset wo du wart
+                Woduschonmalwarst.Clear();
+            }
         }
 
         public override bool ErhalteSchaden(int Schaden, Schadensarten Art, GameBoard World, GamePeaces gamePeaces)
