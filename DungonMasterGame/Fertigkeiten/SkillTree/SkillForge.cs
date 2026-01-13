@@ -6,12 +6,12 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
     {
         public ObservableCollection<TreeElement> Weiterleiten { get; set; } = new();
 
-        public SkillForge(string name, string beschreibung) : base(name, beschreibung)
+        public SkillForge(string name, string beschreibung, int Kosten) : base(name, beschreibung, Kosten)
         {
 
         }
 
-        public SkillForge(Aktion Aktion) : base(Aktion)
+        public SkillForge(Aktion Aktion, int Kosten) : base(Aktion, Kosten)
         {
         }
     }

@@ -18,6 +18,9 @@ public partial class SkillTreeWindowViewModell : ObservableObject
     public string skillbeschreibung;
 
     [ObservableProperty]
+    public string skillkosten;
+
+    [ObservableProperty]
     public string skillgekauft;
 
     // Strings für Kaufen usw.
@@ -36,7 +39,7 @@ public partial class SkillTreeWindowViewModell : ObservableObject
     private void UpdateSkillkaufenMoeglich()
     {
         VerfuegbareSkillpunkte = "Skillpunkte: " + Skilltree.FreieSkillPunkte;
-        Skillkaufenmoeglich = SelectedSkill is not null && Skilltree.FreieSkillPunkte > 0 && !SelectedSkill.Gekauft;
+        Skillkaufenmoeglich = SelectedSkill is not null && Skilltree.FreieSkillPunkte >= SelectedSkill.Kosten && !SelectedSkill.Gekauft;
     }
 
     [RelayCommand]
@@ -46,6 +49,8 @@ public partial class SkillTreeWindowViewModell : ObservableObject
 
         Skillname = SelectedSkill.Name;
         Skillbeschreibung = SelectedSkill.Beschreibung;
+
+        Skillkosten = "Kosten: " + SelectedSkill.Kosten + "SP";
 
         if (SelectedSkill.Gekauft)
         {

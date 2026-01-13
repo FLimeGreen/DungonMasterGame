@@ -2,11 +2,11 @@
 {
     public class SkillBlatt : TreeElement
     {
-        public SkillBlatt(Aktion Aktion) : base(Aktion)
+        public SkillBlatt(Aktion Aktion, int Kosten) : base(Aktion, Kosten)
         {
         }
 
-        public SkillBlatt(string name, string beschreibung) : base(name, beschreibung)
+        public SkillBlatt(string name, string beschreibung, int Kosten) : base(name, beschreibung, Kosten)
         {
 
         }

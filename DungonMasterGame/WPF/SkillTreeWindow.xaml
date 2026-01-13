@@ -32,6 +32,7 @@
             <StackPanel Margin="10, 10, 10, 10">
                 <TextBlock Text="{Binding Skillname}"/>
                 <TextBlock Text="{Binding Skillbeschreibung}"/>
+                <TextBlock Text="{Binding Skillkosten}"/>
                 <TextBlock Text="{Binding Skillgekauft}"/>
             </StackPanel>
             
