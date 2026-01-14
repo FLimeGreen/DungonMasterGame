@@ -10,7 +10,7 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree.Stats
     {
         private bool ErsterKauf = true;
 
-        public Stats_MehrLP() : base("Mehr LP", "Du erhälst 5 Weitere Lebenspunkte", 1)
+        public Stats_MehrLP() : base("Mehr LP", "Du erhälst 5 Weitere Lebenspunkte. Du kannst diesen Skill mehrmals erwerben.", 1)
         {
 
         }

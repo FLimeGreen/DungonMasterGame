@@ -27,7 +27,7 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
             } 
         }
 
-        private int freieSkillPunkte = 5;
+        private int freieSkillPunkte = 1;
         public int FreieSkillPunkte
         {
             get { return freieSkillPunkte; }
