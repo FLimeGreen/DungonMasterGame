@@ -8,6 +8,8 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree.Stats
 {
     public class Stats_MehrLP : SkillBlatt
     {
+        private bool ErsterKauf = true;
+
         public Stats_MehrLP() : base("Mehr LP", "Du erhälst 5 Weitere Lebenspunkte", 1)
         {
 
@@ -18,13 +20,17 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree.Stats
             var Peaces = Tree.Figuren;
 
             // Kauf Prozess
-            this.gekauft = true;
+            //this.gekauft = true;
 
             // Erhöt LP um 5
             Peaces.GetPlayer.LP = 5;
 
             // Weiterleiten
-            Tree.Origen.FügeFelsspalter_hinzu();
+            if (ErsterKauf)
+            {
+                Tree.Origen.FügeFelsspalter_hinzu();
+                ErsterKauf = false;
+            }
 
             return true;
         }
