@@ -1,11 +1,5 @@
 ﻿using DungonMasterGame.Fertigkeiten.SkillTree.SkillTree_Elemente;
-using DungonMasterGame.Fertigkeiten.SkillTree.SkillTree_Elemente.Skills;
 using DungonMasterGame.Fertigkeiten.SkillTree.Stats;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DungonMasterGame.Fertigkeiten.SkillTree.Skills
 {
@@ -13,7 +7,7 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree.Skills
     {
         public Skill_Spitzhacke() : base(new Spitzhacke(null, null), 0)
         {
-            
+
         }
 
         public override bool Kaufen(SkillTreeManager Tree)

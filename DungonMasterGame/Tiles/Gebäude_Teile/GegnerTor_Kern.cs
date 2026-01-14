@@ -89,7 +89,7 @@ public class GegnerTor_Kern : Gebäude
                 return true;
             }
         }
-        
+
         //}
         return false;
     }

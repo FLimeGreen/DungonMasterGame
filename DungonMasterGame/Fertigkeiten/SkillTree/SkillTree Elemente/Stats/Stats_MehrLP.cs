@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DungonMasterGame.Fertigkeiten.SkillTree.Stats
+﻿namespace DungonMasterGame.Fertigkeiten.SkillTree.Stats
 {
     public class Stats_MehrLP : SkillBlatt
     {

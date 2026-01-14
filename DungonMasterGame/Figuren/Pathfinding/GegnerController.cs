@@ -1,7 +1,4 @@
-﻿using DungonMasterGame;
-using DungonMasterGame.Figuren;
-
-namespace DungonMasterGame.Figuren.Pathfinding
+﻿namespace DungonMasterGame.Figuren.Pathfinding
 {
     public abstract class GegnerController : PathfindingController
     {

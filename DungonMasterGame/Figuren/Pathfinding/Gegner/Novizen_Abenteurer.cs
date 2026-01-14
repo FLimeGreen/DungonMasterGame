@@ -1,7 +1,4 @@
-﻿using DungonMasterGame;
-using DungonMasterGame.Figuren.Pathfinding;
-
-namespace DungonMasterGame.Figuren.Pathfinding.Gegner
+﻿namespace DungonMasterGame.Figuren.Pathfinding.Gegner
 {
     public class Novizen_Abenteurer : GegnerController
     {

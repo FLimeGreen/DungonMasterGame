@@ -1,9 +1,4 @@
 ﻿using DungonMasterGame.Figuren;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DungonMasterGame.Fertigkeiten.Aktionen.Angriffe
 {
@@ -48,7 +43,7 @@ namespace DungonMasterGame.Fertigkeiten.Aktionen.Angriffe
             // Angriff 2
             Look = figur_controller.GetLooking(2);
 
-            bool Erfolgreich2 =  WorldPeaces.GreifeFeldAn(Look.Item1, Look.Item2, Schaden, Art);
+            bool Erfolgreich2 = WorldPeaces.GreifeFeldAn(Look.Item1, Look.Item2, Schaden, Art);
 
             return Erfolgreich1 || Erfolgreich2;
         }

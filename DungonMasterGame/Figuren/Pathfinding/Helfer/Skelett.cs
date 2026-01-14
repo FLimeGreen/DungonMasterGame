@@ -1,8 +1,4 @@
-﻿using DungonMasterGame;
-using DungonMasterGame.Figuren.Pathfinding;
-using System.Windows.Documents;
-
-namespace DungonMasterGame.Figuren.Pathfinding.Helfer
+﻿namespace DungonMasterGame.Figuren.Pathfinding.Helfer
 {
     public class Skelett : HelferController
     {

@@ -29,7 +29,7 @@ public class PlayerController : Controller
 
         // Fügt Aktion hinzu
         aktions_Manager.AktionHinzufügen(new Spitzhacke(WorldFiguren, this), new TimeSpan(0, 0, 0, 2, 0), 0);
-        
+
         // Für Test Zwecke
         //aktions_Manager.AktionHinzufügen(new Baue_Friedhof(this, World, WorldFiguren), new TimeSpan(0, 0, 0, 2, 0), 9);
     }

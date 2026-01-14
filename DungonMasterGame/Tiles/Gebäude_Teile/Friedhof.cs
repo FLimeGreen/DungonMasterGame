@@ -64,7 +64,7 @@ public class Friedhof : Gebäude
     public override void Update(GameBoard World, GamePeaces WorldOfPeaces)
     {
         // Beschreibung Aktuallisieren
-        WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + skelette.Count, "Wachpunkt: " + Wachpunkt};
+        WeiterEigenschaften = new List<string>() { "Menge an gespanten Skeletten: " + skelette.Count, "Wachpunkt: " + Wachpunkt };
 
 
         if (skelette.Count < 4)

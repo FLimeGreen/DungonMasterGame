@@ -1,6 +1,4 @@
-﻿using DungonMasterGame.Figuren;
-
-namespace DungonMasterGame.Figuren.Pathfinding
+﻿namespace DungonMasterGame.Figuren.Pathfinding
 {
     public class HelferController : PathfindingController
     {

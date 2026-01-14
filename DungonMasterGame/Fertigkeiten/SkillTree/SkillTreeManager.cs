@@ -18,13 +18,14 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
         public GamePeaces Figuren { get { return Peaces; } }
 
         private SkillForge Wurzel;
-        public Origen Origen 
-        { 
-            get {
+        public Origen Origen
+        {
+            get
+            {
                 var tem = Wurzel as Origen;
                 if (tem is null) throw new Exception("Invalid Skilltree");
-                return tem; 
-            } 
+                return tem;
+            }
         }
 
         private int freieSkillPunkte = 1;
@@ -54,11 +55,11 @@ namespace DungonMasterGame.Fertigkeiten.SkillTree
             // Erhalte ersten Skill
             Wurzel = new Skill_Spitzhacke();
             Wurzel.Kaufen(this);
-            
+
 
             // Vertige Baum an
             Skilltree.Add(Wurzel);
-            
+
         }
 
         public bool KaufeSkill(TreeElement Skill)
