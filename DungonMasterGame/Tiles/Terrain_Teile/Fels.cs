@@ -1,5 +1,7 @@
 ﻿using DungonMasterGame;
 using DungonMasterGame.Tiles;
+using DungonMasterGame.Tiles.Terrain_Teile;
+using System.Text.RegularExpressions;
 
 public class Fels : Terrain
 {
@@ -41,8 +43,22 @@ public class Fels : Terrain
             // Norden
             if (!World.IstDa(c_x, c_y + 1))
             {
-                // Füge da eine Wand ein
-                World.FuegeEinFeldHinzu(c_x, c_y + 1, new Fels(c_x, c_y + 1));
+                int rnd = new Random().Next(100);
+
+                if (rnd > 75)
+                {
+                    var t = new Moor(c_x, c_y + 1);
+
+                    World.FuegeEinFeldHinzu(c_x, c_y + 1, t);
+                    t.MoorCreation(new Random().Next(2, 8), World);
+                }
+                else
+                {
+                    //World.FuegeEinFeldHinzu(c_x, c_y + 1, new Moor(c_x, c_y + 1, 4, World));
+
+                    // Füge da eine Wand ein
+                    World.FuegeEinFeldHinzu(c_x, c_y + 1, new Fels(c_x, c_y + 1));
+                }
             }
 
             c_x = x;
@@ -50,8 +66,22 @@ public class Fels : Terrain
             // Osten
             if (!World.IstDa(c_x + 1, c_y))
             {
-                // Füge da eine Wand ein
-                World.FuegeEinFeldHinzu(c_x + 1, c_y, new Fels(c_x + 1, c_y));
+                int rnd = new Random().Next(100);
+
+                if (rnd > 75)
+                {
+                    var t = new Moor(c_x + 1, c_y);
+
+                    World.FuegeEinFeldHinzu(c_x + 1, c_y, t);
+                    t.MoorCreation(new Random().Next(2, 8), World);
+                }
+                else
+                {
+                    //World.FuegeEinFeldHinzu(c_x, c_y + 1, new Moor(c_x, c_y + 1, 4, World));
+
+                    // Füge da eine Wand ein
+                    World.FuegeEinFeldHinzu(c_x + 1, c_y, new Fels(c_x + 1, c_y));
+                }
             }
 
             c_x = x;
@@ -59,8 +89,22 @@ public class Fels : Terrain
             // Süden
             if (!World.IstDa(c_x, c_y - 1))
             {
-                // Füge da eine Wand ein
-                World.FuegeEinFeldHinzu(c_x, c_y - 1, new Fels(c_x, c_y - 1));
+                int rnd = new Random().Next(100);
+
+                if (rnd > 75)
+                {
+                    var t = new Moor(c_x, c_y - 1);
+
+                    World.FuegeEinFeldHinzu(c_x, c_y - 1, t);
+                    t.MoorCreation(new Random().Next(2, 8), World);
+                }
+                else
+                {
+                    //World.FuegeEinFeldHinzu(c_x, c_y + 1, new Moor(c_x, c_y + 1, 4, World));
+
+                    // Füge da eine Wand ein
+                    World.FuegeEinFeldHinzu(c_x, c_y - 1, new Fels(c_x, c_y - 1));
+                }
             }
 
             c_x = x;
@@ -68,8 +112,22 @@ public class Fels : Terrain
             // Westen
             if (!World.IstDa(c_x - 1, c_y))
             {
-                // Füge da eine Wand ein
-                World.FuegeEinFeldHinzu(c_x - 1, c_y, new Fels(c_x - 1, c_y));
+                int rnd = new Random().Next(100);
+
+                if (rnd > 75)
+                {
+                    var t = new Moor(c_x - 1, c_y);
+
+                    World.FuegeEinFeldHinzu(c_x - 1, c_y, t);
+                    t.MoorCreation(new Random().Next(2, 8), World);
+                }
+                else
+                {
+                    //World.FuegeEinFeldHinzu(c_x, c_y + 1, new Moor(c_x, c_y + 1, 4, World));
+
+                    // Füge da eine Wand ein
+                    World.FuegeEinFeldHinzu(c_x - 1, c_y, new Fels(c_x - 1, c_y));
+                }
             }
 
         }
